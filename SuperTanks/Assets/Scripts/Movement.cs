@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
+    [SerializeField] float speedSensity = 0.15f;
     [SerializeField] GameObject tracePrefab;
     [SerializeField] Transform traceStartPos;
     [SerializeField] float traceLivingTime = 0.5f;
@@ -15,14 +16,18 @@ public class Movement : MonoBehaviour
     float speedX;
     float speedY;
     Vector2 moveDirection;
+    Transform myTransform;
     float angle;
     bool isMoving = false;
     float timeSinceLastTraceDrop = Mathf.Infinity;
-    bool canDrop = true;
+    float pressedVerTime = 0f;
+    float pressedHorTime = 0f;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        myTransform = GetComponent<Transform>();
     }
     void Update()
     {
@@ -31,45 +36,45 @@ public class Movement : MonoBehaviour
 
         if (verticalPos != 0 && horizontalPos == 0)
         {
-            speedY = verticalPos * speed;
-            speedX = 0f;
-            
+            pressedVerTime += Time.deltaTime;
+
+            if (speedSensity < pressedVerTime)
+            {
+                speedY = verticalPos * speed;
+            }
+
             angle = verticalPos > 0 ? 0f : 180f;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+            myTransform.rotation = Quaternion.Euler(0, 0, angle);
         }
         else
         {
+            pressedVerTime = 0f;
             speedY = 0f;
-            transform.position = new Vector3(transform.position.x, Mathf.RoundToInt(transform.position.y));
+            myTransform.position = new Vector3(myTransform.position.x, Mathf.RoundToInt(myTransform.position.y));
         }
 
         if (horizontalPos != 0 && verticalPos == 0)
         {
-            speedX = horizontalPos * speed;
-            speedY = 0f;
+            pressedHorTime += Time.deltaTime;
+
+            if (speedSensity < pressedHorTime)
+            {
+                speedX = horizontalPos * speed;
+                speedY = 0f;
+                
+            }
 
             angle = horizontalPos > 0 ? -90f : 90f;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+            myTransform.rotation = Quaternion.Euler(0, 0, angle);
         }
         else
         {
+            pressedHorTime = 0f;
             speedX = 0f;
-            transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), transform.position.y);
+            myTransform.position = new Vector3(Mathf.RoundToInt(myTransform.position.x), myTransform.position.y);
         }
 
         LeaveTrace();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Trace"))
-        {
-            canDrop = false;
-        }
-        else
-        {
-            canDrop = true;
-        }
     }
 
     private void FixedUpdate()
@@ -89,12 +94,11 @@ public class Movement : MonoBehaviour
             isMoving = true;
         }
 
-        Debug.Log(canDrop);
-        if (isMoving && canDrop)
+        if (isMoving )
         {
             if (timeSinceLastTraceDrop > traceDropFrequency) 
             {
-                GameObject trace = Instantiate(tracePrefab, transform.position, Quaternion.Euler(0, 0, angle));
+                GameObject trace = Instantiate(tracePrefab, myTransform.position, Quaternion.Euler(0, 0, angle));
                 Destroy(trace, traceLivingTime);
                 timeSinceLastTraceDrop = 0f;
             }
@@ -103,39 +107,4 @@ public class Movement : MonoBehaviour
             
         }
     }
-
-
-
-
-    //if (Input.GetKeyDown(KeyCode.D))
-    //{           
-    //    transform.rotation = Quaternion.Euler(0, 0, -90);
-    //    speedX = speed;
-    //    speedY = 0f;
-    //}
-
-    //if (Input.GetKeyDown(KeyCode.A))
-    //{
-    //    transform.rotation = Quaternion.Euler(0, 0, 90);
-    //    speedX = -speed;
-    //    speedY = 0f;
-    //}
-
-    //if (Input.GetKeyDown(KeyCode.W))
-    //{
-    //    transform.rotation = Quaternion.Euler(0, 0, 0);
-    //    speedY = speed;
-    //    speedX = 0f;
-    //}
-    ////else if (Input.GetKeyUp(KeyCode.W))
-    ////{
-    ////    transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.x));
-    ////}
-
-    //if (Input.GetKeyDown(KeyCode.S))
-    //{
-    //    transform.rotation = Quaternion.Euler(0, 0, 180);
-    //    speedY = -speed;
-    //    speedX = 0f;
-    //}
 }
