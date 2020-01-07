@@ -125,6 +125,8 @@ MonoBehaviour:
   speed: 10
   explosionPrefab: {fileID: 413952297395608559, guid: 282b7b4b41f2fa640b255a37536f31d8,
     type: 3}
+  timeToDestroyExplosion: 0.35
+  playerBullet: 1
 --- !u!50 &6696133579365951390
 Rigidbody2D:
   serializedVersion: 4
