@@ -35,7 +35,7 @@ public class FireAI : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, Mathf.Infinity, mask);
 
-        if(hit/*.collider.gameObject.layer == LayerMask.NameToLayer("Player")*/)
+        if(hit/*.collider.gameObject.layer == LayerMask.NameToLayer("Player")*/)//goes through trees!!!!
         {
             //canShoot = true;
             Shoot();
