@@ -23,11 +23,7 @@ public class FireAI : MonoBehaviour
 
     private void Update()
     {
-        if(timeSinceLastShot>fireRate)
-        {
-            RayToPlayer();
-            timeSinceLastShot = 0f;
-        }
+        RayToPlayer();
 
         timeSinceLastShot += Time.deltaTime;
     }
@@ -39,16 +35,24 @@ public class FireAI : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, Mathf.Infinity, mask);
 
-        if(hit)
+        if(hit/*.collider.gameObject.layer == LayerMask.NameToLayer("Player")*/)
         {
             //canShoot = true;
             Shoot();
-            onHitPlayer(rayDirection);
+
+            float playerPosX = Mathf.RoundToInt(hit.transform.position.x);
+            float playerPosY = Mathf.RoundToInt(hit.transform.position.y);
+
+            onHitPlayer(new Vector2(playerPosX, playerPosY));
         }
     }
 
     private void Shoot()
     {
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        if (timeSinceLastShot > fireRate)
+        {
+            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            timeSinceLastShot = 0f;
+        }       
     }
 }

@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour
     FireAI fireAI;
     //Vector2 rotateDirection;
 
-    Vector2 priorDirection;
+    Vector2 priorTarget;
 
     private void Awake()
     {
@@ -57,7 +57,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if (!isReachedTargetPoint())
+        if (!IsReachedTargetPoint())
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
         }
@@ -83,20 +83,15 @@ public class EnemyAI : MonoBehaviour
         Vector2? target=null;//to make it null acceptable
         Vector2 rotateDirection=Vector2.zero;
         Dictionary<Vector2?, Vector2> targetDirections = new Dictionary<Vector2?, Vector2>();
+        //Debug.Log(priorTarget);
 
-        if (priorDirection != Vector2.zero)
-        {
-            int offsetIndex = Array.IndexOf(directions, priorDirection);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position + offsets[offsetIndex], priorDirection, Mathf.Infinity, mask);
-
-            if (hit)
-            {
-                target = hit.transform.position;
-            }
+        if (priorTarget != Vector2.zero)
+        {          
+            target = priorTarget;
         }
         else
         {
-            for (int i = 0; i < directions.Length;/*directions.Length;*/ i++)
+            for (int i = 0; i < directions.Length; i++)
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position + offsets[i], directions[i]/*, Mathf.Infinity, mask*/);
 
@@ -104,45 +99,33 @@ public class EnemyAI : MonoBehaviour
                 {
                     targetDirections.Add(hit.transform.position, directions[i]);
                 }
-                //else
-                //{
-                //    Debug.LogError(hit.collider.gameObject);//delete
-                //}
+
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+                {
+                    float playerPosX = Mathf.RoundToInt(hit.transform.position.x);
+                    float playerPosY = Mathf.RoundToInt(hit.transform.position.y);
+
+                    targetDirections.Add(new Vector2(playerPosX, playerPosY), directions[i]);
+                }
             }
         }
 
-
-        //if (targetDirections.Count != 0)
-        //{
-            //if (priorDirection != Vector2.zero)
-            //{
-            //    rotateDirection = priorDirection;               
-            //    target = targetDirections.FirstOrDefault(x => x.Value == rotateDirection).Key;//problem
-            //    Debug.Log(target);
-            //}
-
-            if(target==null)
-            {
-                int targetPoint = UnityEngine.Random.Range(0, targetDirections.Count);
-                target = targetDirections.ElementAt(targetPoint).Key;
-                rotateDirection = targetDirections.ElementAt(targetPoint).Value;
-            }
-        //}
-        //else
-        //{
-        //    target = transform.position;
-        //    rotateDirection = Vector2.zero;
-        //}
+        if (target == null)
+        {
+            int targetPoint = UnityEngine.Random.Range(0, targetDirections.Count);
+            target = targetDirections.ElementAt(targetPoint).Key;
+            rotateDirection = targetDirections.ElementAt(targetPoint).Value;
+        }
 
         RotateTank(rotateDirection);
         fireAI.rayDirection = rotateDirection;
 
-        priorDirection = Vector2.zero;
+        priorTarget = Vector2.zero;
 
         return (Vector2)target;
     }
 
-    private bool isReachedTargetPoint()
+    private bool IsReachedTargetPoint()
     {
         float distance = Vector2.Distance(transform.position, targetPos);
 
@@ -158,7 +141,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         float angle = 0f;
-        Directions dir =(Directions) Array.IndexOf(directions, direction);
+        Directions dir = (Directions)Array.IndexOf(directions, direction);
 
         switch(dir)
         {
@@ -181,6 +164,6 @@ public class EnemyAI : MonoBehaviour
 
     private void SetPriorDirection(Vector2 direction)
     {
-        priorDirection = direction;
+        priorTarget = direction;
     }
 }
