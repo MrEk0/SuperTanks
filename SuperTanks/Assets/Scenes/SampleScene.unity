@@ -2167,6 +2167,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 101453671160115441, guid: 6de007d6a84918245a636a7b23b6591b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 101453671160115445, guid: 6de007d6a84918245a636a7b23b6591b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2285,7 +2290,7 @@ GameObject:
   - component: {fileID: 321165692}
   - component: {fileID: 321165691}
   - component: {fileID: 321165690}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6409,6 +6414,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 101453671160115441, guid: 6de007d6a84918245a636a7b23b6591b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 101453671160115445, guid: 6de007d6a84918245a636a7b23b6591b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7363,7 +7373,7 @@ PrefabInstance:
     - target: {fileID: 101453671160115445, guid: 6de007d6a84918245a636a7b23b6591b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 101453671160115445, guid: 6de007d6a84918245a636a7b23b6591b,
         type: 3}
@@ -7415,6 +7425,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 101453671160115444, guid: 6de007d6a84918245a636a7b23b6591b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618662651, guid: 6de007d6a84918245a636a7b23b6591b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6de007d6a84918245a636a7b23b6591b, type: 3}
 --- !u!1001 &7669228570388243507
@@ -7432,17 +7451,12 @@ PrefabInstance:
     - target: {fileID: 7669228570033487668, guid: eb0348d179034a2488f7e3ba49440e01,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669228570033487668, guid: eb0348d179034a2488f7e3ba49440e01,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7669228570033487679, guid: eb0348d179034a2488f7e3ba49440e01,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7669228570033487679, guid: eb0348d179034a2488f7e3ba49440e01,
         type: 3}
@@ -7499,15 +7513,5 @@ PrefabInstance:
       propertyPath: tracePrefab
       value: 
       objectReference: {fileID: 1490993085}
-    - target: {fileID: 7669228570033487675, guid: eb0348d179034a2488f7e3ba49440e01,
-        type: 3}
-      propertyPath: traceDropFrequency
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669228570033487675, guid: eb0348d179034a2488f7e3ba49440e01,
-        type: 3}
-      propertyPath: speedSensity
-      value: 0.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb0348d179034a2488f7e3ba49440e01, type: 3}

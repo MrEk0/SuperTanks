@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7669228570033487674}
   - component: {fileID: 7669228570033487675}
   - component: {fileID: 358341389}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -145,6 +145,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  speedSensity: 0.1
+  tracePrefab: {fileID: 0}
+  traceStartPos: {fileID: 0}
+  traceLivingTime: 0.5
+  traceDropFrequency: 0.25
 --- !u!114 &358341389
 MonoBehaviour:
   m_ObjectHideFlags: 0

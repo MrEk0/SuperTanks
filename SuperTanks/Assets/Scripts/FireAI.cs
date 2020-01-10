@@ -10,6 +10,7 @@ public class FireAI : MonoBehaviour
 
     float timeSinceLastShot = Mathf.Infinity;
     LayerMask mask;
+    LayerMask foregroundMask;
     bool canShoot;
 
     public Vector2 rayDirection { set; private get; }
@@ -19,6 +20,7 @@ public class FireAI : MonoBehaviour
     private void Awake()
     {
         mask = LayerMask.GetMask("Player");
+        foregroundMask = LayerMask.GetMask("Foreground");
     }
 
     private void Update()
@@ -34,10 +36,12 @@ public class FireAI : MonoBehaviour
             return;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, Mathf.Infinity, mask);
+        RaycastHit2D foreHit = Physics2D.Raycast(transform.position, rayDirection, Mathf.Infinity, foregroundMask);
 
-        if(hit/*.collider.gameObject.layer == LayerMask.NameToLayer("Player")*/)//goes through trees!!!!
+        if(hit && hit.distance<foreHit.distance)
         {
-            //canShoot = true;
+            //Debug.Log("shoot");
+           
             Shoot();
 
             float playerPosX = Mathf.RoundToInt(hit.transform.position.x);

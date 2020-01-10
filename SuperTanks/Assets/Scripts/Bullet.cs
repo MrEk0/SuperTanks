@@ -8,16 +8,16 @@ public class Bullet : MonoBehaviour
     [SerializeField] float speed=10f;
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] float timeToDestroyExplosion = 0.35f;
-    [SerializeField] bool playerBullet = false;
+    //[SerializeField] bool playerBullet = false;
 
     Rigidbody2D rb;
-    string hostTag="Enemy";
+    //string hostTag="Enemy";
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        hostTag = playerBullet == true ? "Player" : "Enemy";
+        //hostTag = playerBullet == true ? "Player" : "Enemy";
     }
 
     private void Start()
@@ -25,20 +25,13 @@ public class Bullet : MonoBehaviour
         rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag(hostTag))
-            return;
-
-        //set up explosion
-        GameObject explosion=Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        Destroy(explosion, timeToDestroyExplosion);
-
-        //if (collision.CompareTag("Enemy"))
+        //if(collision.collider.CompareTag("Enemy"))
         //{
-        //    //damage
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(explosion, timeToDestroyExplosion);
+            Destroy(gameObject);
         //}
-
-        Destroy(gameObject);
     }
 }
