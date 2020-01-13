@@ -68,7 +68,7 @@ public class EnemyAI : MonoBehaviour
         {
             DefinePosition();
         }
-        Debug.Log(targetPos);
+        //Debug.Log(targetPos);
     }
 
     private void DefinePosition()
@@ -223,7 +223,7 @@ public class EnemyAI : MonoBehaviour
             if (hits[i].collider.CompareTag("Enemy") && hits[i].transform.position != transform.position)
             {
                 targetPos = previousTarget;
-                Debug.Log("hit");
+                //Debug.Log("hit");
             }
         }
 
