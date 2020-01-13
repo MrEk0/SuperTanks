@@ -33,10 +33,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2929826862980255088, guid: b6d540ca1aaebd94092be571702e5fab,
+    - target: {fileID: 1166406246339596520, guid: b6d540ca1aaebd94092be571702e5fab,
         type: 3}
-      propertyPath: playerBullet
-      value: 0
+      propertyPath: m_TagString
+      value: Bullet
       objectReference: {fileID: 0}
     - target: {fileID: 1166406246339596523, guid: b6d540ca1aaebd94092be571702e5fab,
         type: 3}
@@ -96,6 +96,11 @@ PrefabInstance:
     - target: {fileID: 1166406246339596525, guid: b6d540ca1aaebd94092be571702e5fab,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929826862980255088, guid: b6d540ca1aaebd94092be571702e5fab,
+        type: 3}
+      propertyPath: playerBullet
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
