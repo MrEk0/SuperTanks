@@ -81,7 +81,7 @@ public class EnemyAI : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.GetComponent<Movement>() !=null)
         {
             Vector2 firstTouchPoint = collision.GetContact(0).point;
             Vector2 secondTouchPoint = collision.GetContact(1).point;
@@ -220,7 +220,7 @@ public class EnemyAI : MonoBehaviour
 
         for (int i = 0; i < hits.Length; i++)
         {
-            if (hits[i].collider.CompareTag("Enemy") && hits[i].transform.position != transform.position)
+            if (hits[i].collider.GetComponent<EnemyAI>() != null && hits[i].transform.position != transform.position) 
             {
                 targetPos = previousTarget;
                 //Debug.Log("hit");
