@@ -146,10 +146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   speedSensity: 0.1
-  tracePrefab: {fileID: 0}
-  traceStartPos: {fileID: 0}
-  traceLivingTime: 0.5
-  traceDropFrequency: 0.25
+  amountOfFuel: 10
+  fuelSlider: {fileID: 0}
 --- !u!114 &358341389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +163,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1166406246339596520, guid: b6d540ca1aaebd94092be571702e5fab,
     type: 3}
   fireSpeed: 1
+  health: 3
+  ammoNumber: 10
+  ammoText: {fileID: 0}

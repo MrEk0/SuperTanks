@@ -15,10 +15,13 @@ public enum Directions
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] float speed = 10f;
-    [SerializeField] List<GameObject> WayPoints;
+    //[SerializeField] List<GameObject> WayPoints;
     [SerializeField] float viewRadius = 1f;
     //[SerializeField] float rayDistance = 10f;
     [SerializeField] float offset=0.5f;
+    [SerializeField] LayerMask wallMask;
+
+    float rayDistance = 1f;
 
     //Rigidbody2D rb;
     Vector2 targetPos;
@@ -26,7 +29,7 @@ public class EnemyAI : MonoBehaviour
     Vector2 currentPoint;
     //LayerMask mask;
     Vector2[] directions = new Vector2[4] { Vector2.right, Vector2.left, Vector2.up, Vector2.down };
-    Vector3[] offsets;
+    //Vector3[] offsets;
     FireAI fireAI;
 
     Vector2 rotateDirection=Vector2.zero;
@@ -35,7 +38,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        offsets = new Vector3[4] { new Vector3(offset, 0f), new Vector3(-offset, 0f), new Vector3(0f, offset), new Vector3(0f, -offset) };
+        //offsets = new Vector3[4] { new Vector3(offset, 0f), new Vector3(-offset, 0f), new Vector3(0f, offset), new Vector3(0f, -offset) };
         fireAI = GetComponent<FireAI>();
         //mask = LayerMask.GetMask("Enemy");
     }
@@ -81,14 +84,13 @@ public class EnemyAI : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.GetComponent<Movement>() !=null)
+        if (collision.collider.GetComponent<Bullet>() !=null)
         {
             Vector2 firstTouchPoint = collision.GetContact(0).point;
             Vector2 secondTouchPoint = collision.GetContact(1).point;
             Vector2 middleTouchPoint = (firstTouchPoint + secondTouchPoint) / 2;
 
             Vector2 rotateDir = Vector2.zero;
-            //Vector2 target=Vector2.zero;
 
             if (Mathf.Approximately(firstTouchPoint.y, secondTouchPoint.y))
             {
@@ -117,20 +119,34 @@ public class EnemyAI : MonoBehaviour
         Dictionary<Vector2, Vector2> targetDirections = new Dictionary<Vector2, Vector2>();
         for (int i = 0; i < directions.Length; i++)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position + offsets[i], directions[i]);
-
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("WayPoint"))
+            RaycastHit2D hit = Physics2D.Raycast(transform.position /*+ offsets[i]*/, directions[i], rayDistance, wallMask);
+            
+            if(hit.collider==null)
             {
-                targetDirections.Add(hit.transform.position, directions[i]);
+                targetDirections.Add((Vector2)transform.position+directions[i], directions[i]);
+                Debug.Log((Vector2)transform.position + directions[i]);
             }
-
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+            else if(hit.collider.GetComponent<Movement>()!=null)//???????? can we delete
             {
                 float playerPosX = Mathf.RoundToInt(hit.transform.position.x);
                 float playerPosY = Mathf.RoundToInt(hit.transform.position.y);
 
                 targetDirections.Add(new Vector2(playerPosX, playerPosY), directions[i]);
             }
+            //RaycastHit2D hit = Physics2D.Raycast(transform.position + offsets[i], directions[i]);
+
+            //if (hit.collider.gameObject.layer == LayerMask.NameToLayer("WayPoint"))
+            //{
+            //    targetDirections.Add(hit.transform.position, directions[i]);
+            //}
+
+            //if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+            //{
+            //    float playerPosX = Mathf.RoundToInt(hit.transform.position.x);
+            //    float playerPosY = Mathf.RoundToInt(hit.transform.position.y);
+
+            //    targetDirections.Add(new Vector2(playerPosX, playerPosY), directions[i]);
+            //}
         }
 
         return targetDirections;
@@ -175,15 +191,15 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-    private void RotateTank(Vector2 direction)
+    private void RotateTank(Vector2 targetDirection)
     {
-        if (direction == Vector2.zero)
+        if (targetDirection == Vector2.zero)
         {
             return;
         }
 
         float angle = 0f;
-        Directions dir = (Directions)Array.IndexOf(directions, direction);
+        Directions dir = (Directions)Array.IndexOf(directions, targetDirection);
 
         switch(dir)
         {
@@ -201,8 +217,22 @@ public class EnemyAI : MonoBehaviour
                 break;
         }
 
+        //StartCoroutine(SmoothRotation(angle));
+
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
+
+    //IEnumerator SmoothRotation(float angle)
+    //{
+    //    float currentRotation = transform.rotation.z;
+    //    float targetRoration = angle;
+    //    for (float t=currentRotation; t<=targetRoration; t+=10)
+    //    {
+    //        Vector3 finalRotation = new Vector3(0, 0, t);
+    //        transform.rotation = Quaternion.Euler(finalRotation);
+    //        yield return null;
+    //    } 
+    //}
 
     private void SetPriorDirection(Vector2 direction)
     {

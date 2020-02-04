@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: ShieldMaterial2D
   m_Shader: {fileID: -6465566751694194690, guid: bbf93567e9c0a53409dc5065d04efd92,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -66,7 +66,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_199EA6BA: 1
-    - _Alpha: 0.6
+    - _Alpha: 2.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -77,13 +77,13 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GradientSpeed: 0.5
+    - _GradientSpeed: 0.6
     - _GradientTileY: 2
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _ShieldSpeed: 1
+    - _ShieldSpeed: 0.8
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -95,7 +95,7 @@ Material:
     - Color_8E2736DA: {r: 0.14173195, g: 0.54629123, b: 0.6132076, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _EmissionColor: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
-    - _GradientColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 0}
+    - _EmissionColor: {r: 0.043137256, g: 0.49658, b: 0.6901961, a: 1}
+    - _GradientColor: {r: 0.19020757, g: 3.471288, b: 0.855934, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _TextureTiling: {r: 5, g: 5, b: 0, a: 0}
+    - _TextureTiling: {r: 3, g: 3, b: 0, a: 0}

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Shield
-  m_Shader: {fileID: -6465566751694194690, guid: d7c1016129a81f24b9b3169a6988fe7e,
+  m_Shader: {fileID: -6465566751694194690, guid: bbf93567e9c0a53409dc5065d04efd92,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -92,7 +92,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_8E2736DA: {r: 2.682353, g: 0.015686275, b: 0.015686275, a: 0}
+    - Color_8E2736DA: {r: 2.5000494, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0.11656623, g: 0.9558431, b: 1.9816259, a: 1}
