@@ -28,7 +28,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<EnemyAI>() !=null)
+        if (collision.GetComponent<MovementAI>() !=null)
             return;
 
         //set up explosion

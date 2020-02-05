@@ -144,12 +144,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14cb74cf8db86d40a934706e7cdc6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 5
   viewRadius: 1
-  offset: 0.5
   wallMask:
     serializedVersion: 2
     m_Bits: 1024
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &1618662651
 MonoBehaviour:
   m_ObjectHideFlags: 0

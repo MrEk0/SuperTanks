@@ -13,9 +13,9 @@ public class FireAI : MonoBehaviour
     LayerMask foregroundMask;
     bool canShoot;
 
-    public Vector2 rayDirection { set; private get; }
+    //public Vector2 rayDirection { set; private get; }
 
-    public event Action<Vector2> onHitPlayer;
+    public event Action<Transform> onHitPlayer;
 
     private void Awake()
     {
@@ -32,22 +32,20 @@ public class FireAI : MonoBehaviour
 
     private void RayToPlayer()
     {
-        if (rayDirection == null)
-            return;
+        //if (rayDirection == null)
+        //    return;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, Mathf.Infinity, mask);
-        RaycastHit2D foreHit = Physics2D.Raycast(transform.position, rayDirection, Mathf.Infinity, foregroundMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, Mathf.Infinity, mask);
+        RaycastHit2D foreHit = Physics2D.Raycast(transform.position, transform.up, Mathf.Infinity, foregroundMask);
 
         if(hit && hit.distance<foreHit.distance)
-        {
-            //Debug.Log("shoot");
-           
+        {          
             Shoot();
 
-            float playerPosX = Mathf.RoundToInt(hit.transform.position.x);
-            float playerPosY = Mathf.RoundToInt(hit.transform.position.y);
+            //float playerPosX = Mathf.RoundToInt(hit.transform.position.x);
+            //float playerPosY = Mathf.RoundToInt(hit.transform.position.y);
 
-            onHitPlayer(new Vector2(playerPosX, playerPosY));
+            onHitPlayer(hit.transform);
         }
     }
 
