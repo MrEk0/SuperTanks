@@ -9,11 +9,11 @@ public class Fire : MonoBehaviour
 {
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float fireSpeed = 1f;
-    [SerializeField] float health = 3f;
+    //[SerializeField] float health = 3f;
     [SerializeField] float ammoNumber = 10f;
     [SerializeField] TextMeshProUGUI ammoText;
 
-    public event Action onGetAttacked;
+    //public event Action onGetAttacked;
 
     float timeSinceLastShot = Mathf.Infinity;
     float currentAmmo;
@@ -40,19 +40,19 @@ public class Fire : MonoBehaviour
         timeSinceLastShot += Time.deltaTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.GetComponent<Bullet>() !=null)
-        {
-            health=Mathf.Max(0, health - 1);
-            onGetAttacked();
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if(collision.GetComponent<Bullet>() !=null)
+    //    {
+    //        health=Mathf.Max(0, health - 1);
+    //        onGetAttacked();
 
-            if(health==0f)
-            {
-                Debug.Log("Gameover");
-            }
-        }
-    }
+    //        if(health==0f)
+    //        {
+    //            Debug.Log("Gameover");
+    //        }
+    //    }
+    //}
 
     private void DecreaseAmmo()
     {

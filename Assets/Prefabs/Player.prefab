@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7669228570033487674}
   - component: {fileID: 7669228570033487675}
   - component: {fileID: 358341389}
+  - component: {fileID: 2537631462024264370}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -53,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5fe0300ff1d3b6d4da85f6713113cd84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,14 +103,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.9880952, y: 0.9285714}
+    oldSize: {x: 0.83, y: 0.78}
     newSize: {x: 0.83, y: 0.78}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9880952, y: 0.9285714}
+  m_Size: {x: 0.83, y: 0.78}
   m_EdgeRadius: 0
 --- !u!50 &7669228570033487674
 Rigidbody2D:
@@ -163,6 +164,18 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1166406246339596520, guid: b6d540ca1aaebd94092be571702e5fab,
     type: 3}
   fireSpeed: 1
-  health: 3
   ammoNumber: 10
   ammoText: {fileID: 0}
+--- !u!114 &2537631462024264370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7669228570033487668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b74a10cc3901804cb918a52ede83404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoint: 3

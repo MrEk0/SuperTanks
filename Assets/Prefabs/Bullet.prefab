@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1166406246339596523}
   - component: {fileID: 2929826862980255088}
   - component: {fileID: 6696133579365951390}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Bullet
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -125,7 +125,6 @@ MonoBehaviour:
   speed: 10
   explosionPrefab: {fileID: 413952297395608559, guid: 282b7b4b41f2fa640b255a37536f31d8,
     type: 3}
-  timeToDestroyExplosion: 0.35
 --- !u!50 &6696133579365951390
 Rigidbody2D:
   serializedVersion: 4

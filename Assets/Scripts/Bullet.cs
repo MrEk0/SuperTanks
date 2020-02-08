@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float speed=10f;
     [SerializeField] GameObject explosionPrefab;
-    [SerializeField] float timeToDestroyExplosion = 0.35f;
+    //[SerializeField] float timeToDestroyExplosion = 0.35f;
     //[SerializeField] bool playerBullet = false;
 
     Rigidbody2D rb;
@@ -25,13 +25,13 @@ public class Bullet : MonoBehaviour
         rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //if(collision.collider.CompareTag("Enemy"))
         //{
-            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(explosion, timeToDestroyExplosion);
-            Destroy(gameObject);
+        /*GameObject explosion =*/ Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        //Destroy(explosion, timeToDestroyExplosion);
+        Destroy(gameObject);
         //}
     }
 }

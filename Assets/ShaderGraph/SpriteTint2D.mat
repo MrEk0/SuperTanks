@@ -28,5 +28,5 @@ Material:
     - _AlphaG: 100
     m_Colors:
     - Color_8D3DA047: {r: 1, g: 1, b: 1, a: 1}
-    - _TintAttack: {r: 0.5, g: 0, b: 0, a: 0}
+    - _TintAttack: {r: 0.5019608, g: 0, b: 0, a: 0}
     - _TintHeal: {r: 0, g: 0.47843137, b: 0.047058824, a: 0}

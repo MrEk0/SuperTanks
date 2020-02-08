@@ -10,13 +10,13 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"e35e8d38-e63d-41ce-a010-52ce45f36dea\"\n    },\n    \"m_Name\": \"TintHeal\",\n    \"m_DefaultReferenceName\": \"Color_2B36011E\",\n    \"m_OverrideReferenceName\": \"_TintHeal\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 0.0019607844296842815,\n        \"g\": 0.4803921580314636,\n        \"b\": 0.04901960864663124,\n        \"a\": 1.0\n    },\n    \"m_ColorMode\": 1\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"e35e8d38-e63d-41ce-a010-52ce45f36dea\"\n    },\n    \"m_Name\": \"TintHeal\",\n    \"m_DefaultReferenceName\": \"Color_2B36011E\",\n    \"m_OverrideReferenceName\": \"_TintHeal\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 0.0019607844296842815,\n        \"g\": 0.4803921580314636,\n        \"b\": 0.04901960864663124,\n        \"a\": 0.0\n    },\n    \"m_ColorMode\": 1\n}"
         },
         {
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"7cfd29e7-fc59-4e78-8d56-5df76dda3729\"\n    },\n    \"m_Name\": \"TintAttack\",\n    \"m_DefaultReferenceName\": \"Color_F43812BF\",\n    \"m_OverrideReferenceName\": \"_TintAttack\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 0.5,\n        \"g\": 0.0,\n        \"b\": 0.0,\n        \"a\": 0.0\n    },\n    \"m_ColorMode\": 1\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"7cfd29e7-fc59-4e78-8d56-5df76dda3729\"\n    },\n    \"m_Name\": \"TintAttack\",\n    \"m_DefaultReferenceName\": \"Color_F43812BF\",\n    \"m_OverrideReferenceName\": \"_TintAttack\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 0.5,\n        \"g\": 0.0,\n        \"b\": 0.0,\n        \"a\": 1.0\n    },\n    \"m_ColorMode\": 1\n}"
         }
     ],
     "m_SerializedKeywords": [],

@@ -7,23 +7,23 @@ using System.Linq;
 public class LivesUI : MonoBehaviour
 {
     List<Image> lifeImages;
-    Fire playerFire;
+    Health playerHealth;
     int lifeNumber;
     private void Awake()
     {
-        playerFire = GameObject.FindGameObjectWithTag("Player").GetComponent<Fire>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         lifeImages = GetComponentsInChildren<Image>().ToList();
         lifeNumber = lifeImages.Count;
     }
 
     private void OnEnable()
     {
-        playerFire.onGetAttacked += DecreaseLifeNumber;
+        playerHealth.onGetAttacked += DecreaseLifeNumber;
     }
 
     private void OnDisable()
     {
-        playerFire.onGetAttacked -= DecreaseLifeNumber;
+        playerHealth.onGetAttacked -= DecreaseLifeNumber;
     }
 
     private void DecreaseLifeNumber()
@@ -31,7 +31,7 @@ public class LivesUI : MonoBehaviour
         lifeNumber--;
         //Debug.Log(lifeImages.Count);
         //lifeImages.Remove(lifeImages[lifeImages.Count]);
-        Destroy(lifeImages[lifeNumber].gameObject);
+        lifeImages[lifeNumber].enabled = false;
         //Debug.Log(lifeImages.Count);
     }
 }

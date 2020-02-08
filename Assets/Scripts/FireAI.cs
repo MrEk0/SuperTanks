@@ -39,7 +39,6 @@ public class FireAI : MonoBehaviour
 
             if (hit && hit.distance < foreHit.distance)
             {
-                Debug.Log(hit.collider);
                 Shoot();
 
                 float playerPosX = Mathf.RoundToInt(hit.transform.position.x);
