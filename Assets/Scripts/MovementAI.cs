@@ -4,14 +4,6 @@ using System.Linq;
 using System;
 using UnityEngine;
 
-public enum Directions
-{
-    Right,
-    Left,
-    Up,
-    Down
-}
-
 public class MovementAI : MonoBehaviour
 {
     [SerializeField] float speed = 10f;
@@ -24,17 +16,17 @@ public class MovementAI : MonoBehaviour
 
     Vector2 targetPos;
     Vector2 previousTarget;
-    Vector2 currentPoint;
     Vector2[] directions = new Vector2[4] { Vector2.right, Vector2.left, Vector2.up, Vector2.down };
     FireAI fireAI;
 
     Rigidbody2D rb;
-    Vector2 target;
+    Collider2D myCollider;
 
     private void Awake()
     {
         fireAI = GetComponent<FireAI>();
         rb = GetComponent<Rigidbody2D>();
+        myCollider = GetComponent<Collider2D>();
     }
 
     private void OnEnable()
@@ -62,54 +54,28 @@ public class MovementAI : MonoBehaviour
         }
         else
         {
-            target = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-            transform.rotation = SmoothRotation(target);
+            Vector2 target = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);//???
+
+            SmoothRotation(target);
             rb.MovePosition(target);
         }
     }
 
     private void DefinePosition()
     {
-        currentPoint = targetPos;
         targetPos = GetTargetPos();
 
-        previousTarget = currentPoint;
-
-        //previousTarget = transform.position;
+        previousTarget = transform.position;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) //?????
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.GetComponent<Bullet>() != null)
         {
-            Vector2 firstTouchPoint = collision.GetContact(0).point;
-            Vector2 secondTouchPoint = collision.GetContact(1).point;
-            Vector2 middleTouchPoint = (firstTouchPoint + secondTouchPoint) / 2;
+            Vector2 newTarget = FormRoundVector(collision.transform.position);
 
-            Vector2 rotateDir = Vector2.zero;
-
-            if (Mathf.Approximately(firstTouchPoint.y, secondTouchPoint.y))
-            {
-                rotateDir = middleTouchPoint.y > transform.position.y ? (Vector2)transform.position+directions[2] : (Vector2)transform.position + directions[3];
-            }
-            else if (Mathf.Approximately(firstTouchPoint.x, secondTouchPoint.x))
-            {
-                rotateDir = middleTouchPoint.x > transform.position.x ? (Vector2)transform.position + directions[0] : (Vector2)transform.position + directions[1];
-            }
-
-            List<Vector2> targetDirections = FormTargetDirections();
-
-            if (targetDirections.Count != 0 && rotateDir != Vector2.zero)
-            {
-                transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
-                for(int i=0; i<targetDirections.Count; i++)
-                {
-                    if(targetDirections[i]==rotateDir)
-                    {
-                        targetPos = rotateDir;
-                    }
-                }
-            }
+            targetPos = newTarget;
+            previousTarget = FormRoundVector(transform.position);
         }
     }
 
@@ -126,10 +92,7 @@ public class MovementAI : MonoBehaviour
             }
             else if(hit.collider.GetComponent<Movement>()!=null)
             {
-                float playerPosX = Mathf.RoundToInt(hit.transform.position.x);
-                float playerPosY = Mathf.RoundToInt(hit.transform.position.y);
-
-                targetDirections.Add(new Vector2(playerPosX, playerPosY));
+                targetDirections.Add(FormRoundVector(hit.transform.position));
             }
         }
 
@@ -162,23 +125,32 @@ public class MovementAI : MonoBehaviour
         return Mathf.Approximately(distance, 0f);
     }
 
-    private Quaternion SmoothRotation(Vector2 target)
+    private void SmoothRotation(Vector2 target)
     {
         if ((Vector2)transform.position == target)
-            return transform.rotation;
+            return;
 
         Quaternion currentRotation = transform.rotation;
 
         Vector2 dir = targetPos - (Vector2)transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle-90f);
-
-        return Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * rotationSpeed);
+        Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        
+        //if (!Mathf.Approximately(Quaternion.Angle(currentRotation, targetRotation), 0f))//find out!!!
+        if (Quaternion.Angle(currentRotation, targetRotation) != 0f)
+        {
+            fireAI.canShoot = false;
+            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
+        else
+        {
+            fireAI.canShoot = true;
+        }
     }
 
-    private void SetPriorDirection(Transform playerTransform)
+    private void SetPriorDirection(Vector2 playerPos)
     {
-        targetPos = playerTransform.position;
+        targetPos = playerPos;
     }
 
     //private void OnDrawGizmos()
@@ -188,22 +160,22 @@ public class MovementAI : MonoBehaviour
 
     private void CheckEnemyCollision()//!!!!!
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, viewRadius, Vector2.zero);
-
-        for (int i = 0; i < hits.Length; i++)
+        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(transform.position, viewRadius, enemyMask);
+        for (int i = 0; i < enemyColliders.Length; i++)
         {
-            if (hits[i].collider.GetComponent<MovementAI>() != null && hits[i].transform.position != transform.position)
+            if (enemyColliders[i] != null && enemyColliders[i] != myCollider)
             {
                 targetPos = previousTarget;
-                //Debug.Log("hit");
+                previousTarget = targetPos;
             }
         }
+    }
 
-        //Collider2D collider = Physics2D.OverlapCircle(transform.position, viewRadius, enemyMask);
-        //if (collider != null && collider.transform.position != transform.position)
-        //{
-        //    targetPos = previousTarget;
-        //}
+    private Vector2 FormRoundVector(Vector3 position)
+    {
+        float xPos = Mathf.RoundToInt(position.x);
+        float yPos = Mathf.RoundToInt(position.y);
 
+        return new Vector2(xPos, yPos);
     }
 }
