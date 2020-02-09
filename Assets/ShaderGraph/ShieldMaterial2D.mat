@@ -77,7 +77,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GradientSpeed: 0.6
+    - _GradientSpeed: 1
     - _GradientTileY: 2
     - _Metallic: 0
     - _OcclusionStrength: 1
@@ -95,7 +95,7 @@ Material:
     - Color_8E2736DA: {r: 0.14173195, g: 0.54629123, b: 0.6132076, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _EmissionColor: {r: 0.043137256, g: 0.49658, b: 0.6901961, a: 1}
-    - _GradientColor: {r: 0.19020757, g: 3.471288, b: 0.855934, a: 0}
+    - _EmissionColor: {r: 2, g: 2, b: 2, a: 0.5372549}
+    - _GradientColor: {r: 0.41800848, g: 4.1619105, b: 1.1813284, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _TextureTiling: {r: 3, g: 3, b: 0, a: 0}

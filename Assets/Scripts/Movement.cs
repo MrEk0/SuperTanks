@@ -9,19 +9,20 @@ public class Movement : MonoBehaviour
     [SerializeField] float speedSensity = 0.15f;
     [SerializeField] float amountOfFuel = 10f;
     [SerializeField] Slider fuelSlider;
-    //[SerializeField] GameObject tracePrefab;
-    //[SerializeField] Transform traceStartPos;
-    //[SerializeField] float traceLivingTime = 0.5f;
-    //[SerializeField] float traceDropFrequency = 1f;
 
     Rigidbody2D rb;
+    Collider2D myCollider;
+
+    LayerMask dirtMask;
+    LayerMask grassMask;
+    LayerMask whiteMask;
 
     float speedX;
     float speedY;
-    Vector2 moveDirection;
+    //Vector2 moveDirection;
     Transform myTransform;
     float angle;
-    bool isMoving = false;
+    //bool isMoving = false;
     //float timeSinceLastTraceDrop = Mathf.Infinity;
     float pressedVerTime = 0f;
     float pressedHorTime = 0f;
@@ -32,8 +33,13 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         myTransform = GetComponent<Transform>();
+        myCollider = GetComponent<Collider2D>();
 
         currentFuelAmount = amountOfFuel;
+
+        dirtMask = LayerMask.GetMask("Dirt");
+        grassMask = LayerMask.GetMask("Grass");
+        whiteMask = LayerMask.GetMask("Sand");
     }
     void Update()
     {
@@ -51,7 +57,20 @@ public class Movement : MonoBehaviour
             speedX = 0f;
             speedY = 0f;
         }
-        //LeaveTrace();
+
+        if(myCollider.IsTouchingLayers(dirtMask))
+        {
+            speed = 5f;
+        }
+        else if(myCollider.IsTouchingLayers(grassMask))
+        {
+            speed = 8f;
+        }
+        else
+        {
+            speed = 3f;
+        }
+        Debug.Log(myCollider);
     }
 
     private void HorizontalMovement(float verticalPos, float horizontalPos)
@@ -123,30 +142,4 @@ public class Movement : MonoBehaviour
         currentFuelAmount = Mathf.Min(amountOfFuel, currentFuelAmount+fuelAmount);
         fuelSlider.value = currentFuelAmount / amountOfFuel;
     }
-
-    //private void LeaveTrace()
-    //{
-    //    if(speedX==0 && speedY==0)
-    //    {
-    //        isMoving = false;
-    //        timeSinceLastTraceDrop = Mathf.Infinity;
-    //    }
-    //    else
-    //    {
-    //        isMoving = true;
-    //    }
-
-    //    if (isMoving )
-    //    {
-    //        if (timeSinceLastTraceDrop > traceDropFrequency) 
-    //        {
-    //            GameObject trace = Instantiate(tracePrefab, myTransform.position, Quaternion.Euler(0, 0, angle));
-    //            Destroy(trace, traceLivingTime);
-    //            timeSinceLastTraceDrop = 0f;
-    //        }
-
-    //        timeSinceLastTraceDrop += Time.deltaTime;
-            
-    //    }
-    //}
 }

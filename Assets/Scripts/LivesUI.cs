@@ -14,6 +14,8 @@ public class LivesUI : MonoBehaviour
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         lifeImages = GetComponentsInChildren<Image>().ToList();
         lifeNumber = lifeImages.Count;
+
+        //lifeImages[0].color = new Color(1, 0, 0, 1f);
     }
 
     private void OnEnable()
@@ -29,10 +31,10 @@ public class LivesUI : MonoBehaviour
     private void DecreaseLifeNumber()
     {
         lifeNumber--;
-        //Debug.Log(lifeImages.Count);
-        //lifeImages.Remove(lifeImages[lifeImages.Count]);
-        lifeImages[lifeNumber].enabled = false;
-        //Debug.Log(lifeImages.Count);
+      
+        Image image = lifeImages[lifeNumber];
+        image.color = new Color(1f, 1f, 1f, image.color.a / 2f);
+      
     }
 }
 

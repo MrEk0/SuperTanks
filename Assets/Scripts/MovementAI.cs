@@ -16,6 +16,7 @@ public class MovementAI : MonoBehaviour
 
     Vector2 targetPos;
     Vector2 previousTarget;
+    Vector2 targetBeforePrevious;
     Vector2[] directions = new Vector2[4] { Vector2.right, Vector2.left, Vector2.up, Vector2.down };
     FireAI fireAI;
 
@@ -45,7 +46,7 @@ public class MovementAI : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
         CheckEnemyCollision();
 
         if (IsReachedTargetPoint())
@@ -54,10 +55,10 @@ public class MovementAI : MonoBehaviour
         }
         else
         {
-            Vector2 target = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);//???
+            Vector2 nextTarget = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);//???
 
-            SmoothRotation(target);
-            rb.MovePosition(target);
+            SmoothRotation(nextTarget);
+            rb.MovePosition(nextTarget);
         }
     }
 
@@ -65,6 +66,7 @@ public class MovementAI : MonoBehaviour
     {
         targetPos = GetTargetPos();
 
+        targetBeforePrevious = previousTarget;
         previousTarget = transform.position;
     }
 
@@ -90,10 +92,11 @@ public class MovementAI : MonoBehaviour
             {
                 targetDirections.Add((Vector2)transform.position+directions[i]);
             }
-            else if(hit.collider.GetComponent<Movement>()!=null)
-            {
-                targetDirections.Add(FormRoundVector(hit.transform.position));
-            }
+            //else if(hit.collider.GetComponent<Movement>()!=null)
+            //{
+            //    //targetDirections.Add(FormRoundVector(hit.transform.position));
+            //    targetPos = FormRoundVector(hit.transform.position);
+            //}
         }
 
         return targetDirections;
@@ -122,6 +125,7 @@ public class MovementAI : MonoBehaviour
     private bool IsReachedTargetPoint()
     {
         float distance = Vector2.Distance(transform.position, targetPos);
+
         return Mathf.Approximately(distance, 0f);
     }
 
@@ -153,22 +157,34 @@ public class MovementAI : MonoBehaviour
         targetPos = playerPos;
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.DrawWireSphere(transform.position, viewRadius);
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, viewRadius);
+    }
 
-    private void CheckEnemyCollision()//!!!!!
+    private void CheckEnemyCollision()
     {
         Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(transform.position, viewRadius, enemyMask);
+
+        if(enemyColliders.Length>2)
+        {
+            StartCoroutine(WaitUntilOthersGo());
+        }
+
         for (int i = 0; i < enemyColliders.Length; i++)
         {
-            if (enemyColliders[i] != null && enemyColliders[i] != myCollider)
+            if (enemyColliders[i] != myCollider)
             {
-                targetPos = previousTarget;
-                previousTarget = targetPos;
+                targetPos = targetBeforePrevious;
             }
         }
+    }
+
+    IEnumerator WaitUntilOthersGo()
+    {
+        speed = 0f;
+        yield return new WaitForSeconds(2f);
+        speed = 6f;
     }
 
     private Vector2 FormRoundVector(Vector3 position)
