@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] float healthPoint = 3f;
     [SerializeField] float tintFadeSpeed = 5f;
+    [SerializeField] UnityEvent takeDamage;
 
     Material material;
     Color attackColor;
@@ -15,7 +17,7 @@ public class Health : MonoBehaviour
     const string AttackColorName = "_TintAttack";
     const string HealColorName = "_TintHeal";
 
-    public event Action onGetAttacked;
+    //public event Action onGetAttacked;
 
     private void Awake()
     {
@@ -45,13 +47,15 @@ public class Health : MonoBehaviour
         {
             attackColor.a = 1f;
             material.SetColor(AttackColorName, attackColor);
-            healthPoint = Mathf.Max(0, healthPoint - 1);
-            onGetAttacked();
+            healthPoint = Mathf.Max(0, healthPoint - 1);         
+            //onGetAttacked();
 
             if (healthPoint == 0f)
             {
                 Debug.Log("Gameover");
             }
+
+            takeDamage.Invoke();
         }
     }
 }

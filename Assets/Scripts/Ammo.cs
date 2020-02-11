@@ -7,6 +7,8 @@ public class Ammo : MonoBehaviour
     [SerializeField] float speedRotation = 10f;
     [SerializeField] float numberOfAdditive = 5f;
 
+    public GameSuporter gameSuporter { get; set; }
+
     // Update is called once per frame
     void Update()
     {
@@ -18,6 +20,7 @@ public class Ammo : MonoBehaviour
         if(collision.GetComponent<Fire>()!=null)
         {
             collision.GetComponent<Fire>().ObtainAmmo(numberOfAdditive);
+            gameSuporter.RemoveItem(gameObject);
             Destroy(gameObject);
         }
     }

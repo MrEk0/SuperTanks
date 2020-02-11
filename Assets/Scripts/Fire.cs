@@ -69,7 +69,7 @@ public class Fire : MonoBehaviour
 
     public void ObtainAmmo(float amount)
     {
-        currentAmmo += amount;
+        currentAmmo = Math.Min(currentAmmo + amount, ammoNumber);
         ammoText.text = currentAmmo.ToString();
     }
 }
