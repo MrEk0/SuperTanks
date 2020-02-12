@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 90767471}
   - component: {fileID: 90767470}
   - component: {fileID: 90767469}
+  - component: {fileID: 90767472}
   m_Layer: 5
   m_Name: RightControlButton
   m_TagString: Untagged
@@ -280,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -288,7 +289,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.24313727, g: 0.227451, b: 0.18039216, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -346,6 +347,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90767467}
   m_CullTransparentMesh: 0
+--- !u!114 &90767472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90767467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Horizontal
+  axisValue: 1
+  responseSpeed: 10000
+  returnToCentreSpeed: 10000
 --- !u!1 &108010998
 GameObject:
   m_ObjectHideFlags: 0
@@ -4197,7 +4214,7 @@ GameObject:
   - component: {fileID: 108896505}
   - component: {fileID: 108896509}
   m_Layer: 13
-  m_Name: Brown
+  m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12476,6 +12493,7 @@ GameObject:
   - component: {fileID: 578195301}
   - component: {fileID: 578195300}
   - component: {fileID: 578195299}
+  - component: {fileID: 578195302}
   m_Layer: 5
   m_Name: LeftControlButton
   m_TagString: Untagged
@@ -12515,7 +12533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -12581,6 +12599,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578195297}
   m_CullTransparentMesh: 0
+--- !u!114 &578195302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578195297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Horizontal
+  axisValue: -1
+  responseSpeed: 10000
+  returnToCentreSpeed: 10000
 --- !u!1001 &625398643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13526,6 +13560,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129497584}
   m_CullTransparentMesh: 0
+--- !u!114 &1153781520 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 358341389, guid: eb0348d179034a2488f7e3ba49440e01,
+    type: 3}
+  m_PrefabInstance: {fileID: 7669228570388243507}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9869bbf5d6a7e9c4591e0815145f30b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1158661210
 GameObject:
   m_ObjectHideFlags: 0
@@ -14314,7 +14360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -14322,8 +14368,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.24313727, g: 0.227451, b: 0.18039216, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -14343,7 +14389,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1313570067}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1153781520}
+        m_MethodName: Shot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1313570067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14775,6 +14832,7 @@ GameObject:
   - component: {fileID: 1475097957}
   - component: {fileID: 1475097956}
   - component: {fileID: 1475097955}
+  - component: {fileID: 1475097958}
   m_Layer: 5
   m_Name: DownControlButton
   m_TagString: Untagged
@@ -14814,7 +14872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -14880,6 +14938,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475097953}
   m_CullTransparentMesh: 0
+--- !u!114 &1475097958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475097953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Vertical
+  axisValue: -1
+  responseSpeed: 10000
+  returnToCentreSpeed: 10000
 --- !u!1 &1533793014
 GameObject:
   m_ObjectHideFlags: 0
@@ -15778,6 +15852,7 @@ GameObject:
   - component: {fileID: 1824461065}
   - component: {fileID: 1824461064}
   - component: {fileID: 1824461063}
+  - component: {fileID: 1824461066}
   m_Layer: 5
   m_Name: UpControlButton
   m_TagString: Untagged
@@ -15817,7 +15892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -15825,7 +15900,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.24313727, g: 0.227451, b: 0.18039216, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -15883,6 +15958,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824461061}
   m_CullTransparentMesh: 0
+--- !u!114 &1824461066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824461061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Vertical
+  axisValue: 1
+  responseSpeed: 10000
+  returnToCentreSpeed: 10000
 --- !u!1 &1876244443
 GameObject:
   m_ObjectHideFlags: 0
@@ -16051,7 +16142,7 @@ GameObject:
   - component: {fileID: 1908910395}
   - component: {fileID: 1908910399}
   m_Layer: 14
-  m_Name: White
+  m_Name: Sand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16967,11 +17058,21 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7669228570033487673, guid: eb0348d179034a2488f7e3ba49440e01,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7669228570033487675, guid: eb0348d179034a2488f7e3ba49440e01,
         type: 3}
       propertyPath: fuelSlider
       value: 
       objectReference: {fileID: 2110556566}
+    - target: {fileID: 7669228570033487675, guid: eb0348d179034a2488f7e3ba49440e01,
+        type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7669228570033487679, guid: eb0348d179034a2488f7e3ba49440e01,
         type: 3}
       propertyPath: m_LocalPosition.x

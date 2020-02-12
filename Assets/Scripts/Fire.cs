@@ -26,33 +26,24 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            //fire
-            if(timeSinceLastShot>fireSpeed)
-            {
-                Instantiate(bulletPrefab, transform.position, transform.rotation);
-                DecreaseAmmo();
-                timeSinceLastShot = 0f;
-            }           
-        }
+        //if(Input.GetMouseButtonDown(0))
+        //{
+        //    //fire
+        //    Shot();
+        //}
 
         timeSinceLastShot += Time.deltaTime;
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if(collision.GetComponent<Bullet>() !=null)
-    //    {
-    //        health=Mathf.Max(0, health - 1);
-    //        onGetAttacked();
-
-    //        if(health==0f)
-    //        {
-    //            Debug.Log("Gameover");
-    //        }
-    //    }
-    //}
+    public void Shot()
+    {
+        if (timeSinceLastShot > fireSpeed)
+        {
+            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            DecreaseAmmo();
+            timeSinceLastShot = 0f;
+        }
+    }
 
     private void DecreaseAmmo()
     {

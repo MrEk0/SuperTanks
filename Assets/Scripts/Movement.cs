@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Movement : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class Movement : MonoBehaviour
     float pressedHorTime = 0f;
     float currentFuelAmount;
 
+    float verticalPos;
+    float horizontalPos;
+
 
     private void Awake()
     {
@@ -43,34 +47,34 @@ public class Movement : MonoBehaviour
     }
     void Update()
     {
-        float verticalPos = Input.GetAxisRaw("Vertical");
-        float horizontalPos = Input.GetAxisRaw("Horizontal");
 
-        if (verticalPos != 0 || horizontalPos != 0)
-        {
-            VerticalMovement(verticalPos, horizontalPos);
-            HorizontalMovement(verticalPos, horizontalPos);
-            FuelConsumption();
-        }
-        else
-        {
-            speedX = 0f;
-            speedY = 0f;
-        }
+        verticalPos = CrossPlatformInputManager.GetAxis("Horizontal");
+        horizontalPos = CrossPlatformInputManager.GetAxis("Vertical");
 
-        if(myCollider.IsTouchingLayers(dirtMask))
-        {
-            speed = 5f;
-        }
-        else if(myCollider.IsTouchingLayers(grassMask))
-        {
-            speed = 8f;
-        }
-        else
-        {
-            speed = 3f;
-        }
-        Debug.Log(myCollider);
+        //if (verticalPos != 0 || horizontalPos != 0)
+        //{
+        //    VerticalMovement(verticalPos, horizontalPos);
+        //    HorizontalMovement(verticalPos, horizontalPos);
+        //    FuelConsumption();
+        //}
+        //else
+        //{
+        //    speedX = 0f;
+        //    speedY = 0f;
+        //}
+
+        //if(myCollider.IsTouchingLayers(dirtMask))
+        //{
+        //    speed = 5f;
+        //}
+        //else if(myCollider.IsTouchingLayers(grassMask))
+        //{
+        //    speed = 8f;
+        //}
+        //else
+        //{
+        //    speed = 3f;
+        //}
     }
 
     private void HorizontalMovement(float verticalPos, float horizontalPos)
@@ -121,7 +125,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(speedX, speedY);
+        rb.velocity = new Vector2(verticalPos*speed, horizontalPos*speed);
     }
 
     private void FuelConsumption()
