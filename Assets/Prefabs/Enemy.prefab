@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 101453671160115440}
   - component: {fileID: 101453671160115444}
   - component: {fileID: 1618662651}
+  - component: {fileID: 1784360511025657325}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -167,4 +168,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 1
   bulletPrefab: {fileID: 1166406246339596520, guid: 555299c431ac8da47ac5912d9c5eb6f1,
+    type: 3}
+--- !u!114 &1784360511025657325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101453671160115441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf281af397f75349855f70d8b67d9e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 3642929767244327358, guid: 48b99e31111a0d84db3b7a11e5276986,
     type: 3}

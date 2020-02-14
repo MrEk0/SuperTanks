@@ -7,7 +7,7 @@ using System.Linq;
 public class LivesUI : MonoBehaviour
 {
     List<Image> lifeImages;
-    Health playerHealth;
+    //Health playerHealth;
     int lifeNumber;
     private void Awake()
     {

@@ -157,10 +157,10 @@ public class MovementAI : MonoBehaviour
         targetPos = playerPos;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, viewRadius);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireSphere(transform.position, viewRadius);
+    //}
 
     private void CheckEnemyCollision()
     {
