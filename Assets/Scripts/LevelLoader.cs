@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] float timeToLoad = 2f;
-    //[SerializeField] Animator animator;
 
     Animator animator;
 

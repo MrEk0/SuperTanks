@@ -2,16 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.Events;
 using UnityStandardAssets.CrossPlatformInput;
 
-
-public enum Directions
-{
-    Up,
-    Down,
-    Right,
-    Left,
-}
 
 public class Movement : MonoBehaviour
 {
@@ -19,6 +13,7 @@ public class Movement : MonoBehaviour
     //[SerializeField] float speedSensity = 0.15f;
     [SerializeField] float amountOfFuel = 10f;
     [SerializeField] Slider fuelSlider;
+    [SerializeField] UnityEvent onFuelConsumed;
 
     Rigidbody2D rb;
     Collider2D myCollider;
@@ -90,61 +85,15 @@ public class Movement : MonoBehaviour
         //}
     }
 
-    public void SmoothRotation(Directions direction)
-    {
-        //Quaternion currentRotation = myTransform.rotation;
-
-        //Vector2 dir = target - (Vector2)myTransform.position;
-        //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        //Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
-
-        //myTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 10f);
-    }
-
-    //private void HorizontalMovement(float verticalPos, float horizontalPos)
+    //public void SmoothRotation(Directions direction)
     //{
-    //    if (horizontalPos != 0 && verticalPos == 0)
-    //    {
-    //        pressedHorTime += Time.deltaTime;
+    //    Quaternion currentRotation = myTransform.rotation;
 
-    //        if (speedSensity < pressedHorTime)
-    //        {
-    //            speedX = horizontalPos * speed;
-    //            speedY = 0f;
+    //    Vector2 dir = target - (Vector2)myTransform.position;
+    //    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+    //    Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
 
-    //        }
-
-    //        angle = horizontalPos > 0 ? -90f : 90f;
-    //        myTransform.rotation = Quaternion.Euler(0, 0, angle);
-    //    }
-    //    else
-    //    {
-    //        pressedHorTime = 0f;
-    //        speedX = 0f;
-    //        myTransform.position = new Vector3(Mathf.RoundToInt(myTransform.position.x), myTransform.position.y);
-    //    }
-    //}
-
-    //private void VerticalMovement(float verticalPos, float horizontalPos)
-    //{
-    //    if (verticalPos != 0 && horizontalPos == 0)
-    //    {
-    //        pressedVerTime += Time.deltaTime;
-
-    //        if (speedSensity < pressedVerTime)
-    //        {
-    //            speedY = verticalPos * speed;
-    //        }
-
-    //        angle = verticalPos > 0 ? 0f : 180f;
-    //        myTransform.rotation = Quaternion.Euler(0, 0, angle);
-    //    }
-    //    else
-    //    {
-    //        pressedVerTime = 0f;
-    //        speedY = 0f;
-    //        myTransform.position = new Vector3(myTransform.position.x, Mathf.RoundToInt(myTransform.position.y));
-    //    }
+    //    myTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 10f);
     //}
 
     private void FixedUpdate()
@@ -161,7 +110,8 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            Debug.Log("Run out of Fuel");
+            onFuelConsumed.Invoke();
+            
         }
     }
 
