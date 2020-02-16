@@ -5,19 +5,13 @@ using System.Linq;
 
 public class EnemyManager : MonoBehaviour
 {
-    //static EnemyManager instance;
     [SerializeField] GameObject winPanel;
+    [SerializeField] GameObject bossPrefab;
 
     List<EnemyHealth> enemies = new List<EnemyHealth>();
 
     private void Awake()
     {
-        //if(instance!=null && instance !=this)
-        //{
-        //    Destroy(gameObject);
-        //}
-
-        //instance = this;
         enemies = GetComponentsInChildren<EnemyHealth>().ToList();
     }
 
@@ -32,7 +26,20 @@ public class EnemyManager : MonoBehaviour
 
         if(enemies.Count==0)
         {
-            winPanel.SetActive(true);
+            //winPanel.SetActive(true);
+            StartCoroutine(InitBoss(enemy.transform.position));
         }
+    }
+
+    IEnumerator InitBoss(Vector3 enemy)
+    {
+        //Transform enemyPos = enemy;
+        yield return new WaitForSeconds(2f);
+        Instantiate(bossPrefab, enemy, Quaternion.identity, transform);
+    }
+
+    public void ShowWinPanel()
+    {
+        winPanel.SetActive(true);
     }
 }

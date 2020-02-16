@@ -21,13 +21,14 @@ public class MovementAI : MonoBehaviour
     FireAI fireAI;
 
     Rigidbody2D rb;
-    Collider2D myCollider;
+    //Collider2D myCollider;
+    BoxCollider2D myCollider;
 
     private void Awake()
     {
         fireAI = GetComponent<FireAI>();
         rb = GetComponent<Rigidbody2D>();
-        myCollider = GetComponent<Collider2D>();
+        myCollider = GetComponentInChildren<BoxCollider2D>();//can make visible?
     }
 
     private void OnEnable()
