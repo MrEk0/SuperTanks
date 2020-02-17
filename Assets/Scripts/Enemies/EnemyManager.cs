@@ -24,10 +24,16 @@ public class EnemyManager : MonoBehaviour
     {
         enemies.Remove(enemy);
 
-        if(enemies.Count==0)
+        if (enemies.Count == 0)
         {
-            //winPanel.SetActive(true);
-            StartCoroutine(InitBoss(enemy.transform.position));
+            if (bossPrefab != null)
+            {
+                StartCoroutine(InitBoss(enemy.transform.position));
+            }
+            else
+            {
+                ShowWinPanel();
+            }
         }
     }
 
