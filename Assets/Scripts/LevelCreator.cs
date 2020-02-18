@@ -13,8 +13,14 @@ public class LevelCreator : MonoBehaviour
     [SerializeField] int numberOfLevels;
 
     Rect panelRect;
+    RectTransform thisRect;
     int numberPerPage;
     int levelCount = 0;
+
+    private void Awake()
+    {
+        thisRect = GetComponent<RectTransform>();
+    }
 
     private void Start()
     {
@@ -23,16 +29,34 @@ public class LevelCreator : MonoBehaviour
 
     private void CreateLevelPanel()
     {
-        panelRect = buttonPanelPrefab.GetComponent<RectTransform>().rect;
+        GameObject panelClone;
+        RectTransform panelCloneRect;
+        CreateInitializingPanel(out panelClone, out panelCloneRect);
+
+        panelRect = panelCloneRect.rect;
         Rect levelRect = levelButtonPrefab.GetComponent<RectTransform>().rect;
         Vector2 spacing = buttonPanelPrefab.GetComponent<GridLayoutGroup>().spacing;
 
-        int maxInARow = Mathf.FloorToInt((panelRect.width+spacing.x) / (levelRect.width+spacing.x));
-        int maxInAColumn = Mathf.FloorToInt((panelRect.height+spacing.y) / (levelRect.height+spacing.y));
+        int maxInARow = Mathf.FloorToInt((panelRect.width + spacing.x) / (levelRect.width + spacing.x));
+        int maxInAColumn = Mathf.FloorToInt((panelRect.height + spacing.y) / (levelRect.height + spacing.y));
         numberPerPage = maxInARow * maxInAColumn;
         int numberOfPages = Mathf.CeilToInt((float)numberOfLevels / numberPerPage);
-
         LoadPanels(numberOfPages);
+
+        Destroy(panelClone);
+    }
+
+    private void CreateInitializingPanel(out GameObject panelClone, out RectTransform panelCloneRect)
+    {
+        panelClone = Instantiate(buttonPanelPrefab);
+        panelClone.transform.SetParent(canvas.transform, false);
+        panelClone.transform.SetParent(transform);
+
+        panelCloneRect = panelClone.GetComponent<RectTransform>();
+        RectTransform thisRect = GetComponent<RectTransform>();
+
+        RectTransformExtensions.SetLeft(panelCloneRect, thisRect.offsetMax.x);
+        RectTransformExtensions.SetRight(panelCloneRect, thisRect.offsetMax.x);
     }
 
     private void LoadPanels(int numberOfPages)
@@ -42,6 +66,12 @@ public class LevelCreator : MonoBehaviour
             GameObject panel = Instantiate(buttonPanelPrefab) as GameObject;
             panel.transform.SetParent(canvas.transform, false);
             panel.transform.SetParent(transform);
+
+            RectTransform panelCloneRect = panel.GetComponent<RectTransform>();
+
+            RectTransformExtensions.SetLeft(panelCloneRect, thisRect.offsetMax.x);
+            RectTransformExtensions.SetRight(panelCloneRect, thisRect.offsetMax.x);
+
             panel.GetComponent<RectTransform>().localPosition = new Vector2(panelRect.width * (i), 0);
             LoadButtons(numberPerPage, panel);
         }
