@@ -5,9 +5,10 @@ using System.Linq;
 
 public class GameSuporter : MonoBehaviour
 {
-    [SerializeField] List<Transform> supportPoints;
+    //[SerializeField] GameObject supportPoints;
+    //[SerializeField] List<Transform> supportPoints;
     [SerializeField] GameObject fuelPrefab;
-    [SerializeField] float maxNumberOfFuel = 3f;
+    [SerializeField] float maxNumberOfItems = 3f;
     [SerializeField] GameObject ammoPrefab;
     [SerializeField] float delayToDropItem = 3f;
     [SerializeField] float timeBetweenSpawns = 5f;
@@ -15,14 +16,28 @@ public class GameSuporter : MonoBehaviour
     float timeSinceLastSpawn = Mathf.Infinity;
     float timeSinceRemoveItem = Mathf.Infinity;
     Dictionary<GameObject, Transform> supportItems = new Dictionary<GameObject, Transform>();
+    List<Transform> points=new List<Transform>();
 
     GameObject ammo;
+
+    private void Awake()
+    {
+        FormListOfPoints();
+    }
+
+    private void FormListOfPoints()
+    {
+        foreach (Transform child in transform)
+        {
+            points.Add(child);
+        }
+    }
 
     private void Update()
     {
         timeSinceRemoveItem += Time.deltaTime;
 
-        if (timeSinceLastSpawn > timeBetweenSpawns && supportItems.Count < maxNumberOfFuel && timeSinceRemoveItem > delayToDropItem) 
+        if (timeSinceLastSpawn > timeBetweenSpawns && supportItems.Count < maxNumberOfItems && timeSinceRemoveItem > delayToDropItem) 
         {
             if(ammo==null)
             {
@@ -56,7 +71,7 @@ public class GameSuporter : MonoBehaviour
 
     private Transform GetInstantiatePos()
     {
-        List<Transform> newPointsList = supportPoints.Except(supportItems.Values).ToList();
+        List<Transform> newPointsList = points.Except(supportItems.Values).ToList();
         int pointIndex = Random.Range(0, newPointsList.Count);
 
         return newPointsList[pointIndex];
