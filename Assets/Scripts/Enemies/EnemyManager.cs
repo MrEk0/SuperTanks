@@ -37,6 +37,13 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    IEnumerator ShowWinPanelCoroutine()
+    {
+        //Transform enemyPos = enemy;
+        yield return new WaitForSeconds(2f);
+        winPanel.SetActive(true);
+    }
+
     IEnumerator InitBoss(Vector3 enemy)
     {
         //Transform enemyPos = enemy;
@@ -46,6 +53,6 @@ public class EnemyManager : MonoBehaviour
 
     public void ShowWinPanel()
     {
-        winPanel.SetActive(true);
+        StartCoroutine(ShowWinPanelCoroutine());
     }
 }

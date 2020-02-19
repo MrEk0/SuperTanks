@@ -15,6 +15,19 @@ public class SceneControlCenter : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void PlayNextLevel()
+    {
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (SceneManager.sceneCount <= nextSceneIndex)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            LoadMainMenu();
+        }
+    }
+
     public void PlayPause()
     {
         Time.timeScale = 0f;

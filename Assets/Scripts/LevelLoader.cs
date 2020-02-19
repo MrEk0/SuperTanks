@@ -14,18 +14,30 @@ public class LevelLoader : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    //private void Update()
+    //{
+    //    if(Input.GetMouseButton(0))
+    //    {
+    //        StartCoroutine(LoadNextLevel());
+    //    }
+    //}
+    public void GoToTheNextLevel()
     {
-        if(Input.GetMouseButton(0))
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (SceneManager.sceneCount <= nextSceneIndex)
         {
-            StartCoroutine(LoadNextLevel());
+            StartCoroutine(LoadNextLevel(nextSceneIndex));
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
-    IEnumerator LoadNextLevel()
+    IEnumerator LoadNextLevel(int nextSceneIndex)
     {
         animator.SetTrigger("LoadLevel");
         yield return new WaitForSeconds(timeToLoad);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }
