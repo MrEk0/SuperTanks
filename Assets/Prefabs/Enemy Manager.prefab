@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winPanel: {fileID: 0}
-  bossPrefab: {fileID: 0}
+  bossPrefab: {fileID: 1127954516045118512, guid: 39dcb018894b9d14c9dbab73f1bda594,
+    type: 3}
+  timeToDropBoss: 2
+  timeToShowWinPanel: 2
 --- !u!1001 &9033543159345410155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,7 +74,7 @@ PrefabInstance:
     - target: {fileID: 101453671160115444, guid: 6de007d6a84918245a636a7b23b6591b,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 101453671160115445, guid: 6de007d6a84918245a636a7b23b6591b,
         type: 3}

@@ -20,42 +20,48 @@ public class LevelButtonsBehaviour : MonoBehaviour
 
         if (SceneManager.sceneCount <= nextSceneIndex)
         {
-            StartCoroutine(LoadNextLevel(nextSceneIndex));
+            StartCoroutine(LoadLevel(nextSceneIndex));
             
         }
         else
         {
-            SceneManager.LoadScene("MainMenu");
-            StopPause();
+            //animator.ResetTrigger("LoadLevel");
+            //SceneManager.LoadScene("MainMenu");
+            ResumeGameSession();
+            StartCoroutine(LoadLevel(0));         
         }
     }
 
-    IEnumerator LoadNextLevel(int nextSceneIndex)
+    IEnumerator LoadLevel(int nextSceneIndex)
     {
         animator.SetTrigger("LoadLevel");
         yield return new WaitForSeconds(timeToLoad);
         SceneManager.LoadScene(nextSceneIndex);
-        StopPause();
+        ResumeGameSession();
     }
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
-        StopPause();
+        //animator.ResetTrigger("LoadLevel");
+        //SceneManager.LoadScene("MainMenu");
+        ResumeGameSession();
+        StartCoroutine(LoadLevel(0));    
     }
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        StopPause();
+        int levelIndex = SceneManager.GetActiveScene().buildIndex;
+        ResumeGameSession();
+        StartCoroutine(LoadLevel(levelIndex));
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);     
     }
 
-    public void PlayPause()
+    public void StopGameSession()
     {
         Time.timeScale = 0f;
     }
 
-    public void StopPause()
+    public void ResumeGameSession()
     {
         Time.timeScale = 1f;
     }

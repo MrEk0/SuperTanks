@@ -154,6 +154,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 2048
+  bodyCollider: {fileID: 101453671160115443}
 --- !u!114 &1618662651
 MonoBehaviour:
   m_ObjectHideFlags: 0

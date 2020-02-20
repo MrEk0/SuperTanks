@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1127954516045118510}
   - component: {fileID: 1127954516045118508}
   m_Layer: 11
-  m_Name: SuperEnemy
+  m_Name: ShieldBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,6 +56,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 2048
+  bodyCollider: {fileID: 1440505365833712580}
 --- !u!50 &1127954516045118510
 Rigidbody2D:
   serializedVersion: 4
@@ -229,7 +230,7 @@ GameObject:
   - component: {fileID: 1440505367571731821}
   - component: {fileID: 1127954515550962946}
   - component: {fileID: 1127954515550962947}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: BlockShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}

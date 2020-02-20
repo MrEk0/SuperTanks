@@ -11,6 +11,8 @@ public class MovementAI : MonoBehaviour
     [SerializeField] float rotationSpeed = 10f;
     [SerializeField] LayerMask wallMask;
     [SerializeField] LayerMask enemyMask;
+    [SerializeField] BoxCollider2D bodyCollider;
+    //[SerializeField] Collider2D shieldCollider;
 
     float rayDistance = 1f;
 
@@ -21,14 +23,16 @@ public class MovementAI : MonoBehaviour
     FireAI fireAI;
 
     Rigidbody2D rb;
+    //Collider2D[] colliders;
     //Collider2D myCollider;
-    BoxCollider2D myCollider;
+    //BoxCollider2D myCollider;
 
     private void Awake()
     {
         fireAI = GetComponent<FireAI>();
         rb = GetComponent<Rigidbody2D>();
-        myCollider = GetComponentInChildren<BoxCollider2D>();//can make visible?
+        //myCollider = GetComponentInChildren<BoxCollider2D>();//can make visible?
+        //colliders = GetComponentsInChildren<Collider2D>();
     }
 
     private void OnEnable()
@@ -167,26 +171,26 @@ public class MovementAI : MonoBehaviour
     {
         Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(transform.position, viewRadius, enemyMask);
 
-        if(enemyColliders.Length>2)
-        {
-            StartCoroutine(WaitUntilOthersGo());
-        }
+        //if(enemyColliders.Length>2)
+        //{
+        //    StartCoroutine(WaitUntilOthersGo());
+        //}
 
         for (int i = 0; i < enemyColliders.Length; i++)
         {
-            if (enemyColliders[i] != myCollider)
+            if (enemyColliders[i] != bodyCollider)
             {
                 targetPos = targetBeforePrevious;
             }
         }
     }
 
-    IEnumerator WaitUntilOthersGo()
-    {
-        speed = 0f;
-        yield return new WaitForSeconds(2f);
-        speed = 6f;
-    }
+    //IEnumerator WaitUntilOthersGo()
+    //{
+    //    speed = 0f;
+    //    yield return new WaitForSeconds(2f);
+    //    speed = 6f;
+    //}
 
     private Vector2 FormRoundVector(Vector3 position)
     {

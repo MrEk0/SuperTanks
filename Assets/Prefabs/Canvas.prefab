@@ -509,7 +509,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 5652331888778257788}
-        m_MethodName: PlayPause
+        m_MethodName: StopGameSession
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1623,7 +1623,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 5652331888778257788}
-        m_MethodName: PlayPause
+        m_MethodName: StopGameSession
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2663,8 +2663,8 @@ RectTransform:
   - {fileID: 1195407918153496634}
   - {fileID: 5652331887707665574}
   - {fileID: 5652331888240926403}
-  - {fileID: 5652331888934104727}
   - {fileID: 4544456489287343276}
+  - {fileID: 5652331888934104727}
   m_Father: {fileID: 5652331888846822475}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2741,7 +2741,7 @@ RectTransform:
   m_Children:
   - {fileID: 5652331889119369923}
   m_Father: {fileID: 5652331888895412051}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -2829,17 +2829,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5652331888778257788}
         m_MethodName: PlayAgain
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5652331888778257788}
-        m_MethodName: StopPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4068,7 +4057,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 5652331888778257788}
-        m_MethodName: PlayPause
+        m_MethodName: StopGameSession
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4704,7 +4693,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 5652331888778257788}
-        m_MethodName: StopPause
+        m_MethodName: ResumeGameSession
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5009,7 +4998,7 @@ PrefabInstance:
     - target: {fileID: 4867182379258809650, guid: 43b65dffad78f9049bd4437eaadb48ce,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: StopPause
+      value: ResumeGameSession
       objectReference: {fileID: 0}
     - target: {fileID: 4867182379258809652, guid: 43b65dffad78f9049bd4437eaadb48ce,
         type: 3}
@@ -5374,7 +5363,7 @@ PrefabInstance:
     - target: {fileID: 9025960095412887017, guid: 760c67e569e59c94fa068af61cd5ed9b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9025960095412887022, guid: 760c67e569e59c94fa068af61cd5ed9b,
         type: 3}
@@ -5467,7 +5456,7 @@ PrefabInstance:
     - target: {fileID: 4867182379258809650, guid: 43b65dffad78f9049bd4437eaadb48ce,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: StopPause
+      value: ResumeGameSession
       objectReference: {fileID: 0}
     - target: {fileID: 4867182379258809650, guid: 43b65dffad78f9049bd4437eaadb48ce,
         type: 3}
@@ -6299,10 +6288,40 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5652331888778257788}
+    - target: {fileID: 267920304563630804, guid: 2f317a5f07e8841408bc0218f9b85f97,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 4050981524133686545, guid: 2f317a5f07e8841408bc0218f9b85f97,
         type: 3}
       propertyPath: m_Name
       value: MainMenuButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753296614562544881, guid: 2f317a5f07e8841408bc0218f9b85f97,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753296614562544881, guid: 2f317a5f07e8841408bc0218f9b85f97,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753296614562544881, guid: 2f317a5f07e8841408bc0218f9b85f97,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753296614562544881, guid: 2f317a5f07e8841408bc0218f9b85f97,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753296614562544881, guid: 2f317a5f07e8841408bc0218f9b85f97,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8169594588959648737, guid: 2f317a5f07e8841408bc0218f9b85f97,
         type: 3}
@@ -6342,7 +6361,7 @@ PrefabInstance:
     - target: {fileID: 8169594588959648737, guid: 2f317a5f07e8841408bc0218f9b85f97,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8169594588959648737, guid: 2f317a5f07e8841408bc0218f9b85f97,
         type: 3}
