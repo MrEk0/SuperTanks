@@ -9,11 +9,8 @@ public class Fire : MonoBehaviour
 {
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float fireSpeed = 1f;
-    //[SerializeField] float health = 3f;
     [SerializeField] float ammoNumber = 10f;
     [SerializeField] TextMeshProUGUI ammoText;
-
-    //public event Action onGetAttacked;
 
     float timeSinceLastShot = Mathf.Infinity;
     float currentAmmo;
@@ -26,18 +23,12 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(Input.GetMouseButtonDown(0))
-        //{
-        //    //fire
-        //    Shot();
-        //}
-
         timeSinceLastShot += Time.deltaTime;
     }
 
     public void Shot()
     {
-        if (timeSinceLastShot > fireSpeed)
+        if (timeSinceLastShot > fireSpeed && currentAmmo>0)
         {
             Instantiate(bulletPrefab, transform.position, transform.rotation);
             DecreaseAmmo();
@@ -47,14 +38,10 @@ public class Fire : MonoBehaviour
 
     private void DecreaseAmmo()
     {
-        if (Mathf.Max(currentAmmo, 0) != 0f)
+        if (currentAmmo>0)
         {
             currentAmmo--;
             ammoText.text = currentAmmo.ToString();
-        }
-        else
-        {
-            Debug.Log("You are run out of ammo");
         }
     }
 

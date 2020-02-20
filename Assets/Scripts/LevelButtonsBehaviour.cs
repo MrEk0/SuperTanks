@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelLoader : MonoBehaviour
+public class LevelButtonsBehaviour : MonoBehaviour
 {
     [SerializeField] float timeToLoad = 2f;
 
@@ -14,23 +14,19 @@ public class LevelLoader : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    //private void Update()
-    //{
-    //    if(Input.GetMouseButton(0))
-    //    {
-    //        StartCoroutine(LoadNextLevel());
-    //    }
-    //}
     public void GoToTheNextLevel()
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
         if (SceneManager.sceneCount <= nextSceneIndex)
         {
             StartCoroutine(LoadNextLevel(nextSceneIndex));
+            
         }
         else
         {
             SceneManager.LoadScene("MainMenu");
+            StopPause();
         }
     }
 
@@ -39,5 +35,33 @@ public class LevelLoader : MonoBehaviour
         animator.SetTrigger("LoadLevel");
         yield return new WaitForSeconds(timeToLoad);
         SceneManager.LoadScene(nextSceneIndex);
+        StopPause();
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+        StopPause();
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StopPause();
+    }
+
+    public void PlayPause()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void StopPause()
+    {
+        Time.timeScale = 1f;
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
