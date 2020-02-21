@@ -49,8 +49,12 @@ public class EnemyManager : MonoBehaviour
 
     IEnumerator InitBoss(Vector3 enemy)
     {
+        float xPos=Mathf.RoundToInt(enemy.x);
+        float yPos = Mathf.RoundToInt(enemy.y);
+        Vector2 roundEnemyPosition = new Vector2(xPos, yPos);
+
         yield return new WaitForSeconds(timeToDropBoss);
-        Instantiate(bossPrefab, enemy, Quaternion.identity, transform);
+        Instantiate(bossPrefab, roundEnemyPosition, Quaternion.identity, transform);
     }
 
     public void ShowWinPanel()

@@ -10,27 +10,20 @@ using UnityStandardAssets.CrossPlatformInput;
 public class Movement : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
-    //[SerializeField] float speedSensity = 0.15f;
+    [SerializeField] float rotationSpeed = 10f;
     [SerializeField] float amountOfFuel = 10f;
     [SerializeField] Slider fuelSlider;
     [SerializeField] UnityEvent onFuelConsumed;
 
     Rigidbody2D rb;
-    Collider2D myCollider;
+    //Collider2D myCollider;
 
     LayerMask dirtMask;
     LayerMask grassMask;
     LayerMask whiteMask;
 
-    //float speedX;
-    //float speedY;
-    //Vector2 moveDirection;
     Transform myTransform;
     float angle;
-    //bool isMoving = false;
-    //float timeSinceLastTraceDrop = Mathf.Infinity;
-    //float pressedVerTime = 0f;
-    //float pressedHorTime = 0f;
     float currentFuelAmount;
 
     float verticalPos;
@@ -41,7 +34,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         myTransform = GetComponent<Transform>();
-        myCollider = GetComponent<Collider2D>();
+        //myCollider = GetComponent<Collider2D>();
 
         currentFuelAmount = amountOfFuel;
 
@@ -51,7 +44,6 @@ public class Movement : MonoBehaviour
     }
     void Update()
     {
-
         horizontalPos = CrossPlatformInputManager.GetAxis("Horizontal");
         verticalPos = CrossPlatformInputManager.GetAxis("Vertical");
 
@@ -63,14 +55,14 @@ public class Movement : MonoBehaviour
             angle = verticalPos > 0 ? 0f : 180f;
             else
             angle = horizontalPos > 0 ? -90f : 90f;
-
-            transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
         else
         {
             myTransform.position = new Vector3(Mathf.RoundToInt(myTransform.position.x),
                                                Mathf.RoundToInt(myTransform.position.y));
         }
+
+        SmoothRotation(angle);
         //if(myCollider.IsTouchingLayers(dirtMask))
         //{
         //    speed = 5f;
@@ -85,16 +77,16 @@ public class Movement : MonoBehaviour
         //}
     }
 
-    //public void SmoothRotation(Directions direction)
-    //{
-    //    Quaternion currentRotation = myTransform.rotation;
+    private void SmoothRotation(float angle)
+    {
+        if (transform.rotation.z == angle)
+            return;
 
-    //    Vector2 dir = target - (Vector2)myTransform.position;
-    //    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-    //    Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        Quaternion currentRotation = myTransform.rotation;
+        Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle);
 
-    //    myTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 10f);
-    //}
+        myTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * rotationSpeed);
+    }
 
     private void FixedUpdate()
     {

@@ -41,6 +41,7 @@ public class LevelCreator : MonoBehaviour
         int maxInAColumn = Mathf.FloorToInt((panelRect.height + spacing.y) / (levelRect.height + spacing.y));
         numberPerPage = maxInARow * maxInAColumn;
         int numberOfPages = Mathf.CeilToInt((float)numberOfLevels / numberPerPage);
+        GetComponent<LevelSelector>().NumberOfPages = numberOfPages;
         LoadPanels(numberOfPages);
 
         Destroy(panelClone);

@@ -27,7 +27,7 @@ public class LevelButtonsBehaviour : MonoBehaviour
         {
             //animator.ResetTrigger("LoadLevel");
             //SceneManager.LoadScene("MainMenu");
-            ResumeGameSession();
+            //ResumeGameSession();
             StartCoroutine(LoadLevel(0));         
         }
     }
@@ -37,21 +37,21 @@ public class LevelButtonsBehaviour : MonoBehaviour
         animator.SetTrigger("LoadLevel");
         yield return new WaitForSeconds(timeToLoad);
         SceneManager.LoadScene(nextSceneIndex);
-        ResumeGameSession();
+        //ResumeGameSession();
     }
 
     public void LoadMainMenu()
     {
         //animator.ResetTrigger("LoadLevel");
         //SceneManager.LoadScene("MainMenu");
-        ResumeGameSession();
+        //ResumeGameSession();
         StartCoroutine(LoadLevel(0));    
     }
 
     public void PlayAgain()
     {
         int levelIndex = SceneManager.GetActiveScene().buildIndex;
-        ResumeGameSession();
+        //ResumeGameSession();
         StartCoroutine(LoadLevel(levelIndex));
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);     
     }

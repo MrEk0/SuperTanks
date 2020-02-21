@@ -343,18 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9869bbf5d6a7e9c4591e0815145f30b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1304229819 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5652331888778257788, guid: 45405aa9cda4f854ba1139452ff3a578,
-    type: 3}
-  m_PrefabInstance: {fileID: 5652331888260083209}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31da414d526699b4ab85239c70a27eea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1533793014
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,11 +915,6 @@ PrefabInstance:
         type: 3}
       propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1304229819}
-    - target: {fileID: 4960000722476032830, guid: eb0348d179034a2488f7e3ba49440e01,
-        type: 3}
-      propertyPath: onDead.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
       objectReference: {fileID: 527200459}
     - target: {fileID: 7669228570033487668, guid: eb0348d179034a2488f7e3ba49440e01,
         type: 3}
@@ -953,11 +936,6 @@ PrefabInstance:
       propertyPath: onFuelConsumed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 527200459}
-    - target: {fileID: 7669228570033487675, guid: eb0348d179034a2488f7e3ba49440e01,
-        type: 3}
-      propertyPath: onFuelConsumed.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 1304229819}
     - target: {fileID: 7669228570033487679, guid: eb0348d179034a2488f7e3ba49440e01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1180,6 +1158,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8950332753020780698, guid: b6308589d51058947b5db9ec98d6e918,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9033543158445285083, guid: b6308589d51058947b5db9ec98d6e918,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1244,6 +1227,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033543158445285085, guid: b6308589d51058947b5db9ec98d6e918,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6308589d51058947b5db9ec98d6e918, type: 3}

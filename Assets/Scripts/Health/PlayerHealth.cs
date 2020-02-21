@@ -7,6 +7,7 @@ public class PlayerHealth : Health
 {
     [SerializeField] float healthPoint = 3f;
     [SerializeField] float tintFadeSpeed = 5f;
+    [SerializeField] GameObject explosionPrefab;
     [SerializeField] UnityEvent receiveDamage;
     [SerializeField] UnityEvent onDead;
 
@@ -23,8 +24,6 @@ public class PlayerHealth : Health
         attackColor = material.GetColor(AttackColorName);
         healColor = material.GetColor(HealColorName);
     }
-
-   
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -44,7 +43,9 @@ public class PlayerHealth : Health
 
         if (healthPoint == 0f)
         {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             onDead.Invoke();
+            Destroy(gameObject);
         }
 
         receiveDamage.Invoke();
