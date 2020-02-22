@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class LevelCreator : MonoBehaviour
 {
+    public GameObject loadingPanel;
     [SerializeField] GameObject levelButtonPrefab;
     [SerializeField] GameObject buttonPanelPrefab;
     [SerializeField] GameObject canvas;
     [SerializeField] int numberOfLevels;
+
+    //private UnityAction<int> unityAction;
 
     Rect panelRect;
     RectTransform thisRect;
@@ -74,12 +78,14 @@ public class LevelCreator : MonoBehaviour
             RectTransformExtensions.SetRight(panelCloneRect, thisRect.offsetMax.x);
 
             panel.GetComponent<RectTransform>().localPosition = new Vector2(panelRect.width * (i), 0);
-            LoadButtons(numberPerPage, panel);
+
+            int numberOfButtons = i == numberOfPages - 1 ? numberOfLevels - levelCount : numberPerPage; 
+            LoadButtons(numberOfButtons, panel);
         }
     }
 
     private void LoadButtons(int numberOfButtons, GameObject parent)
-    {
+    { 
         for(int i=0; i<=numberOfButtons-1; i++)
         {
             levelCount++;
@@ -87,6 +93,9 @@ public class LevelCreator : MonoBehaviour
             button.transform.SetParent(canvas.transform, false);
             button.transform.SetParent(parent.transform);
             button.GetComponentInChildren<TextMeshProUGUI>().SetText(levelCount.ToString());
+
+            button.GetComponent<Button>().onClick.AddListener(delegate 
+            { loadingPanel.GetComponent<LevelButtonsBehaviour>().LoadSpecificLevel(button); });
         }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System;
 
 public class LevelButtonsBehaviour : MonoBehaviour
 {
@@ -69,5 +71,11 @@ public class LevelButtonsBehaviour : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void LoadSpecificLevel(GameObject button)
+    {
+        int levelIndex = Convert.ToInt32(button.GetComponentInChildren<TextMeshProUGUI>().text);
+        StartCoroutine(LoadLevel(levelIndex));
     }
 }
