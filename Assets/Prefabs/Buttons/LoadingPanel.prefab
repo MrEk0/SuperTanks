@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9025960095412887016
 RectTransform:
   m_ObjectHideFlags: 0
@@ -72,8 +72,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToLoad: 2
-  buttonPrefab: {fileID: 3791901681973594769, guid: c2d2c4a06d24c304cb5b7ff7f212aca6,
-    type: 3}
 --- !u!1 &9025960095498341338
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7294118, g: 0.70980394, b: 0.6392157, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -278,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.2509804, g: 0.23529413, b: 0.18431373, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
