@@ -49,6 +49,9 @@ public class Movement : MonoBehaviour
     //}
     void Update()
     {
+        if (GameManager.instance.IsGamePause)
+            return;
+
         horizontalPos = CrossPlatformInputManager.GetAxis("Horizontal");
         verticalPos = CrossPlatformInputManager.GetAxis("Vertical");
 

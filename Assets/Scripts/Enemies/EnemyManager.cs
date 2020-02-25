@@ -12,15 +12,6 @@ public class EnemyManager : MonoBehaviour
 
     List<EnemyHealth> enemies = new List<EnemyHealth>();
 
-    //private void Awake()
-    //{
-    //    enemies = GetComponentsInChildren<EnemyHealth>().ToList();
-    //}
-    //private void Start()
-    //{
-    //    GetComponent<Test>().PlayEngineSound();
-    //}
-
     public void Add(EnemyHealth enemy)
     {
         enemies.Add(enemy);
@@ -46,8 +37,9 @@ public class EnemyManager : MonoBehaviour
     }
 
     IEnumerator ShowWinPanelCoroutine()
-    {
+    {      
         yield return new WaitForSeconds(timeToShowWinPanel);
+        GameManager.instance.PauseGame();
         AudioManager.PlayCongratulationsAudio();
         winPanel.SetActive(true);
     }

@@ -97,26 +97,13 @@ class AudioManager : MonoBehaviour
         if (instance == null)
             return;
 
-        if (/*instance.tankPlayerSource.isPlaying &&*/ instance.tankPlayerSource.clip==instance.playerEngineClip)
+        if (instance.tankPlayerSource.isPlaying)
             return;
 
         instance.tankPlayerSource.clip = instance.playerEngineClip;
         instance.tankPlayerSource.loop = true;
         instance.tankPlayerSource.Play();
     }
-
-    //public static void PlayPlayerWorkingEngineAudio()
-    //{
-    //    if (instance == null)
-    //        return;
-
-    //    if (instance.tankPlayerSource.clip==instance.workingEngineClip)
-    //        return;
-
-    //    instance.tankPlayerSource.clip = instance.workingEngineClip;
-    //    instance.tankPlayerSource.loop = true;
-    //    instance.tankPlayerSource.Play();
-    //}
 
     public static void PlayEnemyEngineAudio()
     {
@@ -255,6 +242,8 @@ class AudioManager : MonoBehaviour
 
         instance.voiceSource.clip = instance.goClip;
         instance.voiceSource.Play();
+
+        GameManager.instance.ResumeGame();
     }
 
     public void SetSoundVolume(float volume)// for sliders

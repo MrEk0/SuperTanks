@@ -24,6 +24,9 @@ public class FireAI : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.IsGamePause)
+            return;
+
         RayToPlayer();
 
         timeSinceLastShot += Time.deltaTime;

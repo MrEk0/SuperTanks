@@ -52,6 +52,9 @@ public class MovementAI : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.IsGamePause)
+            return;
+
         AudioManager.PlayEnemyEngineAudio();
         CheckEnemyCollision();
 

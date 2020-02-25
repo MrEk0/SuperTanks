@@ -27,28 +27,23 @@ public class LevelButtonsBehaviour : MonoBehaviour
         }
         else
         {
-            //animator.ResetTrigger("LoadLevel");
-            //SceneManager.LoadScene("MainMenu");
-            //ResumeGameSession();
             StartCoroutine(LoadLevel(0));         
         }
     }
 
     IEnumerator LoadLevel(int nextSceneIndex)
     {
+        GameManager.instance.PauseGame();
+
         animator.SetTrigger("LoadLevel");
         yield return new WaitForSeconds(timeToLoad);
         SceneManager.LoadScene(nextSceneIndex);
         AudioManager.PlayReadyGoAudio();
-        //ResumeGameSession();
     }
 
     public void LoadMainMenu()
     {
         AudioManager.PlayUIButtonAudio();
-        //animator.ResetTrigger("LoadLevel");
-        //SceneManager.LoadScene("MainMenu");
-        //ResumeGameSession();
         StartCoroutine(LoadLevel(0));    
     }
 
@@ -56,22 +51,17 @@ public class LevelButtonsBehaviour : MonoBehaviour
     {
         AudioManager.PlayUIButtonAudio();
         int levelIndex = SceneManager.GetActiveScene().buildIndex;
-        //ResumeGameSession();
-        StartCoroutine(LoadLevel(levelIndex));
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);     
+        StartCoroutine(LoadLevel(levelIndex));    
     }
 
-    public void StopGameSession()
+    public void PlayPause()
     {
-        AudioManager.PlayUIButtonAudio();
-        AudioManager.StopAllTankSounds();
-        Time.timeScale = 0f;
+        GameManager.instance.PauseGame();
     }
 
-    public void ResumeGameSession()
+    public void ResumeGame()
     {
-        AudioManager.PlayUIButtonAudio();
-        Time.timeScale = 1f;
+        GameManager.instance.ResumeGame();
     }
 
     public void Quit()
