@@ -51,7 +51,8 @@ public class MovementAI : MonoBehaviour
     }
 
     private void Update()
-    {   
+    {
+        AudioManager.PlayEnemyEngineAudio();
         CheckEnemyCollision();
 
         if (IsReachedTargetPoint())

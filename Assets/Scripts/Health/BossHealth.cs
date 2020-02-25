@@ -37,6 +37,7 @@ public class BossHealth : Health
 
         if (healthPoint == 0f)
         {
+            AudioManager.PlayEnemyExplosionAudio();
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             GetComponentInParent<EnemyManager>().ShowWinPanel();
             Destroy(gameObject);

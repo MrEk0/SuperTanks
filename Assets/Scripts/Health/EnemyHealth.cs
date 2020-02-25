@@ -23,6 +23,8 @@ public class EnemyHealth : Health
 
     public override void TakeDamage()
     {
+        AudioManager.PlayEnemyExplosionAudio();
+
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         enemyManager.Remove(this);
         Destroy(gameObject);

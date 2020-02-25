@@ -16,6 +16,10 @@ public class EnemyManager : MonoBehaviour
     //{
     //    enemies = GetComponentsInChildren<EnemyHealth>().ToList();
     //}
+    //private void Start()
+    //{
+    //    GetComponent<Test>().PlayEngineSound();
+    //}
 
     public void Add(EnemyHealth enemy)
     {
@@ -24,9 +28,9 @@ public class EnemyManager : MonoBehaviour
 
     public void Remove(EnemyHealth enemy)
     {
-        Debug.Log(enemies.Count);
+        //Debug.Log(enemies.Count);
         enemies.Remove(enemy);
-        Debug.Log(enemies.Count);
+        //Debug.Log(enemies.Count);
         //ShowWinPanel();
         if (enemies.Count == 0)
         {
@@ -44,6 +48,7 @@ public class EnemyManager : MonoBehaviour
     IEnumerator ShowWinPanelCoroutine()
     {
         yield return new WaitForSeconds(timeToShowWinPanel);
+        AudioManager.PlayCongratulationsAudio();
         winPanel.SetActive(true);
     }
 

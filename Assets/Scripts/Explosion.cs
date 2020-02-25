@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    public void Destroy()
+    public void Destroy()// for animation event
     {
         Destroy(gameObject);
     }

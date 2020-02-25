@@ -23,6 +23,11 @@ public class LivesUI : MonoBehaviour
             Image image = lifeImages[lifeNumber];
             image.color = new Color(1f, 1f, 1f, image.color.a / 2f);
         }
+
+        if(lifeNumber==0)
+        {
+            AudioManager.PlayGameOverAudio();
+        }
     }
 }
 

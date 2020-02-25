@@ -27,6 +27,8 @@ public class LevelSelector : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        AudioManager.PlayUISwipeAudio();
+
         float touchDifference = (eventData.pressPosition.x - eventData.position.x) / levelPanel.rect.width;
         if (Mathf.Abs(touchDifference) >= swipeThreshold)
         {

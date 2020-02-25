@@ -35,6 +35,8 @@ public class PlayerHealth : Health
 
     public override void TakeDamage()
     {
+        AudioManager.PlayEnemyHitAudio();
+
         attackColor.a = 1f;
         material.SetColor(AttackColorName, attackColor);
         StartCoroutine(FadeTint());
@@ -43,6 +45,8 @@ public class PlayerHealth : Health
 
         if (healthPoint == 0f)
         {
+            AudioManager.PlayPlayerExplosionAudio();
+
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             onDead.Invoke();
             Destroy(gameObject);

@@ -10,6 +10,7 @@ public class Shield : MonoBehaviour
     {
         if (collision.GetComponent<Bullet>() != null)
         {
+            AudioManager.PlayEnemyHitAudio();
             shieldHealth--;
             if(shieldHealth==0)
             {

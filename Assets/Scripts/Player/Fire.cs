@@ -30,6 +30,8 @@ public class Fire : MonoBehaviour
     {
         if (timeSinceLastShot > fireSpeed && currentAmmo>0)
         {
+            AudioManager.PlayPlayerFireAudio();
+
             Instantiate(bulletPrefab, transform.position, transform.rotation);
             DecreaseAmmo();
             timeSinceLastShot = 0f;

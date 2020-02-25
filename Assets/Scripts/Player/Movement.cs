@@ -42,6 +42,11 @@ public class Movement : MonoBehaviour
         grassMask = LayerMask.GetMask("Grass");
         whiteMask = LayerMask.GetMask("Sand");
     }
+
+    //private void Start()
+    //{
+    //    GetComponent<Test>().PlayEngineSound();
+    //}
     void Update()
     {
         horizontalPos = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -49,6 +54,7 @@ public class Movement : MonoBehaviour
 
         if (verticalPos != 0 || horizontalPos != 0)
         {
+            //AudioManager.PlayPlayerWorkingEngineAudio();
             FuelConsumption();
 
             if(verticalPos!=0)
@@ -60,8 +66,10 @@ public class Movement : MonoBehaviour
         {
             myTransform.position = new Vector3(Mathf.RoundToInt(myTransform.position.x),
                                                Mathf.RoundToInt(myTransform.position.y));
+            //GetComponent<Test>().PlayEngineSound();
         }
-
+        //GetComponent<Test>().PlayEngineSound();
+        AudioManager.PlayPlayerEngineAudio();
         SmoothRotation(angle);
         //if(myCollider.IsTouchingLayers(dirtMask))
         //{
@@ -102,6 +110,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
+            AudioManager.PlayGameOverAudio();
             onFuelConsumed.Invoke();
             
         }

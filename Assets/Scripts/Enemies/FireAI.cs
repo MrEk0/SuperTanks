@@ -53,6 +53,7 @@ public class FireAI : MonoBehaviour
     {
         if (timeSinceLastShot > fireRate)
         {
+            AudioManager.PlayEnemyFireAudio();
             Instantiate(bulletPrefab, transform.position, transform.rotation);
             timeSinceLastShot = 0f;
         }       

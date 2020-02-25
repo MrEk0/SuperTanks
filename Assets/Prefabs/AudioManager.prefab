@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3179479770040983097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3179479770040983103}
+  - component: {fileID: 3179479770040983102}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3179479770040983103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3179479770040983097}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.9434493, y: 0.4502735, z: 299.2539}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3179479770040983102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3179479770040983097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2049244835b05a644bc5936acf61d384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuClip: {fileID: 8300000, guid: 3b52a95ab167141349e7675970d81008, type: 3}
+  clickUIClip: {fileID: 8300000, guid: e889edd1741f3cb4bb2a9465385ddca0, type: 3}
+  swipeUIClip: {fileID: 8300000, guid: e16e803c95a60f34ebc699742f8ec518, type: 3}
+  playerEngineClip: {fileID: 8300000, guid: 95554a3949a98a84fa26baf5064c9fa4, type: 3}
+  enemyEngineClip: {fileID: 8300000, guid: 07ce21d327112514c9aa83fe1e715d29, type: 3}
+  rocketExplosionClip: {fileID: 8300000, guid: 88e2e78800997af4cb9ddbd6c8e452db, type: 3}
+  tankExplosionClip: {fileID: 8300000, guid: 457579b29b8e73d498583614ce3737a2, type: 3}
+  fireClip: {fileID: 8300000, guid: a648e63c59d24b84a8a5d43e228e8f70, type: 3}
+  hitImpactClip: {fileID: 8300000, guid: f2d306c73984a874aa52c6251dfc1f8a, type: 3}
+  gameOverClip: {fileID: 8300000, guid: 9e658e63a521ae04eb3ea08a7b0dc250, type: 3}
+  congratulationsClip: {fileID: 8300000, guid: d00aba260ffc8c34f8ab978028d786ca, type: 3}
+  readyClip: {fileID: 8300000, guid: 8195696368581b04ea270e620a18b263, type: 3}
+  goClip: {fileID: 8300000, guid: 51d7f017983a5f645a0b83c825935ac6, type: 3}
+  musicGroup: {fileID: 5778425459261329275, guid: 5996b463d13d4f04988b07f499d90362,
+    type: 2}
+  soundGroup: {fileID: 2376548191769533027, guid: 5996b463d13d4f04988b07f499d90362,
+    type: 2}
+  playerGroup: {fileID: -2323152372972777597, guid: 5996b463d13d4f04988b07f499d90362,
+    type: 2}
+  enemyGroup: {fileID: -6747283920980291432, guid: 5996b463d13d4f04988b07f499d90362,
+    type: 2}
+  voiceGroup: {fileID: 3409608237612141131, guid: 5996b463d13d4f04988b07f499d90362,
+    type: 2}
+  stringGroup: {fileID: 7107063755713154538, guid: 5996b463d13d4f04988b07f499d90362,
+    type: 2}
