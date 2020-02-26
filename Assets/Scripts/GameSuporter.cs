@@ -35,9 +35,14 @@ public class GameSuporter : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.IsGamePause)
+            return;
+
         timeSinceRemoveItem += Time.deltaTime;
 
-        if (timeSinceLastSpawn > timeBetweenSpawns && supportItems.Count < maxNumberOfItems && timeSinceRemoveItem > delayToDropItem) 
+        if (timeSinceLastSpawn > timeBetweenSpawns && 
+            supportItems.Count < maxNumberOfItems && 
+            timeSinceRemoveItem > delayToDropItem) 
         {
             if(ammo==null)
             {

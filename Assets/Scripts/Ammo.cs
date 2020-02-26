@@ -12,6 +12,9 @@ public class Ammo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.IsGamePause)
+            return;
+
         transform.Rotate(new Vector3(0, 0, 36*speedRotation*Time.deltaTime));
     }
 
@@ -19,6 +22,8 @@ public class Ammo : MonoBehaviour
     {
         if(collision.GetComponent<Fire>()!=null)
         {
+            AudioManager.PlayPickUpAudio();
+
             collision.GetComponent<Fire>().ObtainAmmo(numberOfAdditive);
             gameSuporter.RemoveItem(gameObject);
             Destroy(gameObject);

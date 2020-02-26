@@ -22,6 +22,7 @@ class AudioManager : MonoBehaviour
     public AudioClip tankExplosionClip;
     public AudioClip fireClip;
     public AudioClip hitImpactClip;
+    public AudioClip pickUpClip;
 
     [Header("Voice Clips")]
     public AudioClip gameOverClip;
@@ -76,6 +77,11 @@ class AudioManager : MonoBehaviour
         rocketSource.outputAudioMixerGroup = musicGroup;
         stingSource.outputAudioMixerGroup = stringGroup;
 
+        //StartLevelAudio();
+    }
+
+    private void Start()
+    {
         StartLevelAudio();
     }
 
@@ -124,7 +130,7 @@ class AudioManager : MonoBehaviour
             return;
 
         StopAllTankSounds();
-        instance.musicSource.Stop();
+        //instance.musicSource.Stop();
 
         instance.voiceSource.clip = instance.gameOverClip;
         instance.voiceSource.Play();
@@ -136,7 +142,7 @@ class AudioManager : MonoBehaviour
             return;
 
         StopAllTankSounds();
-        instance.musicSource.Stop();
+        //instance.musicSource.Stop();//!!!
 
         instance.voiceSource.clip = instance.congratulationsClip;
         instance.voiceSource.Play();
@@ -225,6 +231,15 @@ class AudioManager : MonoBehaviour
         instance.playerTankActivitySource.Play();
     }
 
+    public static void PlayPickUpAudio()
+    {
+        if (instance == null)
+            return;
+
+        instance.stingSource.clip = instance.pickUpClip;
+        instance.stingSource.Play();
+    }
+
     public static void PlayReadyGoAudio()
     {
         instance.StartCoroutine(instance.PlayReadyGoSound());
@@ -243,6 +258,10 @@ class AudioManager : MonoBehaviour
         instance.voiceSource.clip = instance.goClip;
         instance.voiceSource.Play();
 
+        while (instance.voiceSource.isPlaying)
+        {
+            yield return null;
+        }
         GameManager.instance.ResumeGame();
     }
 

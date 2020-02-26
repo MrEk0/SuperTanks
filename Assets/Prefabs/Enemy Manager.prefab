@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winPanel: {fileID: 0}
-  bossPrefab: {fileID: 1127954516045118512, guid: 39dcb018894b9d14c9dbab73f1bda594,
-    type: 3}
+  bossPrefab: {fileID: 0}
   timeToDropBoss: 2
   timeToShowWinPanel: 2
 --- !u!1001 &9033543159345410155

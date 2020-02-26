@@ -38,6 +38,8 @@ public class LevelButtonsBehaviour : MonoBehaviour
         animator.SetTrigger("LoadLevel");
         yield return new WaitForSeconds(timeToLoad);
         SceneManager.LoadScene(nextSceneIndex);
+
+        if(nextSceneIndex!=0)//!!!!
         AudioManager.PlayReadyGoAudio();
     }
 

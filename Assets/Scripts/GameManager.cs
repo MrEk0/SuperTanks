@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        AudioManager.PlayUIButtonAudio();
+        //AudioManager.PlayUIButtonAudio();
         IsGamePause = false;
     }
 }

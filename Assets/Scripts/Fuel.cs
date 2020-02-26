@@ -12,6 +12,8 @@ public class Fuel : MonoBehaviour
     {
         if(collision.GetComponent<Movement>()!=null)
         {
+            AudioManager.PlayPickUpAudio();
+
             collision.GetComponent<Movement>().Refill(fuelAdditive);
             gameSuporter.RemoveItem(gameObject);
             Destroy(gameObject);

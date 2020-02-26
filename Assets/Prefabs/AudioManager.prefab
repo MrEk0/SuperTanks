@@ -52,6 +52,7 @@ MonoBehaviour:
   tankExplosionClip: {fileID: 8300000, guid: 457579b29b8e73d498583614ce3737a2, type: 3}
   fireClip: {fileID: 8300000, guid: a648e63c59d24b84a8a5d43e228e8f70, type: 3}
   hitImpactClip: {fileID: 8300000, guid: f2d306c73984a874aa52c6251dfc1f8a, type: 3}
+  pickUpClip: {fileID: 8300000, guid: 5ca887058b80cda4cbe4e76368ffe9d0, type: 3}
   gameOverClip: {fileID: 8300000, guid: 9e658e63a521ae04eb3ea08a7b0dc250, type: 3}
   congratulationsClip: {fileID: 8300000, guid: d00aba260ffc8c34f8ab978028d786ca, type: 3}
   readyClip: {fileID: 8300000, guid: 8195696368581b04ea270e620a18b263, type: 3}
