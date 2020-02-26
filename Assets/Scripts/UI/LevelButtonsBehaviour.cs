@@ -58,11 +58,13 @@ public class LevelButtonsBehaviour : MonoBehaviour
 
     public void PlayPause()
     {
+        AudioManager.PlayUIButtonAudio();
         GameManager.instance.PauseGame();
     }
 
     public void ResumeGame()
     {
+        AudioManager.PlayUIButtonAudio();
         GameManager.instance.ResumeGame();
     }
 

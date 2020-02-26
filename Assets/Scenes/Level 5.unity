@@ -13009,6 +13009,12 @@ PrefabInstance:
       propertyPath: winPanel
       value: 
       objectReference: {fileID: 502843800}
+    - target: {fileID: 9033543158445285084, guid: b6308589d51058947b5db9ec98d6e918,
+        type: 3}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 810280736938375531, guid: da862b52539394f4788c64107af9661c,
+        type: 3}
     - target: {fileID: 9033543158445285085, guid: b6308589d51058947b5db9ec98d6e918,
         type: 3}
       propertyPath: m_Name

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8953737513307427928}
   - component: {fileID: 1360831452858955865}
+  - component: {fileID: 3180454111362249133}
   m_Layer: 5
   m_Name: MusicSlider
   m_TagString: Untagged
@@ -102,6 +103,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3180454111362249133}
+        m_MethodName: SetVolumeImage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3180454111362249133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705220654537784000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d34c04ebc0c1954ba2d2b9ef2c41365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeImage: {fileID: 54922152525434693}
+  volumeOffSprite: {fileID: 21300000, guid: 0c9b8ad4d452b3e45bf4234492e38967, type: 3}
 --- !u!1 &2227123516453082227
 GameObject:
   m_ObjectHideFlags: 0
@@ -5504,6 +5530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8521128269993299647}
   - component: {fileID: 8521128269993299646}
+  - component: {fileID: 7958658568542255590}
   m_Layer: 5
   m_Name: SoundSlider
   m_TagString: Untagged
@@ -5596,6 +5623,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7958658568542255590}
+        m_MethodName: SetVolumeImage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7958658568542255590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521128269993299632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d34c04ebc0c1954ba2d2b9ef2c41365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeImage: {fileID: 8521128269773626287}
+  volumeOffSprite: {fileID: 21300000, guid: 0c9b8ad4d452b3e45bf4234492e38967, type: 3}
 --- !u!1 &8521128270177193480
 GameObject:
   m_ObjectHideFlags: 0
@@ -6350,18 +6402,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 760c67e569e59c94fa068af61cd5ed9b, type: 3}
---- !u!114 &5652331888778257788 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9025960095412887022, guid: 760c67e569e59c94fa068af61cd5ed9b,
-    type: 3}
-  m_PrefabInstance: {fileID: 3689498151318861970}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31da414d526699b4ab85239c70a27eea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &5652331888778257786 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9025960095412887016, guid: 760c67e569e59c94fa068af61cd5ed9b,
@@ -6374,6 +6414,18 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 3689498151318861970}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5652331888778257788 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9025960095412887022, guid: 760c67e569e59c94fa068af61cd5ed9b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3689498151318861970}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31da414d526699b4ab85239c70a27eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5652331887924198021
 PrefabInstance:
   m_ObjectHideFlags: 0
