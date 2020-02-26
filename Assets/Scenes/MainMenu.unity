@@ -15120,7 +15120,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1096867544}
   - component: {fileID: 1096867545}
-  - component: {fileID: 1096867546}
   m_Layer: 5
   m_Name: MusicSlider
   m_TagString: Untagged
@@ -15197,7 +15196,7 @@ MonoBehaviour:
   m_MinValue: -40
   m_MaxValue: 20
   m_WholeNumbers: 0
-  m_Value: -32.7
+  m_Value: -5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -15212,31 +15211,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1096867546}
-        m_MethodName: SetImage
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1096867546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096867543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9dfe0df930b8bb4c8e2b34c30c20e8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeOnImage: {fileID: 924119460}
-  volumeOffSprite: {fileID: 21300000, guid: 0c9b8ad4d452b3e45bf4234492e38967, type: 3}
 --- !u!1 &1159147670
 GameObject:
   m_ObjectHideFlags: 0
@@ -15595,7 +15569,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1382995624}
   - component: {fileID: 1382995625}
-  - component: {fileID: 1382995626}
   m_Layer: 5
   m_Name: SoundSlider
   m_TagString: Untagged
@@ -15687,31 +15660,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1382995626}
-        m_MethodName: SetImage
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1382995626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382995623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9dfe0df930b8bb4c8e2b34c30c20e8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeOnImage: {fileID: 628540344}
-  volumeOffSprite: {fileID: 21300000, guid: 0c9b8ad4d452b3e45bf4234492e38967, type: 3}
 --- !u!1 &1450858760
 GameObject:
   m_ObjectHideFlags: 0
@@ -20377,7 +20325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -20.499908, y: 0}
+  m_AnchoredPosition: {x: -20.499939, y: 0}
   m_SizeDelta: {x: 70, y: -59.999996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1792720693
