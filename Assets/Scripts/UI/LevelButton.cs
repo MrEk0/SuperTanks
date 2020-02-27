@@ -7,8 +7,12 @@ using UnityEngine.UI;
 public class LevelButton : MonoBehaviour
 {
     [SerializeField] Image closedImage;
+
+    //bool isOpened = false;
+
     public void RevealButton()
     {
+
         GetComponent<Button>().interactable = true;
         closedImage.enabled = false;
     }

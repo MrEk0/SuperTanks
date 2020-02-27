@@ -271,7 +271,7 @@ class AudioManager : MonoBehaviour
         GameManager.instance.ResumeGame();
     }
 
-    public static void SetSoundVolume(float volume)// for sliders
+    public static void SetSoundVolume(float volume)
     {
         instance.soundVolume = volume;
         instance.soundGroup.audioMixer.SetFloat("Sound", volume);       
@@ -286,8 +286,6 @@ class AudioManager : MonoBehaviour
     public static void SaveVolume()
     {
         DataSaver.Save(instance.musicVolume, instance.soundVolume);
-        //Debug.Log("Music save " + instance.musicVolume);
-        //Debug.Log("Sound save " + instance.soundVolume);
     }
 
     public static void LoadVolume()
@@ -298,9 +296,6 @@ class AudioManager : MonoBehaviour
         {
             instance.musicVolume = data.musicVolume;
             instance.soundVolume = data.soundVolume;
-
-            //Debug.Log("Music load " + instance.musicVolume);
-            //Debug.Log("Sound Load " + instance.soundVolume);
 
             SetMusicVolume(instance.musicVolume);
             SetSoundVolume(instance.soundVolume);

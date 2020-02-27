@@ -46,6 +46,7 @@ public class StartMenu : MonoBehaviour
 
     public void PushLevelButton()
     {
+        GameManager.instance.LoadProgress();
         AudioManager.PlayUIButtonAudio();
         animator.ResetTrigger(ids[1]);
         animator.SetTrigger(ids[0]);

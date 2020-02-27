@@ -15,20 +15,24 @@ public class LevelCreator : MonoBehaviour
 
     Rect panelRect;
     RectTransform thisRect;
+    List<GameObject> buttons;
     int numberPerPage;
     int levelCount = 0;
     int numberOfLevels;
 
     private void Awake()
     {
+        buttons = new List<GameObject>();
         thisRect = GetComponent<RectTransform>();
-        //numberOfLevels = GameManager.instance.GetLevelNumber();
     }
 
     private void Start()
     {
         numberOfLevels = GameManager.instance.GetLevelNumber();
         CreateLevelPanel();
+
+        GameManager.instance.levelButtons = buttons;
+        GameManager.instance.OpenNewLevels();
     }
 
     private void CreateLevelPanel()
@@ -91,7 +95,7 @@ public class LevelCreator : MonoBehaviour
             levelCount++;
             GameObject button = Instantiate(levelButtonPrefab);
 
-            //GameManager.instance.AddLevelButton(button);
+            buttons.Add(button);
 
             button.transform.SetParent(canvas.transform, false);
             button.transform.SetParent(parent.transform);
@@ -100,7 +104,5 @@ public class LevelCreator : MonoBehaviour
             button.GetComponent<Button>().onClick.AddListener(delegate 
             { loadingPanel.GetComponent<LevelButtonsBehaviour>().LoadSpecificLevel(button); });
         }
-
-        //GameManager.instance.OpenNewLevel(1);
     }
 }
