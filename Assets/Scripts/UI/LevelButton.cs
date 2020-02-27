@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using TMPro;
+using UnityEngine.UI;
 
 public class LevelButton : MonoBehaviour
 {
-    //[SerializeField] GameObject loadingPanel;
-
-    //public void LoadButtonLevel()
-    //{
-    //    int levelIndex = Convert.ToInt32(GetComponentInChildren<TextMeshProUGUI>().text);
-    //    loadingPanel.GetComponent<LevelButtonsBehaviour>().LoadSpecificLevel(levelIndex);//!!!!!
-    //}
+    [SerializeField] Image closedImage;
+    public void RevealButton()
+    {
+        GetComponent<Button>().interactable = true;
+        closedImage.enabled = false;
+    }
 }

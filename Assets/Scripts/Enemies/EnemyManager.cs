@@ -41,6 +41,7 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(timeToShowWinPanel);
         GameManager.instance.PauseGame();
         AudioManager.PlayCongratulationsAudio();
+        //GameManager.instance.LevelUp();
         winPanel.SetActive(true);
     }
 

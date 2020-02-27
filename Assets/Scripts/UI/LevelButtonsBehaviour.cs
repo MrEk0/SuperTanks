@@ -10,10 +10,17 @@ public class LevelButtonsBehaviour : MonoBehaviour
     [SerializeField] float timeToLoad = 2f;
 
     Animator animator;
+    int numberOfLevels;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        //numberOfLevels = GameManager.instance.GetLevelNumber();
+    }
+
+    private void Start()
+    {
+        numberOfLevels = GameManager.instance.GetLevelNumber();
     }
 
     public void GoToTheNextLevel()
@@ -21,7 +28,7 @@ public class LevelButtonsBehaviour : MonoBehaviour
         AudioManager.PlayUIButtonAudio();
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;//????
 
-        if (SceneManager.sceneCount <= nextSceneIndex)
+        if (numberOfLevels >= nextSceneIndex)
         {
             StartCoroutine(LoadLevel(nextSceneIndex));
         }
@@ -39,8 +46,11 @@ public class LevelButtonsBehaviour : MonoBehaviour
         yield return new WaitForSeconds(timeToLoad);
         SceneManager.LoadScene(nextSceneIndex);
 
-        if(nextSceneIndex!=0)//!!!!
-        AudioManager.PlayReadyGoAudio();
+        if (nextSceneIndex != 0)//!!!!
+        {
+            AudioManager.PlayReadyGoAudio();
+            //GameManager.instance.LevelUp();
+        }
     }
 
     public void LoadMainMenu()

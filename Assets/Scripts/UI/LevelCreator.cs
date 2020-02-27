@@ -12,22 +12,22 @@ public class LevelCreator : MonoBehaviour
     [SerializeField] GameObject levelButtonPrefab;
     [SerializeField] GameObject buttonPanelPrefab;
     [SerializeField] GameObject canvas;
-    [SerializeField] int numberOfLevels;
-
-    //private UnityAction<int> unityAction;
 
     Rect panelRect;
     RectTransform thisRect;
     int numberPerPage;
     int levelCount = 0;
+    int numberOfLevels;
 
     private void Awake()
     {
         thisRect = GetComponent<RectTransform>();
+        //numberOfLevels = GameManager.instance.GetLevelNumber();
     }
 
     private void Start()
     {
+        numberOfLevels = GameManager.instance.GetLevelNumber();
         CreateLevelPanel();
     }
 
@@ -90,6 +90,9 @@ public class LevelCreator : MonoBehaviour
         {
             levelCount++;
             GameObject button = Instantiate(levelButtonPrefab);
+
+            //GameManager.instance.AddLevelButton(button);
+
             button.transform.SetParent(canvas.transform, false);
             button.transform.SetParent(parent.transform);
             button.GetComponentInChildren<TextMeshProUGUI>().SetText(levelCount.ToString());
@@ -97,5 +100,7 @@ public class LevelCreator : MonoBehaviour
             button.GetComponent<Button>().onClick.AddListener(delegate 
             { loadingPanel.GetComponent<LevelButtonsBehaviour>().LoadSpecificLevel(button); });
         }
+
+        //GameManager.instance.OpenNewLevel(1);
     }
 }
