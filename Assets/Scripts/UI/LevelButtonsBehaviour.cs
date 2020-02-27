@@ -62,6 +62,16 @@ public class LevelButtonsBehaviour : MonoBehaviour
         GameManager.instance.PauseGame();
     }
 
+    public void OpenSettingsPanel()
+    {
+        AudioManager.LoadVolume();
+    }
+
+    public void CloseSettingButton()
+    {
+        AudioManager.SaveVolume();
+    }
+
     public void ResumeGame()
     {
         AudioManager.PlayUIButtonAudio();

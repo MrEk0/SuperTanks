@@ -22,14 +22,23 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        AudioManager.PlayUIButtonAudio();
+        //AudioManager.PlayUIButtonAudio();
         IsGamePause = true;
         AudioManager.StopAllTankSounds();
     }
 
     public void ResumeGame()
     {
-        //AudioManager.PlayUIButtonAudio();
         IsGamePause = false;
     }
+
+    //public void SaveData()
+    //{
+
+    //}
+
+    //public void LoadData()
+    //{
+
+    //}
 }

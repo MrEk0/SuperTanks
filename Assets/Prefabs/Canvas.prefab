@@ -38,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 303.99988, y: -127.950005}
+  m_AnchoredPosition: {x: 291, y: 46.65}
   m_SizeDelta: {x: 456.5, y: 99.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1360831452858955865
@@ -84,15 +84,14 @@ MonoBehaviour:
   m_FillRect: {fileID: 5929583234727147795}
   m_HandleRect: {fileID: 9175194202886316998}
   m_Direction: 0
-  m_MinValue: -40
+  m_MinValue: -80
   m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: -5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3179479770040983102, guid: 87f32fb974162ae49a9555450337323b,
-          type: 3}
+      - m_Target: {fileID: 3180454111362249133}
         m_MethodName: SetMusicVolume
         m_Mode: 0
         m_Arguments:
@@ -126,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d34c04ebc0c1954ba2d2b9ef2c41365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderType: 0
   volumeImage: {fileID: 54922152525434693}
   volumeOffSprite: {fileID: 21300000, guid: 0c9b8ad4d452b3e45bf4234492e38967, type: 3}
 --- !u!1 &2227123516453082227
@@ -234,7 +234,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.6666667, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -7.1400146, y: 0}
   m_SizeDelta: {x: 5.46, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1983,6 +1983,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 5652331888778257788}
+        m_MethodName: OpenSettingsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &5652331888605159627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2329,7 +2340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 267, y: 46.65}
+  m_AnchoredPosition: {x: 267, y: -127.94999}
   m_SizeDelta: {x: 307.7, y: 88.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5652331888673321470
@@ -3489,7 +3500,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 267.3, y: -127.95001}
+  m_AnchoredPosition: {x: 267, y: 46.64998}
   m_SizeDelta: {x: 307.7, y: 88.70001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5652331889052080599
@@ -5297,8 +5308,8 @@ RectTransform:
   m_Father: {fileID: 3180044520277590597}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.6666667, y: 0}
-  m_AnchorMax: {x: 0.6666667, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -20.499939, y: -1.5175009}
   m_SizeDelta: {x: 70, y: -33.035004}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5407,7 +5418,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.6666667, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -7.1400146, y: 0}
   m_SizeDelta: {x: 5.46, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5558,7 +5569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 304, y: 46.65}
+  m_AnchoredPosition: {x: 290.99994, y: -127.95}
   m_SizeDelta: {x: 456.5, y: 99.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8521128269993299646
@@ -5604,15 +5615,14 @@ MonoBehaviour:
   m_FillRect: {fileID: 8521128269703238271}
   m_HandleRect: {fileID: 8521128270177193527}
   m_Direction: 0
-  m_MinValue: -40
+  m_MinValue: -80
   m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3179479770040983102, guid: 87f32fb974162ae49a9555450337323b,
-          type: 3}
+      - m_Target: {fileID: 7958658568542255590}
         m_MethodName: SetSoundVolume
         m_Mode: 0
         m_Arguments:
@@ -5646,6 +5656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d34c04ebc0c1954ba2d2b9ef2c41365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderType: 1
   volumeImage: {fileID: 8521128269773626287}
   volumeOffSprite: {fileID: 21300000, guid: 0c9b8ad4d452b3e45bf4234492e38967, type: 3}
 --- !u!1 &8521128270177193480
@@ -5680,8 +5691,8 @@ RectTransform:
   m_Father: {fileID: 8521128268921116701}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.6666667, y: 0}
-  m_AnchorMax: {x: 0.6666667, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -20.499939, y: -1.5175009}
   m_SizeDelta: {x: 70, y: -33.035004}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5913,7 +5924,7 @@ PrefabInstance:
     - target: {fileID: 4867182379258809650, guid: 43b65dffad78f9049bd4437eaadb48ce,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4867182379258809650, guid: 43b65dffad78f9049bd4437eaadb48ce,
         type: 3}
@@ -5933,7 +5944,7 @@ PrefabInstance:
     - target: {fileID: 4867182379258809650, guid: 43b65dffad78f9049bd4437eaadb48ce,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: ResumeGame
+      value: CloseSettingButton
       objectReference: {fileID: 0}
     - target: {fileID: 4867182379258809650, guid: 43b65dffad78f9049bd4437eaadb48ce,
         type: 3}
@@ -5950,6 +5961,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4867182379258809650, guid: 43b65dffad78f9049bd4437eaadb48ce,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 5652331888778257788}
     - target: {fileID: 4867182379258809652, guid: 43b65dffad78f9049bd4437eaadb48ce,
         type: 3}
       propertyPath: m_Name

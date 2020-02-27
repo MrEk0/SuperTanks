@@ -28,7 +28,9 @@ public class StartMenu : MonoBehaviour
 
     public void PushSettingsButton()
     {
+        AudioManager.LoadVolume();
         AudioManager.PlayUIButtonAudio();
+
         animator.ResetTrigger(ids[3]);
         animator.SetTrigger(ids[2]);
     }
@@ -36,6 +38,8 @@ public class StartMenu : MonoBehaviour
     public void PushBackSettings()
     {
         AudioManager.PlayUIButtonAudio();
+        AudioManager.SaveVolume();
+
         animator.ResetTrigger(ids[2]);
         animator.SetTrigger(ids[3]);
     }

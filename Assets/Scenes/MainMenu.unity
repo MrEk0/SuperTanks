@@ -121,18 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &10572928 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3179479770040983102, guid: 87f32fb974162ae49a9555450337323b,
-    type: 3}
-  m_PrefabInstance: {fileID: 3179479770087313370}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2049244835b05a644bc5936acf61d384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &194099444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16718,16 +16706,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2099408567886713259, guid: d979d75991aebcb40885a2225e5c4cc2,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 10572928}
-    - target: {fileID: 2099408568104163803, guid: d979d75991aebcb40885a2225e5c4cc2,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 10572928}
     - target: {fileID: 2099408569286718458, guid: d979d75991aebcb40885a2225e5c4cc2,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -16738,11 +16716,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8912568793772341626, guid: d979d75991aebcb40885a2225e5c4cc2,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 10572928}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d979d75991aebcb40885a2225e5c4cc2, type: 3}
 --- !u!1001 &3179479770087313370

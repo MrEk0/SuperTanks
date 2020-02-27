@@ -47,6 +47,11 @@ class AudioManager : MonoBehaviour
     AudioSource rocketSource;
     AudioSource stingSource;
 
+    float musicVolume;
+    float soundVolume;
+
+    public static event Action<float, float> onVolumeChanged;
+    //public event Action<float> onSoundChanged;
 
     private void Awake()
     {
@@ -77,12 +82,13 @@ class AudioManager : MonoBehaviour
         rocketSource.outputAudioMixerGroup = musicGroup;
         stingSource.outputAudioMixerGroup = stringGroup;
 
-        //StartLevelAudio();
+        StartLevelAudio();
+        //LoadVolume();
     }
 
     private void Start()
     {
-        StartLevelAudio();
+        LoadVolume();
     }
 
     private void StartLevelAudio()
@@ -265,14 +271,42 @@ class AudioManager : MonoBehaviour
         GameManager.instance.ResumeGame();
     }
 
-    public void SetSoundVolume(float volume)// for sliders
+    public static void SetSoundVolume(float volume)// for sliders
     {
-        soundGroup.audioMixer.SetFloat("Sound", volume);
+        instance.soundVolume = volume;
+        instance.soundGroup.audioMixer.SetFloat("Sound", volume);       
     }
 
-    public void SetMusicVolume(float volume)
+    public static void SetMusicVolume(float volume)
     {
-        musicGroup.audioMixer.SetFloat("Music", volume);
+        instance.musicVolume = volume;
+        instance.musicGroup.audioMixer.SetFloat("Music", volume);
+    }
+
+    public static void SaveVolume()
+    {
+        DataSaver.Save(instance.musicVolume, instance.soundVolume);
+        //Debug.Log("Music save " + instance.musicVolume);
+        //Debug.Log("Sound save " + instance.soundVolume);
+    }
+
+    public static void LoadVolume()
+    {
+        VolumeData data = DataSaver.Load();
+
+        if (data != null)
+        {
+            instance.musicVolume = data.musicVolume;
+            instance.soundVolume = data.soundVolume;
+
+            //Debug.Log("Music load " + instance.musicVolume);
+            //Debug.Log("Sound Load " + instance.soundVolume);
+
+            SetMusicVolume(instance.musicVolume);
+            SetSoundVolume(instance.soundVolume);
+
+            onVolumeChanged(instance.musicVolume, instance.soundVolume);
+        }
     }
 }
 //}
