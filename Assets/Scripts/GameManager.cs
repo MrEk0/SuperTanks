@@ -52,16 +52,18 @@ public class GameManager : MonoBehaviour
 
     public void SaveProgress()
     {
-        ProgressSaver.Save(numberOfOpenedLevels);
+        //ProgressSaver.Save(numberOfOpenedLevels);
+        DataSaver.Save(numberOfOpenedLevels);
     }
 
     public void LoadProgress()
     {
-        ProgressData progress = ProgressSaver.Load();
+        //ProgressData progress = ProgressSaver.Load();
+        PlayerData progress = DataSaver.Load();
 
         if(progress!=null)
         {
-            numberOfOpenedLevels = progress.level;
+            numberOfOpenedLevels = progress.levelProgress;
             OpenNewLevels();
         }
     }
@@ -69,6 +71,7 @@ public class GameManager : MonoBehaviour
     public void LevelUp()
     {
         numberOfOpenedLevels++;
+        Debug.Log(numberOfOpenedLevels);
         SaveProgress();
     }
 
@@ -79,7 +82,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i<=numberOfOpenedLevels; i++)
         {
-            if(levelButtons.Contains(levelButtons[i]))
+            if(levelButtons!=null && levelButtons.Contains(levelButtons[i]))
             levelButtons[i].GetComponent<LevelButton>().RevealButton();
         }
     }

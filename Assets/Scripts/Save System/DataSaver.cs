@@ -14,14 +14,26 @@ public static class DataSaver
         BinaryFormatter formatter = new BinaryFormatter();
         string path = GetFilePath();
 
-        FileStream stream = new FileStream(path, FileMode.Create);
-        VolumeData volumeData = new VolumeData(soundVolume, musicVolume);
+        FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
+        PlayerData volumeData = new PlayerData(soundVolume, musicVolume);
 
         formatter.Serialize(stream, volumeData);
         stream.Close();
     }
 
-    public static VolumeData Load()
+    public static void Save(/*float musicVolume, float soundVolume,*/ int levelProgress)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = GetFilePath();
+
+        FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
+        PlayerData volumeData = new PlayerData(/*soundVolume, musicVolume,*/ levelProgress);
+
+        formatter.Serialize(stream, volumeData);
+        stream.Close();
+    }
+
+    public static PlayerData Load()
     {
         string path = GetFilePath();
         if(File.Exists(path))
@@ -29,7 +41,7 @@ public static class DataSaver
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            VolumeData volumeData = formatter.Deserialize(stream) as VolumeData;
+            PlayerData volumeData = formatter.Deserialize(stream) as PlayerData;
             stream.Close();
 
             return volumeData;

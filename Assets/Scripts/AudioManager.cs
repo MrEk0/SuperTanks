@@ -290,7 +290,7 @@ class AudioManager : MonoBehaviour
 
     public static void LoadVolume()
     {
-        VolumeData data = DataSaver.Load();
+        PlayerData data = DataSaver.Load();
 
         if (data != null)
         {
