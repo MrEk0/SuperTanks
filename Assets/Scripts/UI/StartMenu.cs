@@ -38,7 +38,7 @@ public class StartMenu : MonoBehaviour
     public void PushBackSettings()
     {
         AudioManager.PlayUIButtonAudio();
-        AudioManager.SaveVolume();
+        GameManager.instance.SaveProgress();
 
         animator.ResetTrigger(ids[2]);
         animator.SetTrigger(ids[3]);

@@ -86,7 +86,7 @@ public class LevelButtonsBehaviour : MonoBehaviour
 
     public void CloseSettingButton()
     {
-        AudioManager.SaveVolume();
+        GameManager.instance.SaveProgress();
     }
 
     public void ResumeGame()

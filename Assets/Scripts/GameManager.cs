@@ -39,38 +39,31 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        //if (instance == null)
-        //    return;
-
-        //AudioManager.PlayUIButtonAudio();
         IsGamePause = true;
         AudioManager.StopAllTankSounds();
     }
 
     public void ResumeGame()
     {
-        //if (instance == null)
-        //    return;
-
         IsGamePause = false;
     }
 
     public void SaveProgress()
     {
-        //ProgressSaver.Save(numberOfOpenedLevels);
-        DataSaver.Save(NumberOfOpenedLevels/*, numberOfOpenedLevels*/);
+        float sound = AudioManager.SoundVolume;
+        float music = AudioManager.MusicVolume;
+        DataSaver.Save(sound, music, NumberOfOpenedLevels);
     }
 
     public void LoadProgress()
     {
-        //ProgressData progress = ProgressSaver.Load();
         PlayerData progress = DataSaver.Load();
 
         if(progress!=null)
         {
             NumberOfOpenedLevels = progress.levelProgress;
-            OpenNewLevels();
         }
+        OpenNewLevels();
     }
 
     public void LevelUp(int sceneIndex)
@@ -79,7 +72,6 @@ public class GameManager : MonoBehaviour
             return;
 
             NumberOfOpenedLevels++;
-            Debug.Log(NumberOfOpenedLevels);
             SaveProgress();
         
     }

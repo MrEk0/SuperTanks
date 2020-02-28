@@ -32,7 +32,6 @@ public class LevelCreator : MonoBehaviour
         CreateLevelPanel();
 
         GameManager.instance.levelButtons = buttons;
-        GameManager.instance.OpenNewLevels();
     }
 
     private void CreateLevelPanel()

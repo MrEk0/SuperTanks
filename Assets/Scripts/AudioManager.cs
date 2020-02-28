@@ -47,8 +47,10 @@ class AudioManager : MonoBehaviour
     AudioSource rocketSource;
     AudioSource stingSource;
 
-    float musicVolume;
-    float soundVolume;
+    //float musicVolume;
+    //float soundVolume;
+    public static float MusicVolume { get; private set; }
+    public static float SoundVolume { get; private set; }
 
     public static event Action<float, float> onVolumeChanged;
     //public event Action<float> onSoundChanged;
@@ -273,19 +275,14 @@ class AudioManager : MonoBehaviour
 
     public static void SetSoundVolume(float volume)
     {
-        instance.soundVolume = volume;
+        SoundVolume = volume;
         instance.soundGroup.audioMixer.SetFloat("Sound", volume);       
     }
 
     public static void SetMusicVolume(float volume)
     {
-        instance.musicVolume = volume;
+        MusicVolume = volume;
         instance.musicGroup.audioMixer.SetFloat("Music", volume);
-    }
-
-    public static void SaveVolume()
-    {
-        DataSaver.Save(instance.musicVolume, instance.soundVolume);
     }
 
     public static void LoadVolume()
@@ -294,13 +291,17 @@ class AudioManager : MonoBehaviour
 
         if (data != null)
         {
-            instance.musicVolume = data.musicVolume;
-            instance.soundVolume = data.soundVolume;
+            MusicVolume = data.musicVolume;
+            SoundVolume = data.soundVolume;
 
-            SetMusicVolume(instance.musicVolume);
-            SetSoundVolume(instance.soundVolume);
+            Debug.Log("Load M  " + MusicVolume);
+            Debug.Log("Load S  " + SoundVolume);
+            Debug.Log("Load P  " + GameManager.instance.NumberOfOpenedLevels);
 
-            onVolumeChanged(instance.musicVolume, instance.soundVolume);
+            SetMusicVolume(MusicVolume);
+            SetSoundVolume(SoundVolume);
+
+            onVolumeChanged(MusicVolume, SoundVolume);
         }
     }
 }
