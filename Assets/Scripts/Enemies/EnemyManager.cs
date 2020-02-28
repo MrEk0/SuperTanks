@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Linq;
 
 public class EnemyManager : MonoBehaviour
@@ -41,8 +42,14 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(timeToShowWinPanel);
         GameManager.instance.PauseGame();
         AudioManager.PlayCongratulationsAudio();
-        GameManager.instance.LevelUp();
+        LevelUp();
         winPanel.SetActive(true);
+    }
+
+    private void LevelUp()
+    {
+        int sceneIndex=SceneManager.GetActiveScene().buildIndex;
+        GameManager.instance.LevelUp(sceneIndex);
     }
 
     IEnumerator InitBoss(Vector3 enemy)

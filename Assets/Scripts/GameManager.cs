@@ -68,11 +68,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LevelUp()
+    public void LevelUp(int sceneIndex)
     {
-        numberOfOpenedLevels++;
-        Debug.Log(numberOfOpenedLevels);
-        SaveProgress();
+        if (sceneIndex <= numberOfOpenedLevels)
+            return;
+
+            numberOfOpenedLevels++;
+            Debug.Log(numberOfOpenedLevels);
+            SaveProgress();
+        
     }
 
     public void OpenNewLevels()

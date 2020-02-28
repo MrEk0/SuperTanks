@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class DataSaver 
 {
-    const string FILENAME = "volume.data";
+    const string FILENAME = "player.data";
 
     public static void Save(float musicVolume, float soundVolume)
     {

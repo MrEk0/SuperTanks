@@ -48,8 +48,7 @@ public class LevelButtonsBehaviour : MonoBehaviour
 
         if (nextSceneIndex != 0)//!!!!
         {
-            AudioManager.PlayReadyGoAudio();
-            //GameManager.instance.LevelUp();
+            AudioManager.PlayReadyGoAudio();;
         }
     }
 
