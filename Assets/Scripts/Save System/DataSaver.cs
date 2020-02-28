@@ -21,13 +21,13 @@ public static class DataSaver
         stream.Close();
     }
 
-    public static void Save(/*float musicVolume, float soundVolume,*/ int levelProgress)
+    public static void Save(int levelProgress/*, int numberOfOpenedLevels*/)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = GetFilePath();
 
         FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
-        PlayerData volumeData = new PlayerData(/*soundVolume, musicVolume,*/ levelProgress);
+        PlayerData volumeData = new PlayerData(levelProgress/*, numberOfOpenedLevels*/);
 
         formatter.Serialize(stream, volumeData);
         stream.Close();

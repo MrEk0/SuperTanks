@@ -193,7 +193,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 2009106419309197111}
   m_HandleRect: {fileID: 1851358928778822569}
   m_Direction: 0
-  m_MinValue: -80
+  m_MinValue: -60
   m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: 0
@@ -1645,7 +1645,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 2099408569286718458}
   m_HandleRect: {fileID: 2099408567444893766}
   m_Direction: 0
-  m_MinValue: -80
+  m_MinValue: -60
   m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: 0
@@ -2392,7 +2392,6 @@ MonoBehaviour:
   buttonPanelPrefab: {fileID: 50187799053436568, guid: 8de4e0d9d2b23e74a9ae80961ab6466f,
     type: 3}
   canvas: {fileID: 2099408567313726796}
-  numberOfLevels: 25
 --- !u!114 &2099408568477768334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3713,7 +3712,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6944618910348646033}
-        m_MethodName: GoToTheNextLevel
+        m_MethodName: ClickPlayButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

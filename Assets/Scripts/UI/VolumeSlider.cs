@@ -9,7 +9,7 @@ enum SliderType
     Sound
 }
 
-public class SettingsSlider : MonoBehaviour
+public class VolumeSlider : MonoBehaviour
 {
     [SerializeField] SliderType sliderType;
     [SerializeField] Image volumeImage;

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int numberOfLevels = 5;
 
-    private int numberOfOpenedLevels = 0;
+    public int NumberOfOpenedLevels { get; private set; } = 0;
 
     public List<GameObject> levelButtons { get; set; }
 
@@ -25,6 +25,11 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        LoadProgress();
     }
 
     public int GetLevelNumber()
@@ -53,7 +58,7 @@ public class GameManager : MonoBehaviour
     public void SaveProgress()
     {
         //ProgressSaver.Save(numberOfOpenedLevels);
-        DataSaver.Save(numberOfOpenedLevels);
+        DataSaver.Save(NumberOfOpenedLevels/*, numberOfOpenedLevels*/);
     }
 
     public void LoadProgress()
@@ -63,18 +68,18 @@ public class GameManager : MonoBehaviour
 
         if(progress!=null)
         {
-            numberOfOpenedLevels = progress.levelProgress;
+            NumberOfOpenedLevels = progress.levelProgress;
             OpenNewLevels();
         }
     }
 
     public void LevelUp(int sceneIndex)
     {
-        if (sceneIndex <= numberOfOpenedLevels)
+        if (sceneIndex <= NumberOfOpenedLevels)
             return;
 
-            numberOfOpenedLevels++;
-            Debug.Log(numberOfOpenedLevels);
+            NumberOfOpenedLevels++;
+            Debug.Log(NumberOfOpenedLevels);
             SaveProgress();
         
     }
@@ -84,7 +89,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
             return;
 
-        for (int i = 0; i<=numberOfOpenedLevels; i++)
+        for (int i = 0; i<=NumberOfOpenedLevels; i++)
         {
             if(levelButtons!=null && levelButtons.Contains(levelButtons[i]))
             levelButtons[i].GetComponent<LevelButton>().RevealButton();

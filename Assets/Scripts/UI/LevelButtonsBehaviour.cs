@@ -23,6 +23,14 @@ public class LevelButtonsBehaviour : MonoBehaviour
         numberOfLevels = GameManager.instance.GetLevelNumber();
     }
 
+    public void ClickPlayButton()
+    {
+        AudioManager.PlayUIButtonAudio();
+
+        int sceneIndex = GameManager.instance.NumberOfOpenedLevels+1;
+        StartCoroutine(LoadLevel(sceneIndex));
+    }
+
     public void GoToTheNextLevel()
     {
         AudioManager.PlayUIButtonAudio();
