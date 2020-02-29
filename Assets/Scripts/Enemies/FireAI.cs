@@ -28,7 +28,7 @@ public class FireAI : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.IsGamePause)
+        if (GameManager.IsGamePause)
             return;
 
         RayToPlayer();

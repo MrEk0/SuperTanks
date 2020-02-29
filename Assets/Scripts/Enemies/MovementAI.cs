@@ -46,7 +46,7 @@ public class MovementAI : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.IsGamePause)
+        if (GameManager.IsGamePause)
             return;
 
         AudioManager.PlayEnemyEngineAudio();

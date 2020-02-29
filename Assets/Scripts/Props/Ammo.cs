@@ -12,7 +12,7 @@ public class Ammo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.IsGamePause)
+        if (GameManager.IsGamePause)
             return;
 
         transform.Rotate(new Vector3(0, 0, 36*speedRotation*Time.deltaTime));

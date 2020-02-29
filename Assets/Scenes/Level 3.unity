@@ -15287,6 +15287,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2210941822001919092, guid: b6308589d51058947b5db9ec98d6e918,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2210941822001919092, guid: b6308589d51058947b5db9ec98d6e918,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035138084856273792, guid: b6308589d51058947b5db9ec98d6e918,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035138084856273792, guid: b6308589d51058947b5db9ec98d6e918,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3643465578812765509, guid: b6308589d51058947b5db9ec98d6e918,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3643465578812765509, guid: b6308589d51058947b5db9ec98d6e918,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8950332753428957272, guid: b6308589d51058947b5db9ec98d6e918,
         type: 3}
       propertyPath: m_Enabled
@@ -15367,6 +15397,12 @@ PrefabInstance:
       propertyPath: winPanel
       value: 
       objectReference: {fileID: 1533539481}
+    - target: {fileID: 9033543158445285084, guid: b6308589d51058947b5db9ec98d6e918,
+        type: 3}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 1127954516045118512, guid: 39dcb018894b9d14c9dbab73f1bda594,
+        type: 3}
     - target: {fileID: 9033543158445285085, guid: b6308589d51058947b5db9ec98d6e918,
         type: 3}
       propertyPath: m_Name

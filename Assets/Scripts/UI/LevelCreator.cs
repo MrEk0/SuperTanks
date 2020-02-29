@@ -28,10 +28,10 @@ public class LevelCreator : MonoBehaviour
 
     private void Start()
     {
-        numberOfLevels = GameManager.instance.GetLevelNumber();
+        numberOfLevels = GameManager.GetLevelNumber();
         CreateLevelPanel();
 
-        GameManager.instance.levelButtons = buttons;
+        GameManager.levelButtons = buttons;
     }
 
     private void CreateLevelPanel()

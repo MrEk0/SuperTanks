@@ -47,13 +47,10 @@ class AudioManager : MonoBehaviour
     AudioSource rocketSource;
     AudioSource stingSource;
 
-    //float musicVolume;
-    //float soundVolume;
     public static float MusicVolume { get; private set; }
     public static float SoundVolume { get; private set; }
 
     public static event Action<float, float> onVolumeChanged;
-    //public event Action<float> onSoundChanged;
 
     private void Awake()
     {
@@ -85,7 +82,6 @@ class AudioManager : MonoBehaviour
         stingSource.outputAudioMixerGroup = stringGroup;
 
         StartLevelAudio();
-        //LoadVolume();
     }
 
     private void Start()
@@ -138,7 +134,6 @@ class AudioManager : MonoBehaviour
             return;
 
         StopAllTankSounds();
-        //instance.musicSource.Stop();
 
         instance.voiceSource.clip = instance.gameOverClip;
         instance.voiceSource.Play();
@@ -150,13 +145,12 @@ class AudioManager : MonoBehaviour
             return;
 
         StopAllTankSounds();
-        //instance.musicSource.Stop();//!!!
 
         instance.voiceSource.clip = instance.congratulationsClip;
         instance.voiceSource.Play();
     }
 
-    public static void PlayUIButtonAudio()//!!!!!
+    public static void PlayUIButtonAudio()
     {
         if (instance == null)
             return;
@@ -270,7 +264,7 @@ class AudioManager : MonoBehaviour
         {
             yield return null;
         }
-        GameManager.instance.ResumeGame();
+        GameManager.ResumeGame();
     }
 
     public static void SetSoundVolume(float volume)
@@ -293,10 +287,6 @@ class AudioManager : MonoBehaviour
         {
             MusicVolume = data.musicVolume;
             SoundVolume = data.soundVolume;
-
-            Debug.Log("Load M  " + MusicVolume);
-            Debug.Log("Load S  " + SoundVolume);
-            Debug.Log("Load P  " + GameManager.instance.NumberOfOpenedLevels);
 
             SetMusicVolume(MusicVolume);
             SetSoundVolume(SoundVolume);

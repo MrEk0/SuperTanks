@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14cb74cf8db86d40a934706e7cdc6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 2
   viewRadius: 1
   rotationSpeed: 15
   wallMask:

@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.IsGamePause)
+        if (GameManager.IsGamePause)
             return;
 
         horizontalPos = CrossPlatformInputManager.GetAxis("Horizontal");

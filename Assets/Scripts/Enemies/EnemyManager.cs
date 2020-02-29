@@ -38,7 +38,7 @@ public class EnemyManager : MonoBehaviour
     IEnumerator ShowWinPanelCoroutine()
     {      
         yield return new WaitForSeconds(timeToShowWinPanel);
-        GameManager.instance.PauseGame();
+        GameManager.PauseGame();
         AudioManager.PlayCongratulationsAudio();
         LevelUp();
         winPanel.SetActive(true);
@@ -47,7 +47,7 @@ public class EnemyManager : MonoBehaviour
     private void LevelUp()
     {
         int sceneIndex=SceneManager.GetActiveScene().buildIndex;
-        GameManager.instance.LevelUp(sceneIndex);
+        GameManager.LevelUp(sceneIndex);
     }
 
     IEnumerator InitBoss(Vector3 enemy)

@@ -15,26 +15,25 @@ public class LevelButtonsBehaviour : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        //numberOfLevels = GameManager.instance.GetLevelNumber();
     }
 
     private void Start()
     {
-        numberOfLevels = GameManager.instance.GetLevelNumber();
+        numberOfLevels = GameManager.GetLevelNumber();
     }
 
     public void ClickPlayButton()
     {
         AudioManager.PlayUIButtonAudio();
 
-        int sceneIndex = GameManager.instance.NumberOfOpenedLevels+1;
+        int sceneIndex = GameManager.NumberOfOpenedLevels+1;
         StartCoroutine(LoadLevel(sceneIndex));
     }
 
     public void GoToTheNextLevel()
     {
         AudioManager.PlayUIButtonAudio();
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;//????
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
         if (numberOfLevels >= nextSceneIndex)
         {
@@ -48,13 +47,13 @@ public class LevelButtonsBehaviour : MonoBehaviour
 
     IEnumerator LoadLevel(int nextSceneIndex)
     {
-        GameManager.instance.PauseGame();
+        GameManager.PauseGame();
 
         animator.SetTrigger("LoadLevel");
         yield return new WaitForSeconds(timeToLoad);
         SceneManager.LoadScene(nextSceneIndex);
 
-        if (nextSceneIndex != 0)//!!!!
+        if (nextSceneIndex != 0)
         {
             AudioManager.PlayReadyGoAudio();;
         }
@@ -75,24 +74,25 @@ public class LevelButtonsBehaviour : MonoBehaviour
 
     public void PlayPause()
     {
-        //AudioManager.PlayUIButtonAudio();
-        GameManager.instance.PauseGame();
+        GameManager.PauseGame();
     }
 
     public void OpenSettingsPanel()
     {
+        AudioManager.PlayUIButtonAudio();
         AudioManager.LoadVolume();
     }
 
     public void CloseSettingButton()
     {
-        GameManager.instance.SaveProgress();
+        AudioManager.PlayUIButtonAudio();
+        GameManager.SaveProgress();
     }
 
     public void ResumeGame()
     {
         AudioManager.PlayUIButtonAudio();
-        GameManager.instance.ResumeGame();
+        GameManager.ResumeGame();
     }
 
     public void Quit()

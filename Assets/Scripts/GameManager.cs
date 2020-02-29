@@ -5,15 +5,15 @@ using UnityEngine;
 //[DefaultExecutionOrder(-100)]
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;
+   /* public*/ static GameManager instance /*= null*/;
 
     [SerializeField] int numberOfLevels = 5;
 
-    public int NumberOfOpenedLevels { get; private set; } = 0;
+    public static int NumberOfOpenedLevels { get; private set; } = 0;
 
-    public List<GameObject> levelButtons { get; set; }
+    public static List<GameObject> levelButtons { get; set; }
 
-    public bool IsGamePause { get; private set; } = false;
+    public static bool IsGamePause { get; private set; } = false;
 
     private void Awake()
     {
@@ -32,30 +32,30 @@ public class GameManager : MonoBehaviour
         LoadProgress();
     }
 
-    public int GetLevelNumber()
+    public static int GetLevelNumber()
     {
-        return numberOfLevels;
+        return instance.numberOfLevels;
     }
 
-    public void PauseGame()
+    public static void PauseGame()
     {
         IsGamePause = true;
         AudioManager.StopAllTankSounds();
     }
 
-    public void ResumeGame()
+    public static void ResumeGame()
     {
         IsGamePause = false;
     }
 
-    public void SaveProgress()
+    public static void SaveProgress()
     {
         float sound = AudioManager.SoundVolume;
         float music = AudioManager.MusicVolume;
         DataSaver.Save(sound, music, NumberOfOpenedLevels);
     }
 
-    public void LoadProgress()
+    public static void LoadProgress()
     {
         PlayerData progress = DataSaver.Load();
 
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         OpenNewLevels();
     }
 
-    public void LevelUp(int sceneIndex)
+    public static void LevelUp(int sceneIndex)
     {
         if (sceneIndex <= NumberOfOpenedLevels)
             return;
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void OpenNewLevels()
+    public static void OpenNewLevels()
     {
         if (instance == null)
             return;

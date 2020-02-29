@@ -33,7 +33,7 @@ public class GameSuporter : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.IsGamePause)
+        if (GameManager.IsGamePause)
             return;
 
         timeSinceRemoveItem += Time.deltaTime;

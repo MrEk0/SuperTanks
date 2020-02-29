@@ -38,7 +38,7 @@ public class StartMenu : MonoBehaviour
     public void PushBackSettings()
     {
         AudioManager.PlayUIButtonAudio();
-        GameManager.instance.SaveProgress();
+        GameManager.SaveProgress();
 
         animator.ResetTrigger(ids[2]);
         animator.SetTrigger(ids[3]);
@@ -46,7 +46,7 @@ public class StartMenu : MonoBehaviour
 
     public void PushLevelButton()
     {
-        GameManager.instance.LoadProgress();
+        GameManager.LoadProgress();
         AudioManager.PlayUIButtonAudio();
         animator.ResetTrigger(ids[1]);
         animator.SetTrigger(ids[0]);
