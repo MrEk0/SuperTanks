@@ -58,9 +58,9 @@ public class MovementAI : MonoBehaviour
         }
         else
         {
-            Vector2 nextTarget = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);//???
+            Vector2 nextTarget = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
-            SmoothRotation(nextTarget);
+            SmoothRotation();
             rb.MovePosition(nextTarget);
         }
     }
@@ -95,11 +95,6 @@ public class MovementAI : MonoBehaviour
             {
                 targetDirections.Add((Vector2)transform.position+directions[i]);
             }
-            //else if(hit.collider.GetComponent<Movement>()!=null)
-            //{
-            //    //targetDirections.Add(FormRoundVector(hit.transform.position));
-            //    targetPos = FormRoundVector(hit.transform.position);
-            //}
         }
 
         return targetDirections;
@@ -132,11 +127,8 @@ public class MovementAI : MonoBehaviour
         return Mathf.Approximately(distance, 0f);
     }
 
-    private void SmoothRotation(Vector2 target)
+    private void SmoothRotation()
     {
-        if ((Vector2)transform.position == target)
-            return;
-
         Quaternion currentRotation = transform.rotation;
 
         Vector2 dir = targetPos - (Vector2)transform.position;
@@ -160,19 +152,9 @@ public class MovementAI : MonoBehaviour
         targetPos = playerPos;
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.DrawWireSphere(transform.position, viewRadius);
-    //}
-
     private void CheckEnemyCollision()
     {
         Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(transform.position, viewRadius, enemyMask);
-
-        //if(enemyColliders.Length>2)
-        //{
-        //    StartCoroutine(WaitUntilOthersGo());
-        //}
 
         for (int i = 0; i < enemyColliders.Length; i++)
         {
@@ -182,13 +164,6 @@ public class MovementAI : MonoBehaviour
             }
         }
     }
-
-    //IEnumerator WaitUntilOthersGo()
-    //{
-    //    speed = 0f;
-    //    yield return new WaitForSeconds(2f);
-    //    speed = 6f;
-    //}
 
     private Vector2 FormRoundVector(Vector3 position)
     {

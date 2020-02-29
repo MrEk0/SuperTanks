@@ -5,8 +5,6 @@ using System.Linq;
 
 public class GameSuporter : MonoBehaviour
 {
-    //[SerializeField] GameObject supportPoints;
-    //[SerializeField] List<Transform> supportPoints;
     [SerializeField] GameObject fuelPrefab;
     [SerializeField] float maxNumberOfItems = 3f;
     [SerializeField] GameObject ammoPrefab;

@@ -6,9 +6,15 @@ public class Barrel : MonoBehaviour
 {
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] float damageRadius = 2f;
-    [SerializeField] LayerMask enemyMask;
 
     bool isCreated=false;
+
+    Collider2D thisCollider;
+
+    private void Awake()
+    {
+        thisCollider = GetComponent<Collider2D>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,11 +37,11 @@ public class Barrel : MonoBehaviour
             return;
 
         isCreated = true;
-        Collider2D[] colliders= Physics2D.OverlapCircleAll(transform.position, damageRadius/*, enemyMask*/);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, damageRadius);
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i] == GetComponent<Collider2D>())
+            if (colliders[i] == thisCollider)
                 continue;
 
             if (colliders[i].GetComponent<EnemyHealth>())

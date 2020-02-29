@@ -71,7 +71,6 @@ public class PlayerHealth : Health
         {
             healColor.a = Mathf.Clamp01(healColor.a - tintFadeSpeed * Time.deltaTime);
             material.SetColor(AttackColorName, healColor);
-            //return base.TakeHeal();
             yield return null;
         }
       

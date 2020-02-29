@@ -16,11 +16,10 @@ public class Movement : MonoBehaviour
     [SerializeField] UnityEvent onFuelConsumed;
 
     Rigidbody2D rb;
-    //Collider2D myCollider;
 
-    LayerMask dirtMask;
-    LayerMask grassMask;
-    LayerMask whiteMask;
+    //LayerMask dirtMask;
+    //LayerMask grassMask;
+    //LayerMask whiteMask;
 
     Transform myTransform;
     float angle;
@@ -34,19 +33,14 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         myTransform = GetComponent<Transform>();
-        //myCollider = GetComponent<Collider2D>();
 
         currentFuelAmount = amountOfFuel;
 
-        dirtMask = LayerMask.GetMask("Dirt");
-        grassMask = LayerMask.GetMask("Grass");
-        whiteMask = LayerMask.GetMask("Sand");
+        //dirtMask = LayerMask.GetMask("Dirt");//!!!!!!!!!!!!
+        //grassMask = LayerMask.GetMask("Grass");
+        //whiteMask = LayerMask.GetMask("Sand");
     }
 
-    //private void Start()
-    //{
-    //    GetComponent<Test>().PlayEngineSound();
-    //}
     void Update()
     {
         if (GameManager.instance.IsGamePause)
@@ -57,7 +51,6 @@ public class Movement : MonoBehaviour
 
         if (verticalPos != 0 || horizontalPos != 0)
         {
-            //AudioManager.PlayPlayerWorkingEngineAudio();
             FuelConsumption();
 
             if(verticalPos!=0)
@@ -69,23 +62,10 @@ public class Movement : MonoBehaviour
         {
             myTransform.position = new Vector3(Mathf.RoundToInt(myTransform.position.x),
                                                Mathf.RoundToInt(myTransform.position.y));
-            //GetComponent<Test>().PlayEngineSound();
         }
-        //GetComponent<Test>().PlayEngineSound();
+
         AudioManager.PlayPlayerEngineAudio();
         SmoothRotation(angle);
-        //if(myCollider.IsTouchingLayers(dirtMask))
-        //{
-        //    speed = 5f;
-        //}
-        //else if(myCollider.IsTouchingLayers(grassMask))
-        //{
-        //    speed = 8f;
-        //}
-        //else
-        //{
-        //    speed = 3f;
-        //}
     }
 
     private void SmoothRotation(float angle)
