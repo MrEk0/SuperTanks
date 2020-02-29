@@ -785,6 +785,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5652331888778257787, guid: 45405aa9cda4f854ba1139452ff3a578,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5652331888846822455, guid: 45405aa9cda4f854ba1139452ff3a578,
         type: 3}
       propertyPath: m_Name
@@ -1091,6 +1096,11 @@ PrefabInstance:
       propertyPath: onFuelConsumed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 527200459}
+    - target: {fileID: 7669228570033487675, guid: eb0348d179034a2488f7e3ba49440e01,
+        type: 3}
+      propertyPath: onFuelConsumed.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1933835528}
     - target: {fileID: 7669228570033487679, guid: eb0348d179034a2488f7e3ba49440e01,
         type: 3}
       propertyPath: m_LocalPosition.x

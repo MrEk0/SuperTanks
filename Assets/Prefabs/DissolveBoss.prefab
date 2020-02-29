@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 101453671708463984}
   - component: {fileID: 101453671708463985}
   m_Layer: 11
-  m_Name: Boss2
+  m_Name: DissolveBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14cb74cf8db86d40a934706e7cdc6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 3
   viewRadius: 1
   rotationSpeed: 15
   wallMask:
@@ -155,6 +155,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 2048
+  bodyCollider: {fileID: 810280736938375529}
 --- !u!114 &745026443672493409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +171,12 @@ MonoBehaviour:
   fireRate: 1
   bulletPrefab: {fileID: 1166406246339596520, guid: 555299c431ac8da47ac5912d9c5eb6f1,
     type: 3}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  foregroundMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &101453671708463984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,3 +207,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToSee: 2
   timeToBeInvisible: 4
+  fadeTime: 3

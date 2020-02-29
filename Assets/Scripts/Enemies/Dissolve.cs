@@ -6,15 +6,17 @@ public class Dissolve : MonoBehaviour
 {
     [SerializeField] float timeToSee=2f;
     [SerializeField] float timeToBeInvisible=4f;
+    [SerializeField] float fadeTime = 2f;
     
     Material material;
-    float fadeTime = 1f;
+    float currentfadeTime;
     float timeSinceBecameVisible = 0f;
     float timeSinceBecameInvisible = 0f;
     bool isVisible = true;
 
     private void Awake()
     {
+        currentfadeTime = fadeTime;
         material = GetComponent<SpriteRenderer>().material;
     }
 
@@ -33,15 +35,15 @@ public class Dissolve : MonoBehaviour
     {
         if (timeSinceBecameInvisible > timeToBeInvisible && !isVisible)
         {
-            fadeTime += Time.deltaTime;
+            currentfadeTime += Time.deltaTime;
 
-            if (fadeTime >= 1)
+            if (currentfadeTime >= fadeTime)
             {
-                fadeTime = 1;
+                currentfadeTime = fadeTime;
                 isVisible = true;
                 timeSinceBecameVisible = 0f;
             }
-            material.SetFloat("_Fade", fadeTime);
+            material.SetFloat("_Fade", currentfadeTime/fadeTime);
         }
     }
 
@@ -49,15 +51,15 @@ public class Dissolve : MonoBehaviour
     {
         if (timeSinceBecameVisible > timeToSee && isVisible)
         {
-            fadeTime -= Time.deltaTime;
+            currentfadeTime -= Time.deltaTime;
 
-            if (fadeTime <= 0)
+            if (currentfadeTime <= 0)
             {
-                fadeTime = 0;
+                currentfadeTime = 0;
                 isVisible = false;
                 timeSinceBecameInvisible = 0f;
             }
-            material.SetFloat("_Fade", fadeTime);
+            material.SetFloat("_Fade", currentfadeTime/fadeTime);
         }
     }
 }

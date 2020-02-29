@@ -7,10 +7,13 @@ public class FireAI : MonoBehaviour
 {
     [SerializeField] float fireRate = 1f;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] LayerMask playerMask;
+    [SerializeField] LayerMask foregroundMask;
 
     float timeSinceLastShot = Mathf.Infinity;
-    LayerMask mask;
-    LayerMask foregroundMask;
+    Transform thisTransform;
+    //LayerMask playerMask;
+    //LayerMask foregroundMask;
 
     public bool canShoot { set; private get; } = true;
 
@@ -18,8 +21,9 @@ public class FireAI : MonoBehaviour
 
     private void Awake()
     {
-        mask = LayerMask.GetMask("Player");
-        foregroundMask = LayerMask.GetMask("Foreground");
+        thisTransform = GetComponent<Transform>();
+        //playerMask = LayerMask.GetMask("Player");
+        //foregroundMask = LayerMask.GetMask("Foreground");
     }
 
     private void Update()
@@ -34,11 +38,10 @@ public class FireAI : MonoBehaviour
 
     private void RayToPlayer()
     {
-        //Debug.Log(canShoot);
         if (canShoot)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, Mathf.Infinity, mask);
-            RaycastHit2D foreHit = Physics2D.Raycast(transform.position, transform.up, Mathf.Infinity, foregroundMask);
+            RaycastHit2D hit = Physics2D.Raycast(thisTransform.position, thisTransform.up, Mathf.Infinity, playerMask);
+            RaycastHit2D foreHit = Physics2D.Raycast(thisTransform.position, thisTransform.up, Mathf.Infinity, foregroundMask);
 
             if (hit && hit.distance < foreHit.distance)
             {
@@ -57,7 +60,7 @@ public class FireAI : MonoBehaviour
         if (timeSinceLastShot > fireRate)
         {
             AudioManager.PlayEnemyFireAudio();
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            Instantiate(bulletPrefab, thisTransform.position, thisTransform.rotation);
             timeSinceLastShot = 0f;
         }       
     }

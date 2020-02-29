@@ -20,20 +20,18 @@ public class EnemyManager : MonoBehaviour
 
     public void Remove(EnemyHealth enemy)
     {
-        //Debug.Log(enemies.Count);
-        enemies.Remove(enemy);
-        //Debug.Log(enemies.Count);
-        //ShowWinPanel();
-        if (enemies.Count == 0)
+        if (enemies.Contains(enemy))
         {
-            if (bossPrefab != null)
-            {
-                StartCoroutine(InitBoss(enemy.transform.position));
-            }
-            else
-            {
-                ShowWinPanel();
-            }
+            enemies.Remove(enemy);
+        }
+
+        if (enemies.Count == 0 && bossPrefab != null)
+        {
+            StartCoroutine(InitBoss(enemy.transform.position));
+        }
+        else if (enemies.Count == 0)
+        {
+            ShowWinPanel();
         }
     }
 

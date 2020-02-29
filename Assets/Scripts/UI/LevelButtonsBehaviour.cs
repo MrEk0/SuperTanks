@@ -75,7 +75,7 @@ public class LevelButtonsBehaviour : MonoBehaviour
 
     public void PlayPause()
     {
-        AudioManager.PlayUIButtonAudio();
+        //AudioManager.PlayUIButtonAudio();
         GameManager.instance.PauseGame();
     }
 

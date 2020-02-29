@@ -12,7 +12,6 @@ public class MovementAI : MonoBehaviour
     [SerializeField] LayerMask wallMask;
     [SerializeField] LayerMask enemyMask;
     [SerializeField] BoxCollider2D bodyCollider;
-    //[SerializeField] Collider2D shieldCollider;
 
     float rayDistance = 1f;
 
@@ -20,19 +19,14 @@ public class MovementAI : MonoBehaviour
     Vector2 previousTarget;
     Vector2 targetBeforePrevious;
     Vector2[] directions = new Vector2[4] { Vector2.right, Vector2.left, Vector2.up, Vector2.down };
-    FireAI fireAI;
 
+    FireAI fireAI;
     Rigidbody2D rb;
-    //Collider2D[] colliders;
-    //Collider2D myCollider;
-    //BoxCollider2D myCollider;
 
     private void Awake()
     {
         fireAI = GetComponent<FireAI>();
         rb = GetComponent<Rigidbody2D>();
-        //myCollider = GetComponentInChildren<BoxCollider2D>();//can make visible?
-        //colliders = GetComponentsInChildren<Collider2D>();
     }
 
     private void OnEnable()

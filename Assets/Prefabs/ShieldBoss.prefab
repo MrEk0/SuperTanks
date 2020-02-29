@@ -93,6 +93,12 @@ MonoBehaviour:
   fireRate: 1
   bulletPrefab: {fileID: 1166406246339596520, guid: 555299c431ac8da47ac5912d9c5eb6f1,
     type: 3}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  foregroundMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &1440505365833712582
 GameObject:
   m_ObjectHideFlags: 0
