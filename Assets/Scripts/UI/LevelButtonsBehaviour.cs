@@ -101,10 +101,11 @@ public class LevelButtonsBehaviour : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoadSpecificLevel(GameObject button)
+    public void LoadSpecificLevel(/*GameObject button, */int levelIndex)
     {
         AudioManager.PlayUIButtonAudio();
-        int levelIndex = Convert.ToInt32(button.GetComponentInChildren<TextMeshProUGUI>().text);
+        //int levelIndex = Convert.ToInt32(button.GetComponentInChildren<TextMeshProUGUI>().text);
+        //Debug.Log(levelIndex);
         StartCoroutine(LoadLevel(levelIndex));
     }
 }

@@ -2386,7 +2386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72acfb8fc651c6c40a270c678571ed16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingPanel: {fileID: 6944618910348646038}
+  levelButtonsBehaviour: {fileID: 6944618910348646033}
   levelButtonPrefab: {fileID: 3791901681973594769, guid: c2d2c4a06d24c304cb5b7ff7f212aca6,
     type: 3}
   buttonPanelPrefab: {fileID: 50187799053436568, guid: 8de4e0d9d2b23e74a9ae80961ab6466f,
@@ -5009,12 +5009,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 760c67e569e59c94fa068af61cd5ed9b, type: 3}
---- !u!1 &6944618910348646038 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9025960095412887017, guid: 760c67e569e59c94fa068af61cd5ed9b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2099408568437771135}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6944618910348646039 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9025960095412887016, guid: 760c67e569e59c94fa068af61cd5ed9b,
@@ -5027,7 +5021,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2099408568437771135}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6944618910348646038}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31da414d526699b4ab85239c70a27eea, type: 3}

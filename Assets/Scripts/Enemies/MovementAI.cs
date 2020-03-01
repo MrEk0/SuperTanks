@@ -60,9 +60,10 @@ public class MovementAI : MonoBehaviour
         {
             Vector2 nextTarget = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
-            SmoothRotation();
+            //SmoothRotation();
             rb.MovePosition(nextTarget);
         }
+        SmoothRotation();
     }
 
     private void DefinePosition()

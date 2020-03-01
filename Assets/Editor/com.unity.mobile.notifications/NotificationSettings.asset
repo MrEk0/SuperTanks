@@ -40,9 +40,9 @@ MonoBehaviour:
     - False
     - com.unity3d.player.UnityPlayerActivity
   TrackedResourceAssets:
-  - Id: grey_tank_small
-    Type: 0
+  - Id: grey_tank_large
+    Type: 1
     Asset: {fileID: 2800000, guid: 006e7b6c2158da747aef3835f1f5464c, type: 3}
-  - Id: black_tank_small
-    Type: 0
+  - Id: black_tank_large
+    Type: 1
     Asset: {fileID: 2800000, guid: 67decd714c9911147a063895390675f6, type: 3}

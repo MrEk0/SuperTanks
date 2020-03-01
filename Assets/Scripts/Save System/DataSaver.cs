@@ -36,7 +36,6 @@ public static class DataSaver
         }
         else
         {
-            //throw new FileNotFoundException("File has not been found", FILENAME);
             return null;
         }
     }

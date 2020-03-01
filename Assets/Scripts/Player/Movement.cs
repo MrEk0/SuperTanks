@@ -12,16 +12,20 @@ public class Movement : MonoBehaviour
     [SerializeField] float speed = 5f;
     [SerializeField] float rotationSpeed = 10f;
     [SerializeField] float amountOfFuel = 10f;
+
+    [SerializeField] LayerMask grassMask;
+    [SerializeField] LayerMask dirtMask;
+    [SerializeField] LayerMask sandMask;
+
     [SerializeField] Slider fuelSlider;
     [SerializeField] UnityEvent onFuelConsumed;
 
     Rigidbody2D rb;
+    Transform thisTransform;
+    Collider2D thisCollider;
 
-    //LayerMask dirtMask;
-    //LayerMask grassMask;
-    //LayerMask whiteMask;
-
-    Transform myTransform;
+    float minSpeed = 1f;
+    float startSpeed;
     float angle;
     float currentFuelAmount;
 
@@ -32,19 +36,20 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        myTransform = GetComponent<Transform>();
+        thisTransform = GetComponent<Transform>();
+        thisCollider = GetComponent<Collider2D>();
 
         currentFuelAmount = amountOfFuel;
-
-        //dirtMask = LayerMask.GetMask("Dirt");//!!!!!!!!!!!!
-        //grassMask = LayerMask.GetMask("Grass");
-        //whiteMask = LayerMask.GetMask("Sand");
+        startSpeed = speed;
     }
 
     void Update()
     {
         if (GameManager.IsGamePause)
             return;
+
+        CheckGroundSpeed();
+        AudioManager.PlayPlayerEngineAudio();
 
         horizontalPos = CrossPlatformInputManager.GetAxis("Horizontal");
         verticalPos = CrossPlatformInputManager.GetAxis("Vertical");
@@ -60,12 +65,27 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            myTransform.position = new Vector3(Mathf.RoundToInt(myTransform.position.x),
-                                               Mathf.RoundToInt(myTransform.position.y));
+            thisTransform.position = new Vector3(Mathf.RoundToInt(thisTransform.position.x),
+                                               Mathf.RoundToInt(thisTransform.position.y));
         }
 
-        AudioManager.PlayPlayerEngineAudio();
         SmoothRotation(angle);
+    }
+
+    private void CheckGroundSpeed()
+    {
+        if(thisCollider.IsTouchingLayers(dirtMask))
+        {
+            speed = Mathf.Max(minSpeed, startSpeed - 1);
+        }
+        else if(thisCollider.IsTouchingLayers(sandMask))
+        {
+            speed = Mathf.Max(minSpeed, startSpeed - 2);
+        }
+        else if(thisCollider.IsTouchingLayers(grassMask))
+        {
+            speed = startSpeed;
+        }
     }
 
     private void SmoothRotation(float angle)
@@ -73,10 +93,10 @@ public class Movement : MonoBehaviour
         if (transform.rotation.z == angle)
             return;
 
-        Quaternion currentRotation = myTransform.rotation;
+        Quaternion currentRotation = thisTransform.rotation;
         Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle);
 
-        myTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * rotationSpeed);
+        thisTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
 
     private void FixedUpdate()
@@ -93,9 +113,10 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            AudioManager.PlayGameOverAudio();
+            GameManager.PauseGame();
             onFuelConsumed.Invoke();
-            
+            //AudioManager.PlayGameOverAudio();
+            //GameManager.PauseGame();
         }
     }
 

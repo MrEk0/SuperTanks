@@ -145,9 +145,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4806f5706f9fbe419769e24b8ef22d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 5
   rotationSpeed: 15
   amountOfFuel: 10
+  grassMask:
+    serializedVersion: 2
+    m_Bits: 32768
+  dirtMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  sandMask:
+    serializedVersion: 2
+    m_Bits: 16384
   fuelSlider: {fileID: 0}
   onFuelConsumed:
     m_PersistentCalls:

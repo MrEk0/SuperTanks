@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 public class LevelCreator : MonoBehaviour
 {
-    public GameObject loadingPanel;
+    [SerializeField] LevelButtonsBehaviour levelButtonsBehaviour;
     [SerializeField] GameObject levelButtonPrefab;
     [SerializeField] GameObject buttonPanelPrefab;
     [SerializeField] GameObject canvas;
@@ -98,10 +98,12 @@ public class LevelCreator : MonoBehaviour
 
             button.transform.SetParent(canvas.transform, false);
             button.transform.SetParent(parent.transform);
-            button.GetComponentInChildren<TextMeshProUGUI>().SetText(levelCount.ToString());
+            //button.GetComponentInChildren<TextMeshProUGUI>().SetText(levelCount.ToString());
+            button.GetComponent<LevelButton>().InstantiateButton(levelCount, levelButtonsBehaviour);
 
-            button.GetComponent<Button>().onClick.AddListener(delegate 
-            { loadingPanel.GetComponent<LevelButtonsBehaviour>().LoadSpecificLevel(button); });
+            //button.GetComponent<Button>().onClick.AddListener(delegate 
+            //{ loadingPanel.GetComponent<LevelButtonsBehaviour>().LoadSpecificLevel(/*button,*/ levelCount); });
+            //button.GetComponent<LevelButton>().levelButtons = levelButtonsBehaviour;
         }
     }
 }

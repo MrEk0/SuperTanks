@@ -30,7 +30,7 @@ public class MobileNotificationAndroid : MonoBehaviour
         {
             Title = "Time's up!",
             Text = "Time to blow up some enemies",
-            LargeIcon = "grey_tank_small",//small icon
+            LargeIcon = "grey_tank_large",
             FireTime = System.DateTime.Now.AddHours(2)
         };
 
@@ -48,7 +48,7 @@ public class MobileNotificationAndroid : MonoBehaviour
         {
             Title = "Boss! Boss!",
             Text = "The Boss is waiting for you",
-            SmallIcon = "black_tank_samll",
+            LargeIcon = "black_tank_large",
             FireTime = System.DateTime.Now.AddHours(3)
         };
 
@@ -59,4 +59,6 @@ public class MobileNotificationAndroid : MonoBehaviour
     {
         SendReturnNotification();
     }
+
+    
 }
