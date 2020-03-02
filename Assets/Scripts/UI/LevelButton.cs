@@ -5,37 +5,39 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using SuperTanks.Core;
 
-public class LevelButton : MonoBehaviour
+namespace SuperTanks.UI
 {
-    [SerializeField] Image closedImage;
-    [SerializeField] TextMeshProUGUI buttonText;
-
-    private LevelButtonsBehaviour levelButtons;
-    private int levelNumber;
-
-    public void InstantiateButton(int number, LevelButtonsBehaviour levelButtons)
+    public class LevelButton : MonoBehaviour
     {
-        buttonText.SetText(number.ToString());
-        this.levelButtons = levelButtons;
+        [SerializeField] Image closedImage;
+        [SerializeField] TextMeshProUGUI buttonText;
 
-        levelNumber = number;
+        private LevelButtonsBehaviour levelButtons;
+        private int levelNumber;
+
+        public void InstantiateButton(int number, LevelButtonsBehaviour levelButtons)
+        {
+            buttonText.SetText(number.ToString());
+            this.levelButtons = levelButtons;
+
+            levelNumber = number;
+        }
+
+        public void LoadLevel()
+        {
+            if (levelButtons == null)
+                return;
+
+            AudioManager.PlayUIButtonAudio();
+            levelButtons.LoadSpecificLevel(levelNumber);
+        }
+
+        public void RevealButton()
+        {
+            GetComponent<Button>().interactable = true;
+            closedImage.enabled = false;
+        }
     }
-
-    public void LoadLevel()
-    {
-        if (levelButtons == null)
-            return;
-
-        AudioManager.PlayUIButtonAudio();
-        levelButtons.LoadSpecificLevel(levelNumber);
-    }
-
-    public void RevealButton()
-    {
-        GetComponent<Button>().interactable = true;
-        closedImage.enabled = false;
-    }
-
-    
 }

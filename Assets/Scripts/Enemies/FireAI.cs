@@ -2,66 +2,66 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using SuperTanks.Core;
 
-public class FireAI : MonoBehaviour
+namespace SuperTanks.Tanks
 {
-    [SerializeField] float fireRate = 1f;
-    [SerializeField] GameObject bulletPrefab;
-    [SerializeField] LayerMask playerMask;
-    [SerializeField] LayerMask foregroundMask;
-
-    float timeSinceLastShot = Mathf.Infinity;
-    Transform thisTransform;
-    //LayerMask playerMask;
-    //LayerMask foregroundMask;
-
-    public bool canShoot { set; private get; } = true;
-
-    public event Action<Vector2> onHitPlayer;
-
-    private void Awake()
+    public class FireAI : MonoBehaviour
     {
-        thisTransform = GetComponent<Transform>();
-        //playerMask = LayerMask.GetMask("Player");
-        //foregroundMask = LayerMask.GetMask("Foreground");
-    }
+        [SerializeField] float fireRate = 1f;
+        [SerializeField] GameObject bulletPrefab;
+        [SerializeField] LayerMask playerMask;
+        [SerializeField] LayerMask foregroundMask;
 
-    private void Update()
-    {
-        if (GameManager.IsGamePause)
-            return;
+        float timeSinceLastShot = Mathf.Infinity;
+        Transform thisTransform;
 
-        RayToPlayer();
+        public bool canShoot { set; private get; } = true;
 
-        timeSinceLastShot += Time.deltaTime;
-    }
+        public event Action<Vector2> onHitPlayer;
 
-    private void RayToPlayer()
-    {
-        if (canShoot)
+        private void Awake()
         {
-            RaycastHit2D hit = Physics2D.Raycast(thisTransform.position, thisTransform.up, Mathf.Infinity, playerMask);
-            RaycastHit2D foreHit = Physics2D.Raycast(thisTransform.position, thisTransform.up, Mathf.Infinity, foregroundMask);
+            thisTransform = GetComponent<Transform>();
+        }
 
-            if (hit && hit.distance < foreHit.distance)
+        private void Update()
+        {
+            if (GameManager.IsGamePause)
+                return;
+
+            RayToPlayer();
+
+            timeSinceLastShot += Time.deltaTime;
+        }
+
+        private void RayToPlayer()
+        {
+            if (canShoot)
             {
-                Shoot();
+                RaycastHit2D hit = Physics2D.Raycast(thisTransform.position, thisTransform.up, Mathf.Infinity, playerMask);
+                RaycastHit2D foreHit = Physics2D.Raycast(thisTransform.position, thisTransform.up, Mathf.Infinity, foregroundMask);
 
-                float playerPosX = Mathf.RoundToInt(hit.transform.position.x);
-                float playerPosY = Mathf.RoundToInt(hit.transform.position.y);
+                if (hit && hit.distance < foreHit.distance)
+                {
+                    Shoot();
 
-                onHitPlayer(new Vector2(playerPosX, playerPosY));
+                    float playerPosX = Mathf.RoundToInt(hit.transform.position.x);
+                    float playerPosY = Mathf.RoundToInt(hit.transform.position.y);
+
+                    onHitPlayer(new Vector2(playerPosX, playerPosY));
+                }
             }
         }
-    }
 
-    private void Shoot()
-    {
-        if (timeSinceLastShot > fireRate)
+        private void Shoot()
         {
-            AudioManager.PlayEnemyFireAudio();
-            Instantiate(bulletPrefab, thisTransform.position, thisTransform.rotation);
-            timeSinceLastShot = 0f;
-        }       
+            if (timeSinceLastShot > fireRate)
+            {
+                AudioManager.PlayEnemyFireAudio();
+                Instantiate(bulletPrefab, thisTransform.position, thisTransform.rotation);
+                timeSinceLastShot = 0f;
+            }
+        }
     }
 }

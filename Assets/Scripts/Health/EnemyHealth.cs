@@ -1,32 +1,37 @@
-﻿using System.Collections;
+﻿using SuperTanks.Core;
+using SuperTanks.Props;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : Health
+namespace SuperTanks.Tanks
 {
-    [SerializeField] GameObject explosionPrefab;
-
-    EnemyManager enemyManager;
-    private void Awake()
+    public class EnemyHealth : Health
     {
-        enemyManager = GetComponentInParent<EnemyManager>();
-        enemyManager.Add(this);
-    }
+        [SerializeField] GameObject explosionPrefab;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Bullet>() != null)
+        EnemyManager enemyManager;
+        private void Awake()
         {
-            TakeDamage();
+            enemyManager = GetComponentInParent<EnemyManager>();
+            enemyManager.Add(this);
         }
-    }
 
-    public override void TakeDamage()
-    {
-        AudioManager.PlayEnemyExplosionAudio();
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.GetComponent<Bullet>() != null)
+            {
+                TakeDamage();
+            }
+        }
 
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        enemyManager.Remove(this);
-        Destroy(gameObject);
+        public override void TakeDamage()
+        {
+            AudioManager.PlayEnemyExplosionAudio();
+
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            enemyManager.Remove(this);
+            Destroy(gameObject);
+        }
     }
 }

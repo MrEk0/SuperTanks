@@ -1,32 +1,37 @@
-﻿using System.Collections;
+﻿using SuperTanks.Core;
+using SuperTanks.Tanks;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ammo : MonoBehaviour
+namespace SuperTanks.Props
 {
-    [SerializeField] float speedRotation = 10f;
-    [SerializeField] float numberOfAdditive = 5f;
-
-    public GameSuporter gameSuporter { get; set; }
-
-    // Update is called once per frame
-    void Update()
+    public class Ammo : MonoBehaviour
     {
-        if (GameManager.IsGamePause)
-            return;
+        [SerializeField] float speedRotation = 10f;
+        [SerializeField] float numberOfAdditive = 5f;
 
-        transform.Rotate(new Vector3(0, 0, 36*speedRotation*Time.deltaTime));
-    }
+        public GameSuporter gameSuporter { get; set; }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.GetComponent<Fire>()!=null)
+        // Update is called once per frame
+        void Update()
         {
-            AudioManager.PlayPickUpAudio();
+            if (GameManager.IsGamePause)
+                return;
 
-            collision.GetComponent<Fire>().ObtainAmmo(numberOfAdditive);
-            gameSuporter.RemoveItem(gameObject);
-            Destroy(gameObject);
+            transform.Rotate(new Vector3(0, 0, 36 * speedRotation * Time.deltaTime));
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.GetComponent<Fire>() != null)
+            {
+                AudioManager.PlayPickUpAudio();
+
+                collision.GetComponent<Fire>().ObtainAmmo(numberOfAdditive);
+                gameSuporter.RemoveItem(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }

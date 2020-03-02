@@ -1,22 +1,27 @@
-﻿using System.Collections;
+﻿using SuperTanks.Core;
+using SuperTanks.Tanks;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fuel : MonoBehaviour
+namespace SuperTanks.Props
 {
-    [SerializeField] float fuelAdditive = 5f;
-
-    public GameSuporter gameSuporter { get; set; }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class Fuel : MonoBehaviour
     {
-        if(collision.GetComponent<Movement>()!=null)
-        {
-            AudioManager.PlayPickUpAudio();
+        [SerializeField] float fuelAdditive = 5f;
 
-            collision.GetComponent<Movement>().Refill(fuelAdditive);
-            gameSuporter.RemoveItem(gameObject);
-            Destroy(gameObject);
+        public GameSuporter gameSuporter { get; set; }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.GetComponent<Movement>() != null)
+            {
+                AudioManager.PlayPickUpAudio();
+
+                collision.GetComponent<Movement>().Refill(fuelAdditive);
+                gameSuporter.RemoveItem(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -1,31 +1,34 @@
-﻿using System.Collections;
+﻿using SuperTanks.Core;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Bullet : MonoBehaviour
+namespace SuperTanks.Props
 {
-    [SerializeField] float speed=10f;
-    [SerializeField] GameObject explosionPrefab;
-
-    Rigidbody2D rb;
-
-    private void Awake()
+    public class Bullet : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        [SerializeField] float speed = 10f;
+        [SerializeField] GameObject explosionPrefab;
 
-    private void Start()
-    {
-        rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
-    }
+        Rigidbody2D rb;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        AudioManager.PlayRocketAudio();
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        private void Awake()
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
 
-        Destroy(gameObject);
+        private void Start()
+        {
+            rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
+        }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            AudioManager.PlayRocketAudio();
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+            Destroy(gameObject);
+
+        }
     }
 }

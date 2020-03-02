@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
-public abstract class Health : MonoBehaviour
+namespace SuperTanks.Tanks
 {
-    public abstract void TakeDamage();
-
-    public virtual IEnumerator TakeHeal()
+    public abstract class Health : MonoBehaviour
     {
-        yield return null;
+        public abstract void TakeDamage();
+
+        public virtual IEnumerator TakeHeal()
+        {
+            yield return null;
+        }
     }
 }

@@ -4,108 +4,110 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System;
+using SuperTanks.Core;
 
-public class LevelButtonsBehaviour : MonoBehaviour
+namespace SuperTanks.UI
 {
-    [SerializeField] float timeToLoad = 2f;
-
-    Animator animator;
-    int numberOfLevels;
-
-    private void Awake()
+    public class LevelButtonsBehaviour : MonoBehaviour
     {
-        animator = GetComponent<Animator>();
-    }
+        [SerializeField] float timeToLoad = 2f;
 
-    private void Start()
-    {
-        numberOfLevels = GameManager.GetLevelNumber();
-    }
+        Animator animator;
+        int numberOfLevels;
 
-    public void ClickPlayButton()
-    {
-        AudioManager.PlayUIButtonAudio();
-
-        int sceneIndex = GameManager.NumberOfOpenedLevels+1;
-        StartCoroutine(LoadLevel(sceneIndex));
-    }
-
-    public void GoToTheNextLevel()
-    {
-        AudioManager.PlayUIButtonAudio();
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-        if (numberOfLevels >= nextSceneIndex)
+        private void Awake()
         {
-            StartCoroutine(LoadLevel(nextSceneIndex));
+            animator = GetComponent<Animator>();
         }
-        else
+
+        private void Start()
         {
-            StartCoroutine(LoadLevel(0));         
+            numberOfLevels = GameManager.GetLevelNumber();
         }
-    }
 
-    IEnumerator LoadLevel(int nextSceneIndex)
-    {
-        GameManager.PauseGame();
-
-        animator.SetTrigger("LoadLevel");
-        yield return new WaitForSeconds(timeToLoad);
-        SceneManager.LoadScene(nextSceneIndex);
-
-        if (nextSceneIndex != 0)
+        public void ClickPlayButton()
         {
-            AudioManager.PlayReadyGoAudio();;
+            AudioManager.PlayUIButtonAudio();
+
+            int sceneIndex = GameManager.NumberOfOpenedLevels + 1;
+            StartCoroutine(LoadLevel(sceneIndex));
         }
-    }
 
-    public void LoadMainMenu()
-    {
-        AudioManager.PlayUIButtonAudio();
-        StartCoroutine(LoadLevel(0));    
-    }
+        public void GoToTheNextLevel()
+        {
+            AudioManager.PlayUIButtonAudio();
+            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
-    public void PlayAgain()
-    {
-        AudioManager.PlayUIButtonAudio();
-        int levelIndex = SceneManager.GetActiveScene().buildIndex;
-        StartCoroutine(LoadLevel(levelIndex));    
-    }
+            if (numberOfLevels >= nextSceneIndex)
+            {
+                StartCoroutine(LoadLevel(nextSceneIndex));
+            }
+            else
+            {
+                StartCoroutine(LoadLevel(0));
+            }
+        }
 
-    public void PlayPause()
-    {
-        GameManager.PauseGame();
-    }
+        IEnumerator LoadLevel(int nextSceneIndex)
+        {
+            GameManager.PauseGame();
 
-    public void OpenSettingsPanel()
-    {
-        AudioManager.PlayUIButtonAudio();
-        AudioManager.LoadVolume();
-    }
+            animator.SetTrigger("LoadLevel");
+            yield return new WaitForSeconds(timeToLoad);
+            SceneManager.LoadScene(nextSceneIndex);
 
-    public void CloseSettingButton()
-    {
-        AudioManager.PlayUIButtonAudio();
-        GameManager.SaveProgress();
-    }
+            if (nextSceneIndex != 0)
+            {
+                AudioManager.PlayReadyGoAudio(); ;
+            }
+        }
 
-    public void ResumeGame()
-    {
-        AudioManager.PlayUIButtonAudio();
-        GameManager.ResumeGame();
-    }
+        public void LoadMainMenu()
+        {
+            AudioManager.PlayUIButtonAudio();
+            StartCoroutine(LoadLevel(0));
+        }
 
-    public void Quit()
-    {
-        AudioManager.PlayUIButtonAudio();
-        Application.Quit();
-    }
+        public void PlayAgain()
+        {
+            AudioManager.PlayUIButtonAudio();
+            int levelIndex = SceneManager.GetActiveScene().buildIndex;
+            StartCoroutine(LoadLevel(levelIndex));
+        }
 
-    public void LoadSpecificLevel(/*GameObject button, */int levelIndex)
-    {
-        AudioManager.PlayUIButtonAudio();
-        //int levelIndex = Convert.ToInt32(button.GetComponentInChildren<TextMeshProUGUI>().text);
-        //Debug.Log(levelIndex);
-        StartCoroutine(LoadLevel(levelIndex));
+        public void PlayPause()
+        {
+            GameManager.PauseGame();
+        }
+
+        public void OpenSettingsPanel()
+        {
+            AudioManager.PlayUIButtonAudio();
+            AudioManager.LoadVolume();
+        }
+
+        public void CloseSettingButton()
+        {
+            AudioManager.PlayUIButtonAudio();
+            GameManager.SaveProgress();
+        }
+
+        public void ResumeGame()
+        {
+            AudioManager.PlayUIButtonAudio();
+            GameManager.ResumeGame();
+        }
+
+        public void Quit()
+        {
+            AudioManager.PlayUIButtonAudio();
+            Application.Quit();
+        }
+
+        public void LoadSpecificLevel(int levelIndex)
+        {
+            AudioManager.PlayUIButtonAudio();
+            StartCoroutine(LoadLevel(levelIndex));
+        }
     }
 }

@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[Serializable]
-public class PlayerData
+namespace SuperTanks.Saving
 {
-    public float soundVolume;
-    public float musicVolume;
-    public int levelProgress;
-
-    public PlayerData(float soundVolume, float musicVolume, int levelProgress)
+    [Serializable]
+    public class PlayerData
     {
-        this.soundVolume = soundVolume;
-        this.musicVolume = musicVolume;
-        this.levelProgress = levelProgress;
+        public float soundVolume;
+        public float musicVolume;
+        public int levelProgress;
+
+        public PlayerData(float soundVolume, float musicVolume, int levelProgress)
+        {
+            this.soundVolume = soundVolume;
+            this.musicVolume = musicVolume;
+            this.levelProgress = levelProgress;
+        }
     }
 }

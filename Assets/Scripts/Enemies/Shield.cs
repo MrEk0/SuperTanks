@@ -1,20 +1,25 @@
-﻿using System.Collections;
+﻿using SuperTanks.Core;
+using SuperTanks.Props;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shield : MonoBehaviour
+namespace SuperTanks.Tanks
 {
-    [SerializeField] float shieldHealth = 5f;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class Shield : MonoBehaviour
     {
-        if (collision.GetComponent<Bullet>() != null)
+        [SerializeField] float shieldHealth = 5f;
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            AudioManager.PlayEnemyHitAudio();
-            shieldHealth--;
-            if(shieldHealth==0)
+            if (collision.GetComponent<Bullet>() != null)
             {
-                Destroy(gameObject);               
+                AudioManager.PlayEnemyHitAudio();
+                shieldHealth--;
+                if (shieldHealth == 0)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

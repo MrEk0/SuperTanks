@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+namespace SuperTanks.Props
 {
-    public void Destroy()// for animation event
+    public class Explosion : MonoBehaviour
     {
-        Destroy(gameObject);
+        public void Destroy()// for animation event
+        {
+            Destroy(gameObject);
+        }
     }
 }

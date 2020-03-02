@@ -1,72 +1,76 @@
-﻿using System.Collections;
+﻿using SuperTanks.Core;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-enum SliderType
+namespace SuperTanks.UI
 {
-    Music,
-    Sound
-}
-
-public class VolumeSlider : MonoBehaviour
-{
-    [SerializeField] SliderType sliderType;
-    [SerializeField] Image volumeImage;
-    [SerializeField] Sprite volumeOffSprite;
-
-    Slider slider;
-    Sprite volumeOnSprite;
-    float minimumVolume;
-
-    private void OnEnable()
+    enum SliderType
     {
-        AudioManager.onVolumeChanged += ChangeSliderValue;
+        Music,
+        Sound
     }
 
-    private void OnDisable()
+    public class VolumeSlider : MonoBehaviour
     {
-        AudioManager.onVolumeChanged -= ChangeSliderValue;
-    }
+        [SerializeField] SliderType sliderType;
+        [SerializeField] Image volumeImage;
+        [SerializeField] Sprite volumeOffSprite;
 
-    private void Awake()
-    {
-        slider = GetComponent<Slider>();
-        volumeOnSprite = volumeImage.sprite;
-        minimumVolume = slider.minValue;
-    }
+        Slider slider;
+        Sprite volumeOnSprite;
+        float minimumVolume;
 
-    public void SetVolumeImage(float volume)
-    {
-        if(volume<=minimumVolume)
+        private void OnEnable()
         {
-            volumeImage.sprite = volumeOffSprite;
+            AudioManager.onVolumeChanged += ChangeSliderValue;
         }
-        else
+
+        private void OnDisable()
         {
-            volumeImage.sprite = volumeOnSprite;
+            AudioManager.onVolumeChanged -= ChangeSliderValue;
         }
-    }
 
-    public void SetMusicVolume(float volume)
-    {
-        AudioManager.SetMusicVolume(volume);
-    }
-
-    public void SetSoundVolume(float volume)
-    {
-        AudioManager.SetSoundVolume(volume);
-    }
-
-    private void ChangeSliderValue(float musicVolume, float soundVolume)
-    {
-        if (sliderType == SliderType.Music)
+        private void Awake()
         {
-            slider.value = musicVolume;
+            slider = GetComponent<Slider>();
+            volumeOnSprite = volumeImage.sprite;
+            minimumVolume = slider.minValue;
         }
-        else if (sliderType == SliderType.Sound)
+
+        public void SetVolumeImage(float volume)
         {
-            slider.value = soundVolume;
+            if (volume <= minimumVolume)
+            {
+                volumeImage.sprite = volumeOffSprite;
+            }
+            else
+            {
+                volumeImage.sprite = volumeOnSprite;
+            }
+        }
+
+        public void SetMusicVolume(float volume)
+        {
+            AudioManager.SetMusicVolume(volume);
+        }
+
+        public void SetSoundVolume(float volume)
+        {
+            AudioManager.SetSoundVolume(volume);
+        }
+
+        private void ChangeSliderValue(float musicVolume, float soundVolume)
+        {
+            if (sliderType == SliderType.Music)
+            {
+                slider.value = musicVolume;
+            }
+            else if (sliderType == SliderType.Sound)
+            {
+                slider.value = soundVolume;
+            }
         }
     }
 }

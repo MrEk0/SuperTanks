@@ -3,30 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using SuperTanks.Core;
 
-public class LivesUI : MonoBehaviour
+namespace SuperTanks.UI
 {
-    List<Image> lifeImages;
-    int lifeNumber;
-    private void Awake()
+    public class LivesUI : MonoBehaviour
     {
-        lifeImages = GetComponentsInChildren<Image>().ToList();
-        lifeNumber = lifeImages.Count;
-    }
-
-    public void DecreaseLifeNumber()
-    {
-        if (lifeNumber > 0f)
+        List<Image> lifeImages;
+        int lifeNumber;
+        private void Awake()
         {
-            lifeNumber--;
-
-            Image image = lifeImages[lifeNumber];
-            image.color = new Color(1f, 1f, 1f, image.color.a / 2f);
+            lifeImages = GetComponentsInChildren<Image>().ToList();
+            lifeNumber = lifeImages.Count;
         }
 
-        if(lifeNumber==0)
+        public void DecreaseLifeNumber()
         {
-            AudioManager.PlayGameOverAudio();
+            if (lifeNumber > 0f)
+            {
+                lifeNumber--;
+
+                Image image = lifeImages[lifeNumber];
+                image.color = new Color(1f, 1f, 1f, image.color.a / 2f);
+            }
+
+            if (lifeNumber == 0)
+            {
+                AudioManager.PlayGameOverAudio();
+            }
         }
     }
 }
