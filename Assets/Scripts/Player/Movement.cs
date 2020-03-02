@@ -115,7 +115,7 @@ public class Movement : MonoBehaviour
         {
             GameManager.PauseGame();
             onFuelConsumed.Invoke();
-            //AudioManager.PlayGameOverAudio();
+            AudioManager.PlayGameOverAudio();
             //GameManager.PauseGame();
         }
     }

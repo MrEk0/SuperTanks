@@ -130,12 +130,15 @@ public class MovementAI : MonoBehaviour
 
     private void SmoothRotation()
     {
+        //if ((Vector2)transform.position == targetPos)
+        //    return;
+
         Quaternion currentRotation = transform.rotation;
 
         Vector2 dir = targetPos - (Vector2)transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
-        
+
         //if (!Mathf.Approximately(Quaternion.Angle(currentRotation, targetRotation), 0f))//find out!!!
         if (Quaternion.Angle(currentRotation, targetRotation) != 0f)
         {

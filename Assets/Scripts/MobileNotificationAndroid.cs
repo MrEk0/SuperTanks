@@ -9,6 +9,7 @@ public class MobileNotificationAndroid : MonoBehaviour
     void Start()
     {
         CreateChannel();
+        SendBossNotification();
     }
 
     private void CreateChannel()
