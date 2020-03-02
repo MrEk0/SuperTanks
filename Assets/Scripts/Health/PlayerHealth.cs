@@ -13,21 +13,26 @@ public class PlayerHealth : Health
 
     Material material;
     Color attackColor;
-    Color healColor;
 
     const string AttackColorName = "_TintAttack";
-    const string HealColorName = "_TintHeal";
 
     public void Awake()
     {
         material = GetComponent<SpriteRenderer>().material;
         attackColor = material.GetColor(AttackColorName);
-        healColor = material.GetColor(HealColorName);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Bullet>() != null)
+        {
+            TakeDamage();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.GetComponent<EnemyHealth>()!=null)
         {
             TakeDamage();
         }
@@ -46,13 +51,17 @@ public class PlayerHealth : Health
         if (healthPoint == 0f)
         {
             AudioManager.PlayPlayerExplosionAudio();
-
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            onDead.Invoke();
-            Destroy(gameObject);
+            Death();
         }
 
         receiveDamage.Invoke();
+    }
+
+    private void Death()
+    {
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        onDead.Invoke();
+        Destroy(gameObject);
     }
 
     IEnumerator FadeTint()
@@ -63,16 +72,5 @@ public class PlayerHealth : Health
             material.SetColor(AttackColorName, attackColor);
             yield return null;
         }
-    }
-
-    public override IEnumerator TakeHeal()
-    {
-        while (healColor.a > 0)
-        {
-            healColor.a = Mathf.Clamp01(healColor.a - tintFadeSpeed * Time.deltaTime);
-            material.SetColor(AttackColorName, healColor);
-            yield return null;
-        }
-      
     }
 }

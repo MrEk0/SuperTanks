@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[DefaultExecutionOrder(-100)]
 public class GameManager : MonoBehaviour
 {
-   /* public*/ static GameManager instance /*= null*/;
+    static GameManager instance;
 
     [SerializeField] int numberOfLevels = 5;
 
@@ -39,17 +38,26 @@ public class GameManager : MonoBehaviour
 
     public static void PauseGame()
     {
+        if (instance == null)
+            return;
+
         IsGamePause = true;
         AudioManager.StopAllTankSounds();
     }
 
     public static void ResumeGame()
     {
+        if (instance == null)
+            return;
+
         IsGamePause = false;
     }
 
     public static void SaveProgress()
     {
+        if (instance == null)
+            return;
+
         float sound = AudioManager.SoundVolume;
         float music = AudioManager.MusicVolume;
         DataSaver.Save(sound, music, NumberOfOpenedLevels);
@@ -57,6 +65,9 @@ public class GameManager : MonoBehaviour
 
     public static void LoadProgress()
     {
+        if (instance == null)
+            return;
+
         PlayerData progress = DataSaver.Load();
 
         if(progress!=null)
@@ -68,12 +79,14 @@ public class GameManager : MonoBehaviour
 
     public static void LevelUp(int sceneIndex)
     {
+        if (instance == null)
+            return;
+
         if (sceneIndex <= NumberOfOpenedLevels)
             return;
 
             NumberOfOpenedLevels++;
-            SaveProgress();
-        
+            SaveProgress();       
     }
 
     public static void OpenNewLevels()

@@ -22,11 +22,18 @@ public class MovementAI : MonoBehaviour
 
     FireAI fireAI;
     Rigidbody2D rb;
+    Transform thisTransform;
+    EnemyHealth health;
 
     private void Awake()
     {
         fireAI = GetComponent<FireAI>();
         rb = GetComponent<Rigidbody2D>();
+        thisTransform = GetComponent<Transform>();
+        health = GetComponent<EnemyHealth>();
+
+        previousTarget = thisTransform.position;
+        targetBeforePrevious = thisTransform.position;
     }
 
     private void OnEnable()
@@ -58,12 +65,11 @@ public class MovementAI : MonoBehaviour
         }
         else
         {
-            Vector2 nextTarget = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            Vector2 nextTarget = Vector2.MoveTowards(thisTransform.position, targetPos, speed * Time.deltaTime);
 
-            //SmoothRotation();
+            SmoothRotation();
             rb.MovePosition(nextTarget);
         }
-        SmoothRotation();
     }
 
     private void DefinePosition()
@@ -71,18 +77,14 @@ public class MovementAI : MonoBehaviour
         targetPos = GetTargetPos();
 
         targetBeforePrevious = previousTarget;
-        previousTarget = transform.position;
+        previousTarget = thisTransform.position;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void ChangeTargetOnCollison(Collider2D collision)
     {
-        if (collision.collider.GetComponent<Bullet>() != null)
-        {
-            Vector2 newTarget = FormRoundVector(collision.transform.position);
-
-            targetPos = newTarget;
-            previousTarget = FormRoundVector(transform.position);
-        }
+        Vector2 newTarget = FormRoundVector(collision.transform.position);
+        targetPos = newTarget;
+        previousTarget = FormRoundVector(thisTransform.position);
     }
 
     private List<Vector2> FormTargetDirections()
@@ -90,11 +92,11 @@ public class MovementAI : MonoBehaviour
         List<Vector2> targetDirections = new List<Vector2>();
         for (int i = 0; i < directions.Length; i++)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, directions[i], rayDistance, wallMask);
+            RaycastHit2D hit = Physics2D.Raycast(thisTransform.position, directions[i], rayDistance, wallMask);
             
             if(hit.collider==null)
             {
-                targetDirections.Add((Vector2)transform.position+directions[i]);
+                targetDirections.Add((Vector2)thisTransform.position+directions[i]);
             }
         }
 
@@ -106,7 +108,11 @@ public class MovementAI : MonoBehaviour
         Vector2 target;
 
         List<Vector2> targetDirections = FormTargetDirections();
-        targetDirections.Remove(previousTarget);
+
+        if (targetDirections.Contains(previousTarget))
+        {
+            targetDirections.Remove(previousTarget);
+        }
 
         if (targetDirections.Count != 0)
         {
@@ -123,23 +129,19 @@ public class MovementAI : MonoBehaviour
 
     private bool IsReachedTargetPoint()
     {
-        float distance = Vector2.Distance(transform.position, targetPos);
+        float distance = Vector2.Distance(thisTransform.position, targetPos);
 
         return Mathf.Approximately(distance, 0f);
     }
 
     private void SmoothRotation()
     {
-        //if ((Vector2)transform.position == targetPos)
-        //    return;
+        Quaternion currentRotation = thisTransform.rotation;
 
-        Quaternion currentRotation = transform.rotation;
-
-        Vector2 dir = targetPos - (Vector2)transform.position;
+        Vector2 dir = targetPos - (Vector2)thisTransform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
 
-        //if (!Mathf.Approximately(Quaternion.Angle(currentRotation, targetRotation), 0f))//find out!!!
         if (Quaternion.Angle(currentRotation, targetRotation) != 0f)
         {
             fireAI.canShoot = false;
@@ -158,7 +160,7 @@ public class MovementAI : MonoBehaviour
 
     private void CheckEnemyCollision()
     {
-        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(transform.position, viewRadius, enemyMask);
+        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(thisTransform.position, viewRadius, enemyMask);
 
         for (int i = 0; i < enemyColliders.Length; i++)
         {

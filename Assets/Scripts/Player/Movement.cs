@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.Events;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -116,7 +115,6 @@ public class Movement : MonoBehaviour
             GameManager.PauseGame();
             onFuelConsumed.Invoke();
             AudioManager.PlayGameOverAudio();
-            //GameManager.PauseGame();
         }
     }
 

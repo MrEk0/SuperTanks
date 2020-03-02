@@ -10,11 +10,13 @@ public class BossHealth : Health
 
     Material material;
     Color attackColor;
+    MovementAI movementAI;
 
     const string AttackColorName = "_TintAttack";
 
     public void Awake()
     {
+        movementAI = GetComponent<MovementAI>();
         material = GetComponent<SpriteRenderer>().material;
         attackColor = material.GetColor(AttackColorName);
     }
@@ -24,6 +26,7 @@ public class BossHealth : Health
         if (collision.GetComponent<Bullet>() != null)
         {
             TakeDamage();
+            movementAI.ChangeTargetOnCollison(collision);
         }
     }
 
