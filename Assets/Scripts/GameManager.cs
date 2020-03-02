@@ -11,11 +11,13 @@ namespace SuperTanks.Core
         static GameManager instance;
 
         [SerializeField] int numberOfLevels = 5;
+        [SerializeField] int gamesToShowAds = 1;
+
+        private int numberOfGame = 0;
+        Ads ads;
 
         public static int NumberOfOpenedLevels { get; private set; } = 0;
-
         public static List<GameObject> levelButtons { get; set; }
-
         public static bool IsGamePause { get; private set; } = false;
 
         private void Awake()
@@ -28,6 +30,8 @@ namespace SuperTanks.Core
 
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            ads = GetComponent<Ads>();
         }
 
         private void Start()
@@ -102,6 +106,16 @@ namespace SuperTanks.Core
             {
                 if (levelButtons != null && levelButtons.Contains(levelButtons[i]))
                     levelButtons[i].GetComponent<LevelButton>().RevealButton();
+            }
+        }
+
+        public static void ShowAds()
+        {
+            instance.numberOfGame++;
+
+            if (instance.numberOfGame % instance.gamesToShowAds == 0) 
+            {
+                instance.ads.ShowVideoAds();
             }
         }
     }

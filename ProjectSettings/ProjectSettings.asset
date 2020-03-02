@@ -752,10 +752,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: c157a0a3-51a9-4357-b776-c05ce2c7d6cf
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: SuperTanks
+  organizationId: mrek0
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

@@ -71,6 +71,7 @@ namespace SuperTanks.UI
         public void PlayAgain()
         {
             AudioManager.PlayUIButtonAudio();
+            GameManager.ShowAds();
             int levelIndex = SceneManager.GetActiveScene().buildIndex;
             StartCoroutine(LoadLevel(levelIndex));
         }
