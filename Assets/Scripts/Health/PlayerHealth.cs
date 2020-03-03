@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 namespace SuperTanks.Tanks
 {
-    public class PlayerHealth : Health
+    public class PlayerHealth : MonoBehaviour, IDamage
     {
         [SerializeField] float healthPoint = 3f;
         [SerializeField] float tintFadeSpeed = 5f;
@@ -42,7 +42,7 @@ namespace SuperTanks.Tanks
             }
         }
 
-        public override void TakeDamage()
+        public  void TakeDamage()
         {
             AudioManager.PlayEnemyHitAudio();
 

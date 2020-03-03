@@ -54,7 +54,13 @@ namespace SuperTanks.Tanks
 
             horizontalPos = CrossPlatformInputManager.GetAxis("Horizontal");
             verticalPos = CrossPlatformInputManager.GetAxis("Vertical");
+            MoveTank();
 
+            SmoothRotation(angle);
+        }
+
+        private void MoveTank()
+        {
             if (verticalPos != 0 || horizontalPos != 0)
             {
                 FuelConsumption();
@@ -69,8 +75,6 @@ namespace SuperTanks.Tanks
                 thisTransform.position = new Vector3(Mathf.RoundToInt(thisTransform.position.x),
                                                    Mathf.RoundToInt(thisTransform.position.y));
             }
-
-            SmoothRotation(angle);
         }
 
         private void CheckGroundSpeed()

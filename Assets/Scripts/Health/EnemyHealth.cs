@@ -6,11 +6,12 @@ using UnityEngine;
 
 namespace SuperTanks.Tanks
 {
-    public class EnemyHealth : Health
+    public class EnemyHealth : MonoBehaviour, IDamage
     {
         [SerializeField] GameObject explosionPrefab;
 
         EnemyManager enemyManager;
+
         private void Awake()
         {
             enemyManager = GetComponentInParent<EnemyManager>();
@@ -25,7 +26,7 @@ namespace SuperTanks.Tanks
             }
         }
 
-        public override void TakeDamage()
+        public void TakeDamage()
         {
             AudioManager.PlayEnemyExplosionAudio();
 

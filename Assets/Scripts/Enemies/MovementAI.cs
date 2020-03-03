@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System;
 using UnityEngine;
 using SuperTanks.Core;
 
@@ -26,14 +24,12 @@ namespace SuperTanks.Tanks
         FireAI fireAI;
         Rigidbody2D rb;
         Transform thisTransform;
-        EnemyHealth health;
 
         private void Awake()
         {
             fireAI = GetComponent<FireAI>();
             rb = GetComponent<Rigidbody2D>();
             thisTransform = GetComponent<Transform>();
-            health = GetComponent<EnemyHealth>();
 
             previousTarget = thisTransform.position;
             targetBeforePrevious = thisTransform.position;
@@ -68,11 +64,16 @@ namespace SuperTanks.Tanks
             }
             else
             {
-                Vector2 nextTarget = Vector2.MoveTowards(thisTransform.position, targetPos, speed * Time.deltaTime);
-
-                SmoothRotation();
-                rb.MovePosition(nextTarget);
+                MoveTowardsTarget();
             }
+        }
+
+        private void MoveTowardsTarget()
+        {
+            Vector2 nextTarget = Vector2.MoveTowards(thisTransform.position, targetPos, speed * Time.deltaTime);
+
+            SmoothRotation();
+            rb.MovePosition(nextTarget);
         }
 
         private void DefinePosition()

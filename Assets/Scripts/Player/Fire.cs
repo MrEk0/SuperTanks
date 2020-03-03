@@ -22,13 +22,12 @@ namespace SuperTanks.Tanks
             currentAmmo = ammoNumber;
         }
 
-        // Update is called once per frame
         void Update()
         {
             timeSinceLastShot += Time.deltaTime;
         }
 
-        public void Shot()
+        public void Shot()//for ui button
         {
             if (timeSinceLastShot > fireSpeed && currentAmmo > 0)
             {

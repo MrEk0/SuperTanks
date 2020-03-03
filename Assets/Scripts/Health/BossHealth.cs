@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SuperTanks.Tanks
 {
-    public class BossHealth : Health
+    public class BossHealth : MonoBehaviour, IDamage
     {
         [SerializeField] float healthPoint = 10f;
         [SerializeField] float tintFadeSpeed = 5f;
@@ -34,7 +34,7 @@ namespace SuperTanks.Tanks
             }
         }
 
-        public override void TakeDamage()
+        public void TakeDamage()
         {
             attackColor.a = 1f;
             material.SetColor(AttackColorName, attackColor);
@@ -44,12 +44,16 @@ namespace SuperTanks.Tanks
 
             if (healthPoint == 0f)
             {
-                AudioManager.PlayEnemyExplosionAudio();
-                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                GetComponentInParent<EnemyManager>().ShowWinPanel();
-                Destroy(gameObject);
+                Death();
             }
+        }
 
+        private void Death()
+        {
+            AudioManager.PlayEnemyExplosionAudio();
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            GetComponentInParent<EnemyManager>().ShowWinPanel();
+            Destroy(gameObject);
         }
 
         IEnumerator FadeTint()

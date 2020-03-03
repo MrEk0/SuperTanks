@@ -5,13 +5,8 @@ using UnityEngine;
 
 namespace SuperTanks.Tanks
 {
-    public abstract class Health : MonoBehaviour
+    interface IDamage
     {
-        public abstract void TakeDamage();
-
-        public virtual IEnumerator TakeHeal()
-        {
-            yield return null;
-        }
+        void TakeDamage();
     }
 }

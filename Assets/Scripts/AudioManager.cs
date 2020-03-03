@@ -105,10 +105,7 @@ namespace SuperTanks.Core
 
         public static void PlayPlayerEngineAudio()
         {
-            if (instance == null)
-                return;
-
-            if (instance.tankPlayerSource.isPlaying)
+            if (instance == null || instance.tankPlayerSource.isPlaying)
                 return;
 
             instance.tankPlayerSource.clip = instance.playerEngineClip;
@@ -118,10 +115,7 @@ namespace SuperTanks.Core
 
         public static void PlayEnemyEngineAudio()
         {
-            if (instance == null)
-                return;
-
-            if (instance.tankEnemySource.isPlaying)
+            if (instance == null || instance.tankEnemySource.isPlaying)
                 return;
 
             instance.tankEnemySource.clip = instance.enemyEngineClip;

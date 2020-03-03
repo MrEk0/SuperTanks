@@ -40,10 +40,14 @@ namespace SuperTanks.Props
                 return;
 
             timeSinceRemoveItem += Time.deltaTime;
+            SpawnItem();
+        }
 
+        private void SpawnItem()
+        {
             if (timeSinceLastSpawn > timeBetweenSpawns &&
-                supportItems.Count < maxNumberOfItems &&
-                timeSinceRemoveItem > delayToDropItem)
+                            supportItems.Count < maxNumberOfItems &&
+                            timeSinceRemoveItem > delayToDropItem)
             {
                 if (ammo == null)
                 {
