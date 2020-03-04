@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -107981364, guid: 741884b37a0234d86bb740e55081cd5f, type: 3}
+  m_Name: UDP Settings
+  m_EditorClassIdentifier: 
+  UnityProjectID: c157a0a3-51a9-4357-b776-c05ce2c7d6cf
+  UnityClientID: RzldpBpQi5_dRWRd9QzgKw
+  UnityClientKey: imC9Dg93EdIZ9FM6mba-jNthaLXedlPp0vpmIEJwt5g
+  UnityClientRSAPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhh4S0Bazbl8oDOR9ZwC6fCXKnElc5gwM2FsKNBf7AzhQ6t93lr4N6y/HPE1GkCjnhgGJdfyDJZx2ukf6QhJ0mtm8o7WVh2CCnzj6fNZ6n0FDB2MDBhjMQXY3nTU0ewlSv9eeTZVifUHtS5zO8D/sLY9liylw154vwnxbmo7uNK/CqWvEtW6XJL1LHNAorbwkW5LI/1pTOYNVoAzqOf0ouCs++UnZqNyW/FO0T0ErfIWVebtNZyGVN8N8XwDGDVWx0Z0wFamRAdLhLmGeUly7hkWRew4YiMDwwKlIe/GEdZz0/TpTWbq8AzTDtEUWdUDSBlo+de9ju4kihp3i96iEEQIDAQAB
+  AppName: Super Tanks
+  AppSlug: 4e418e4e-fece-4a23-92b6-d2274168a796
+  AppItemId: 5e5fae6a0703a3001f96f72d
+  Permission: 

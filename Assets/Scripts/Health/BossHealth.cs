@@ -11,16 +11,15 @@ namespace SuperTanks.Tanks
         [SerializeField] float healthPoint = 10f;
         [SerializeField] float tintFadeSpeed = 5f;
         [SerializeField] GameObject explosionPrefab;
+        [SerializeField] MovementAI movementAI;
 
         Material material;
         Color attackColor;
-        MovementAI movementAI;
 
         const string AttackColorName = "_TintAttack";
 
         public void Awake()
         {
-            movementAI = GetComponent<MovementAI>();
             material = GetComponent<SpriteRenderer>().material;
             attackColor = material.GetColor(AttackColorName);
         }

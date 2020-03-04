@@ -9,6 +9,7 @@ namespace SuperTanks.Tanks
     public class Shield : MonoBehaviour
     {
         [SerializeField] float shieldHealth = 5f;
+        [SerializeField] MovementAI movementAI;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -16,6 +17,8 @@ namespace SuperTanks.Tanks
             {
                 AudioManager.PlayEnemyHitAudio();
                 shieldHealth--;
+                movementAI.ChangeTargetOnCollison(collision);
+
                 if (shieldHealth == 0)
                 {
                     Destroy(gameObject);
