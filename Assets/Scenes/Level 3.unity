@@ -23144,30 +23144,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5652331888605159629, guid: 45405aa9cda4f854ba1139452ff3a578,
+    - target: {fileID: 5652331887718785017, guid: 45405aa9cda4f854ba1139452ff3a578,
         type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5652331888605159629, guid: 45405aa9cda4f854ba1139452ff3a578,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5652331888605159629, guid: 45405aa9cda4f854ba1139452ff3a578,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5652331888605159629, guid: 45405aa9cda4f854ba1139452ff3a578,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5652331888778257787, guid: 45405aa9cda4f854ba1139452ff3a578,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_AnchoredPosition.x
+      value: -101.999756
       objectReference: {fileID: 0}
     - target: {fileID: 5652331888846822455, guid: 45405aa9cda4f854ba1139452ff3a578,
         type: 3}
@@ -23284,11 +23264,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1767061801}
-    - target: {fileID: 5652331889563898651, guid: 45405aa9cda4f854ba1139452ff3a578,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Shot
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45405aa9cda4f854ba1139452ff3a578, type: 3}
 --- !u!114 &595898454 stripped

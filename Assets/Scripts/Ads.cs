@@ -14,12 +14,12 @@ namespace SuperTanks.Core
         IEnumerator Start()
         {
             Advertisement.AddListener(this);
-            Advertisement.Initialize(gameID);
+            Advertisement.Initialize(gameID, true);
             while (!Advertisement.IsReady(bannerPlacementID))
                 yield return null;
 
             Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
-            Advertisement.Banner.Show(bannerPlacementID);
+            ShowBanner();
         }
 
         public void ShowVideoAds()
@@ -51,6 +51,16 @@ namespace SuperTanks.Core
             {
                 Time.timeScale = 1;
             }
+        }
+
+        public void CloseBanner()
+        {
+            Advertisement.Banner.Hide();
+        }
+
+        public void ShowBanner()
+        {
+            Advertisement.Banner.Show(bannerPlacementID);
         }
     }
 }

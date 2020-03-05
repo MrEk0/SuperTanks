@@ -28,6 +28,7 @@ namespace SuperTanks.UI
         public void ClickPlayButton()
         {
             AudioManager.PlayUIButtonAudio();
+            GameManager.HideBanner();
 
             int sceneIndex = GameManager.NumberOfOpenedLevels + 1;
             StartCoroutine(LoadLevel(sceneIndex));
@@ -65,6 +66,7 @@ namespace SuperTanks.UI
         public void LoadMainMenu()
         {
             AudioManager.PlayUIButtonAudio();
+            GameManager.ShowBanner();
             StartCoroutine(LoadLevel(0));
         }
 
@@ -108,6 +110,7 @@ namespace SuperTanks.UI
         public void LoadSpecificLevel(int levelIndex)
         {
             AudioManager.PlayUIButtonAudio();
+            GameManager.HideBanner();
             StartCoroutine(LoadLevel(levelIndex));
         }
     }
