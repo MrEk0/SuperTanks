@@ -36,8 +36,9 @@ namespace SuperTanks.Tanks
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.GetComponent<EnemyHealth>() != null)
-            {
+            if (collision.gameObject.GetComponent<IDamage>() != null ||
+                collision.gameObject.GetComponent<Shield>() != null)
+            {              
                 TakeDamage();
             }
         }

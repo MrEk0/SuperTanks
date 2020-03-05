@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SuperTanks.Tanks
 {
-    public class Shield : MonoBehaviour
+    public class Shield : MonoBehaviour, IDamage
     {
         [SerializeField] float shieldHealth = 5f;
         [SerializeField] MovementAI movementAI;
@@ -15,8 +15,7 @@ namespace SuperTanks.Tanks
         {
             if (collision.GetComponent<Bullet>() != null)
             {
-                AudioManager.PlayEnemyHitAudio();
-                shieldHealth--;
+                TakeDamage();
                 movementAI.ChangeTargetOnCollison(collision);
 
                 if (shieldHealth == 0)
@@ -24,6 +23,12 @@ namespace SuperTanks.Tanks
                     Destroy(gameObject);
                 }
             }
+        }
+
+        public void TakeDamage()
+        {
+            AudioManager.PlayEnemyHitAudio();
+            shieldHealth--;
         }
     }
 }
