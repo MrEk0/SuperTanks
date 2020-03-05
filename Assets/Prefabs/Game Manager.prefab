@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfLevels: 5
-  gamesToShowAds: 4
+  gamesToShowAds: 5
 --- !u!114 &3800423605450448617
 MonoBehaviour:
   m_ObjectHideFlags: 0

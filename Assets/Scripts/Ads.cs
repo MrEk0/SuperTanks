@@ -14,7 +14,7 @@ namespace SuperTanks.Core
         IEnumerator Start()
         {
             Advertisement.AddListener(this);
-            Advertisement.Initialize(gameID, true);
+            Advertisement.Initialize(gameID);
             while (!Advertisement.IsReady(bannerPlacementID))
                 yield return null;
 
