@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.SceneManagement;
 
 namespace SuperTanks.Core
 {
@@ -15,11 +16,16 @@ namespace SuperTanks.Core
         {
             Advertisement.AddListener(this);
             Advertisement.Initialize(gameID);
-            while (!Advertisement.IsReady(bannerPlacementID))
+
+            while (!Advertisement.IsReady())
                 yield return null;
 
             Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
-            ShowBanner();
+
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                ShowBanner();
+            }
         }
 
         public void ShowVideoAds()
@@ -29,7 +35,7 @@ namespace SuperTanks.Core
 
         public void OnUnityAdsReady(string placementId)
         {
-           
+
         }
 
         public void OnUnityAdsDidError(string message)
