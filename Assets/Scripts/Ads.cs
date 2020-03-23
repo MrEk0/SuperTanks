@@ -9,7 +9,6 @@ namespace SuperTanks.Core
     public class Ads : MonoBehaviour, IUnityAdsListener
     {
         private const string gameID = "3491898";
-        private const string bannerPlacementID = "banner";
         private const string videoPlacementID = "video";
 
         IEnumerator Start()
@@ -21,11 +20,6 @@ namespace SuperTanks.Core
                 yield return null;
 
             Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
-
-            if (SceneManager.GetActiveScene().buildIndex == 0)
-            {
-                ShowBanner();
-            }
         }
 
         public void ShowVideoAds()
@@ -57,16 +51,15 @@ namespace SuperTanks.Core
             {
                 Time.timeScale = 1;
             }
+            else if(showResult==ShowResult.Skipped && placementId == videoPlacementID)
+            {
+                Time.timeScale = 1;
+            }
         }
 
         public void CloseBanner()
         {
             Advertisement.Banner.Hide();
-        }
-
-        public void ShowBanner()
-        {
-            Advertisement.Banner.Show(bannerPlacementID);
         }
     }
 }

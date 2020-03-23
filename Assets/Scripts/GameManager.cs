@@ -118,15 +118,5 @@ namespace SuperTanks.Core
                 instance.ads.ShowVideoAds();
             }
         }
-
-        public static void HideBanner()
-        {
-            instance.ads.CloseBanner();
-        }
-
-        public static void ShowBanner()
-        {
-            instance.ads.ShowBanner();
-        }
     }
 }
